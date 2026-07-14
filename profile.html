@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Royal Profile - SaiVedha Silver Palace</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    .profile-card {
+      background: rgba(26, 26, 26, 0.95);
+      border: 1px solid var(--accent-color);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    }
+    
+    .profile-details-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+    
+    .profile-details-value {
+      font-size: 1.1rem;
+      color: #fff;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-dark text-white py-2 px-3 d-flex flex-wrap justify-content-between align-items-center" style="font-size: 0.8rem; letter-spacing: 2px; border-bottom: 1px solid var(--accent-color); gap: 10px;">
+    <div class="mx-auto mx-lg-0 text-center text-lg-start">
+      <span>PURE SILVER GUARANTEE • 100% HALLMARKED CERTIFICATE WITH EVERY PURCHASE</span>
+    </div>
+    <div class="mx-auto mx-lg-0 d-flex align-items-center gap-2 bg-black px-3 py-1 rounded-pill border border-secondary" style="font-size: 0.75rem;">
+      <span class="pulsing-live-dot"></span>
+      <span class="text-white-50" style="letter-spacing: 1px;">LIVE SILVER RATE (999 Pure):</span>
+      <span class="fw-bold text-success" id="liveSilverRate" style="letter-spacing: 1px;">₹235.00 / g</span>
+      <span class="text-success" style="font-size: 0.65rem; letter-spacing: 1px;" id="liveSilverTrend"><i class="bi bi-arrow-up-right"></i> +0.21%</span>
+    </div>
+  </div>
+
+  <!-- --- Header & Navigation Bar --- -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-luxury sticky-top bg-dark">
+    <div class="container-fluid">
+      <!-- Showroom Logo -->
+      <a class="navbar-brand d-flex align-items-center" href="index.html#home" id="brandLogo">
+        <img src="assets/images/logo.jpg" alt="SaiVedha Logo" class="me-2" style="height: 55px; width: 55px; border-radius: 50%; object-fit: cover; aspect-ratio: 1/1; border: 2px solid var(--primary-color);">
+        <div class="d-flex flex-column">
+          <span class="logo-text" style="line-height: 1.2;">SAIVEDHA</span>
+          <span class="logo-subtext" style="font-size: 0.65rem; color: var(--accent-color); letter-spacing: 2px; font-weight: 600; text-transform: uppercase;">Silver Palace</span>
+        </div>
+      </a>
+      
+      <div class="ms-auto d-flex align-items-center gap-3">
+        <a class="navbar-icon-btn position-relative" href="wishlist.html" title="Wishlist">
+          <i class="bi bi-heart"></i>
+          <span class="badge-counter d-none" id="wishlistBadgeCount">0</span>
+        </a>
+        <a class="navbar-icon-btn position-relative" href="cart.html" title="Shopping Cart">
+          <i class="bi bi-bag"></i>
+          <span class="badge-counter d-none" id="cartBadgeCount">0</span>
+        </a>
+        <a href="index.html#home" class="btn btn-sm btn-gold px-3">
+          <i class="bi bi-house-fill me-1"></i> Home
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- --- Profile View Section --- -->
+  <section class="py-5" style="background-color: var(--bg-color); min-height: 80vh;">
+    <div class="container py-4">
+      <div class="row g-4 justify-content-center">
+        <!-- Customer Account Details -->
+        <div class="col-lg-4">
+          <div class="profile-card p-4 text-center">
+            <div class="mb-3">
+              <span class="fs-1 d-inline-block p-3 bg-black rounded-circle border border-warning" style="width: 80px; height: 80px; line-height: 1;">👑</span>
+            </div>
+            <h3 class="fw-bold text-white mb-1" id="custNameLabel" style="font-family: var(--font-headings);">Loading Profile...</h3>
+            <span class="badge bg-warning-subtle text-warning border border-warning py-1 px-3 rounded-pill small mb-4" style="font-size: 0.75rem;">Premium Customer</span>
+            
+            <hr class="border-secondary opacity-25 mb-4">
+            
+            <div class="text-start">
+              <div class="profile-details-label">Email Address</div>
+              <div class="profile-details-value" id="custEmailLabel">---</div>
+              
+              <div class="profile-details-label">Contact Phone</div>
+              <div class="profile-details-value" id="custPhoneLabel">---</div>
+              
+              <div class="profile-details-label">Showroom Member Since</div>
+              <div class="profile-details-value" id="custJoinedLabel">---</div>
+            </div>
+            
+            <button class="btn btn-outline-danger w-100 py-2 mt-2" id="custLogoutBtn">
+              <i class="bi bi-box-arrow-right me-1"></i> Sign Out from Portal
+            </button>
+          </div>
+        </div>
+
+        <!-- Selections Audit Logs -->
+        <div class="col-lg-8">
+          <!-- Active Wishlist -->
+          <div class="profile-card p-4 mb-4">
+            <h4 class="fw-bold mb-3" style="color: var(--accent-color); font-family: var(--font-headings);"><i class="bi bi-heart-fill text-danger me-1"></i> My Curated Wishlist</h4>
+            <div class="row g-3" id="profileWishlistContainer">
+              <!-- Dynamic content -->
+            </div>
+            <div class="text-center py-4 d-none" id="emptyProfileWishlist">
+              <span class="text-muted">No wishlist articles saved. <a href="index.html#antique-collection" class="text-success fw-bold">Browse Showroom</a></span>
+            </div>
+          </div>
+
+          <!-- Active Cart Selection -->
+          <div class="profile-card p-4">
+            <h4 class="fw-bold mb-3" style="color: var(--primary-color); font-family: var(--font-headings);"><i class="bi bi-bag-fill text-warning me-1"></i> My Selection Bag</h4>
+            <div class="row g-3" id="profileCartContainer">
+              <!-- Dynamic content -->
+            </div>
+            <div class="text-center py-4 d-none" id="emptyProfileCart">
+              <span class="text-muted">No articles in selection bag. <a href="index.html#antique-collection" class="text-success fw-bold">Browse Showroom</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Dynamic scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // 1. Verify customer session exists
+      const customerSession = JSON.parse(localStorage.getItem('customerSession'));
+      if (!customerSession) {
+        alert('You must sign in to view your profile.');
+        window.location.href = 'index.html';
+        return;
+      }
+
+      // 2. Fetch latest customer details from server
+      try {
+        const res = await fetch('/api/rate'); // Check status connection
+        
+        // Since passwords are saved in DB, we display details saved in session, or we query.
+        // We'll display details from localStorage and simulate backend sync.
+        document.getElementById('custNameLabel').textContent = customerSession.name;
+        document.getElementById('custEmailLabel').textContent = customerSession.email;
+        // Phone number mock or sync
+        document.getElementById('custPhoneLabel').textContent = customerSession.phone || '94406 35058';
+        document.getElementById('custJoinedLabel').textContent = customerSession.joined || 'July 14, 2026';
+      } catch (err) {
+        console.warn('Backend sync failed, loading locally.');
+      }
+
+      // 3. Set badge counts
+      const wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
+      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      
+      const wBadge = document.getElementById('wishlistBadgeCount');
+      const cBadge = document.getElementById('cartBadgeCount');
+      
+      if (wBadge) {
+        wBadge.textContent = wishlistItems.length;
+        if (wishlistItems.length > 0) wBadge.classList.remove('d-none');
+      }
+      if (cBadge) {
+        cBadge.textContent = cartItems.length;
+        if (cartItems.length > 0) cBadge.classList.remove('d-none');
+      }
+
+      // 4. Render Wishlist Items Summary
+      const wContainer = document.getElementById('profileWishlistContainer');
+      const wEmpty = document.getElementById('emptyProfileWishlist');
+      
+      if (wishlistItems.length === 0) {
+        wEmpty.classList.remove('d-none');
+      } else {
+        wEmpty.classList.add('d-none');
+        let html = '';
+        wishlistItems.forEach(item => {
+          html += `
+            <div class="col-sm-6 col-md-4">
+              <div class="d-flex align-items-center gap-2 p-2 bg-black rounded border border-secondary">
+                <img src="${item.img}" style="width: 45px; height: 45px; object-fit: cover; border-radius: 4px;">
+                <div style="min-width: 0; flex-grow: 1;">
+                  <div class="text-white small fw-bold text-truncate">${item.title}</div>
+                  <small class="text-success" style="font-size: 0.7rem;">${item.price || 'Net Wt: Inquire'}</small>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+        wContainer.innerHTML = html;
+      }
+
+      // 5. Render Cart Items Summary
+      const cContainer = document.getElementById('profileCartContainer');
+      const cEmpty = document.getElementById('emptyProfileCart');
+      
+      if (cartItems.length === 0) {
+        cEmpty.classList.remove('d-none');
+      } else {
+        cEmpty.classList.add('d-none');
+        let html = '';
+        cartItems.forEach(item => {
+          html += `
+            <div class="col-sm-6 col-md-4">
+              <div class="d-flex align-items-center gap-2 p-2 bg-black rounded border border-secondary">
+                <img src="${item.img}" style="width: 45px; height: 45px; object-fit: cover; border-radius: 4px;">
+                <div style="min-width: 0; flex-grow: 1;">
+                  <div class="text-white small fw-bold text-truncate">${item.title}</div>
+                  <small class="text-success" style="font-size: 0.7rem;">${item.price || 'Net Wt: Inquire'}</small>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+        cContainer.innerHTML = html;
+      }
+
+      // 6. Ticker Rate Logic
+      async function initLiveSilverRate() {
+        const rateEl = document.getElementById('liveSilverRate');
+        const trendEl = document.getElementById('liveSilverTrend');
+        if (!rateEl || !trendEl) return;
+        
+        async function fetchAccurateRate() {
+          try {
+            const res = await fetch('/api/rate');
+            const data = await res.json();
+            
+            rateEl.classList.add('flash-update');
+            setTimeout(() => rateEl.classList.remove('flash-update'), 500);
+            
+            const rateVal = data.mode === 'manual' ? data.customRate : data.rate;
+            rateEl.textContent = `₹${rateVal.toFixed(2)} / g`;
+            
+            if (data.mode === 'manual') {
+              trendEl.className = 'text-success ms-1';
+              trendEl.innerHTML = `<i class="bi bi-shield-fill-check"></i> Locked`;
+            } else {
+              const percentage = ((rateVal - 234.50) / 234.50 * 100).toFixed(2);
+              if (percentage >= 0) {
+                trendEl.className = 'text-success ms-1';
+                trendEl.innerHTML = `<i class="bi bi-arrow-up-right"></i> +${percentage}%`;
+              } else {
+                trendEl.className = 'text-danger ms-1';
+                trendEl.innerHTML = `<i class="bi bi-arrow-down-left"></i> ${percentage}%`;
+              }
+            }
+          } catch (error) {
+            console.warn('Could not fetch live rate dynamically:', error);
+            rateEl.textContent = `₹235.00 / g`;
+          }
+        }
+        
+        await fetchAccurateRate();
+        setInterval(fetchAccurateRate, 30000);
+      }
+      
+      initLiveSilverRate();
+
+      // 7. Logout handler
+      document.getElementById('custLogoutBtn').addEventListener('click', () => {
+        if (confirm('Are you sure you want to sign out of your showroom profile?')) {
+          localStorage.removeItem('customerSession');
+          window.location.href = 'index.html';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

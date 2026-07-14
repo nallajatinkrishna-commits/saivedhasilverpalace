@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Premium Cart - SaiVedha Silver Palace</title>
+  <meta name="description" content="View your cart selection of premium pure silver articles and submit a direct purchase inquiry to SaiVedha Silver Palace.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✨%3C/text%3E%3C/svg%3E">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* Custom Cart Page Overrides */
+    .cart-empty-card {
+      background: rgba(26, 26, 26, 0.95);
+      border: 1px solid var(--accent-color);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-dark text-white py-2 px-3 d-flex flex-wrap justify-content-between align-items-center" style="font-size: 0.8rem; letter-spacing: 2px; border-bottom: 1px solid var(--accent-color); gap: 10px;">
+    <div class="mx-auto mx-lg-0 text-center text-lg-start">
+      <span>PURE SILVER GUARANTEE • 100% HALLMARKED CERTIFICATE WITH EVERY PURCHASE</span>
+    </div>
+    <div class="mx-auto mx-lg-0 d-flex align-items-center gap-2 bg-black px-3 py-1 rounded-pill border border-secondary" style="font-size: 0.75rem;">
+      <span class="pulsing-live-dot"></span>
+      <span class="text-white-50" style="letter-spacing: 1px;">LIVE SILVER RATE (999 Pure):</span>
+      <span class="fw-bold text-success" id="liveSilverRate" style="letter-spacing: 1px;">₹235.00 / g</span>
+      <span class="text-success" style="font-size: 0.65rem; letter-spacing: 1px;" id="liveSilverTrend"><i class="bi bi-arrow-up-right"></i> +0.21%</span>
+    </div>
+  </div>
+
+  <!-- --- Header & Navigation Bar --- -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-luxury sticky-top bg-dark">
+    <div class="container-fluid">
+      <!-- Showroom Logo -->
+      <a class="navbar-brand d-flex align-items-center" href="index.html#home" id="brandLogo">
+        <img src="assets/images/logo.jpg" alt="SaiVedha Logo" class="me-2" style="height: 55px; width: 55px; border-radius: 50%; object-fit: cover; aspect-ratio: 1/1; border: 2px solid var(--primary-color);">
+        <div class="d-flex flex-column">
+          <span class="logo-text" style="line-height: 1.2;">SAIVEDHA</span>
+          <span class="logo-subtext" style="font-size: 0.65rem; color: var(--accent-color); letter-spacing: 2px; font-weight: 600; text-transform: uppercase;">Silver Palace</span>
+        </div>
+      </a>
+      
+      <!-- Mobile Toggle -->
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menu Items -->
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="index.html#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="index.html#antique-collection">Antique Collection</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="index.html#silver-articles">Silver Articles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="index.html#womens-collection">Women's Collection</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="index.html#mens-collection">Men's Collection</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="index.html#gallery">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="index.html#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="index.html#contact">Contact</a>
+          </li>
+        </ul>
+        
+        <!-- Utility Icons (Search, Wishlist, Cart, Login) -->
+        <div class="d-flex align-items-center position-relative">
+          <!-- Wishlist -->
+          <a class="navbar-icon-btn position-relative" href="wishlist.html" title="Wishlist" aria-label="Wishlist">
+            <i class="bi bi-heart"></i>
+            <span class="badge-counter d-none" id="wishlistBadgeCount">0</span>
+          </a>
+
+          <!-- Shopping Cart -->
+          <a class="navbar-icon-btn position-relative active" href="cart.html" title="Shopping Cart" aria-label="Shopping Cart" style="color: var(--accent-color);">
+            <i class="bi bi-bag-fill"></i>
+            <span class="badge-counter d-none" id="cartBadgeCount">0</span>
+          </a>
+
+          <!-- Login -->
+          <button class="navbar-icon-btn" id="loginBtn" title="Customer Login" aria-label="User Account" data-bs-toggle="modal" data-bs-target="#loginModal">
+            <i class="bi bi-person"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- --- Cart Header Section --- -->
+  <section class="py-5 bg-dark text-white text-center position-relative overflow-hidden" style="border-bottom: 1px solid var(--accent-color);">
+    <!-- Decorative background elements -->
+    <div class="position-absolute top-50 start-50 translate-middle w-100 h-100 opacity-10" style="background-image: radial-gradient(var(--primary-color) 1px, transparent 1px); background-size: 20px 20px;"></div>
+    <div class="container py-4 position-relative z-1">
+      <span class="section-tagline" style="color: var(--accent-color);">My Selection</span>
+      <h1 class="display-4 fw-bold mb-3" style="font-family: var(--font-headings); font-weight: 800; letter-spacing: 2px;">My Premium Cart</h1>
+      <p class="lead text-white-50 mx-auto mb-4" style="max-width: 600px; font-size: 1rem;">Review your selected pure silver masterpieces. Submit your list directly to inquire about product weights, price estimations, and availability.</p>
+      <a href="index.html#antique-collection" class="btn btn-premium btn-premium-primary px-4 py-2">
+        <i class="bi bi-arrow-left me-2"></i> Return to Collection
+      </a>
+    </div>
+  </section>
+
+  <!-- --- Cart Items Grid --- -->
+  <section class="py-5" style="background-color: var(--bg-color); min-height: 55vh;">
+    <div class="container py-3">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10" id="cartPageContainer">
+          <!-- Dynamically filled with javascript -->
+          <div class="text-center py-5">
+            <div class="spinner-border text-success" role="status">
+              <span class="visually-hidden">Loading your cart...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- 13. Footer Section --- -->
+  <footer class="footer-luxury">
+    <div class="container">
+      <div class="row g-5">
+        <!-- Logo and About -->
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/images/logo.jpg" alt="SaiVedha Logo" class="me-2" style="height: 65px; width: 65px; border-radius: 50%; object-fit: cover; aspect-ratio: 1/1; border: 2px solid var(--primary-color);">
+            <div class="d-flex flex-column">
+              <span class="footer-logo" style="line-height: 1.2; margin-bottom: 0;">SAIVEDHA</span>
+              <span class="footer-subtext" style="font-size: 0.75rem; color: var(--accent-color); letter-spacing: 2px; font-weight: 600; text-transform: uppercase;">Silver Palace</span>
+            </div>
+          </div>
+          <p class="footer-about">
+            Vijayawada's premier showroom specializing in 92.5 Sterling Silver Antique Articles and 99.0%+ Pure Silver Pooja & Dinnerware. Bringing legacy, purity, and craftsmanship to your home.
+          </p>
+          <p class="text-white-50 mt-1" style="font-size: 0.8rem;"><i class="bi bi-clock-fill me-2"></i> Showroom Hours: 10:30 AM - 8:30 PM (Closed on Mondays)</p>
+          
+          <div class="social-links-row">
+            <a href="#" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-btn" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+            <a href="#" class="social-btn" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6 col-6">
+          <h4 class="footer-section-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About Legacy</a></li>
+            <li><a href="index.html#gallery">Showroom Gallery</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Categories -->
+        <div class="col-lg-3 col-md-6 col-6">
+          <h4 class="footer-section-title">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#antique-collection">Antique Ornaments</a></li>
+            <li><a href="index.html#silver-articles">Pooja Silverware</a></li>
+            <li><a href="index.html#silver-articles">Dinner Sets & Utensils</a></li>
+            <li><a href="index.html#womens-collection">Women's Ankle Straps & Bichiya</a></li>
+            <li><a href="index.html#mens-collection">Men's Kada & Chains</a></li>
+          </ul>
+        </div>
+
+        <!-- Store Location Info -->
+        <div class="col-lg-3 col-md-6">
+          <h4 class="footer-section-title">Visit Our Palace</h4>
+          <p class="footer-contact-info">
+            <i class="bi bi-geo-alt-fill me-2 text-success"></i>
+            <strong>SaiVedha Silver Palace</strong><br>
+            Governorpet, Vijayawada,<br>
+            Andhra Pradesh, India
+          </p>
+          <p class="footer-contact-info mt-3">
+            <i class="bi bi-telephone-fill me-2 text-success"></i>
+            +91 94406 35058
+          </p>
+          <p class="footer-contact-info">
+            <i class="bi bi-envelope-fill me-2 text-success"></i>
+            info@saivedhasilver.com
+          </p>
+        </div>
+      </div>
+
+      <hr class="footer-divider">
+
+      <div class="footer-bottom-row">
+        <p class="mb-0">&copy; 2026 SaiVedha Silver Palace. All Rights Reserved. Crafted with Trust &amp; Purity.</p>
+        <p class="mb-0 text-white-50" style="font-size: 0.8rem;">Certified Bureau of Indian Standards (BIS) 92.5 Hallmarked Jewelry.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle JS with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Cart rendering script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Navbar scroll behavior
+      const navbar = document.querySelector('.navbar-luxury');
+      if (navbar) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+          } else {
+            navbar.classList.remove('scrolled');
+          }
+        });
+      }
+
+      async function initLiveSilverRate() {
+        const rateEl = document.getElementById('liveSilverRate');
+        const trendEl = document.getElementById('liveSilverTrend');
+        if (!rateEl || !trendEl) return;
+        
+        async function fetchAccurateRate() {
+          try {
+            const res = await fetch('/api/rate');
+            const data = await res.json();
+            
+            rateEl.classList.add('flash-update');
+            setTimeout(() => rateEl.classList.remove('flash-update'), 500);
+            
+            const rateVal = data.mode === 'manual' ? data.customRate : data.rate;
+            rateEl.textContent = `₹${rateVal.toFixed(2)} / g`;
+            
+            if (data.mode === 'manual') {
+              trendEl.className = 'text-success ms-1';
+              trendEl.innerHTML = `<i class="bi bi-shield-fill-check"></i> Locked`;
+            } else {
+              const percentage = ((rateVal - 234.50) / 234.50 * 100).toFixed(2);
+              if (percentage >= 0) {
+                trendEl.className = 'text-success ms-1';
+                trendEl.innerHTML = `<i class="bi bi-arrow-up-right"></i> +${percentage}%`;
+              } else {
+                trendEl.className = 'text-danger ms-1';
+                trendEl.innerHTML = `<i class="bi bi-arrow-down-left"></i> ${percentage}%`;
+              }
+            }
+          } catch (error) {
+            console.warn('Could not fetch live rate dynamically:', error);
+            rateEl.textContent = `₹235.00 / g`;
+          }
+        }
+        
+        await fetchAccurateRate();
+        setInterval(fetchAccurateRate, 30000);
+      }
+      
+      initLiveSilverRate();
+
+      const container = document.getElementById('cartPageContainer');
+      const badge = document.getElementById('cartBadgeCount');
+      const wishlistBadge = document.getElementById('wishlistBadgeCount');
+      
+      let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
+      
+      function updateBadges() {
+        if (badge) {
+          badge.textContent = cartItems.length;
+          if (cartItems.length > 0) badge.classList.remove('d-none');
+          else badge.classList.add('d-none');
+        }
+        if (wishlistBadge) {
+          wishlistBadge.textContent = wishlistItems.length;
+          if (wishlistItems.length > 0) wishlistBadge.classList.remove('d-none');
+          else wishlistBadge.classList.add('d-none');
+        }
+      }
+      
+      function renderCartGrid() {
+        if (!container) return;
+        
+        if (cartItems.length === 0) {
+          container.innerHTML = `
+            <div class="text-center py-5">
+              <div class="p-5 rounded-4 shadow-sm border border-secondary bg-dark text-white cart-empty-card" style="max-width: 500px; margin: 0 auto;">
+                <i class="bi bi-bag text-muted mb-3" style="font-size: 4rem; display: block;"></i>
+                <h3 style="font-family: var(--font-headings); font-weight: 700; color: var(--primary-color);">Your Cart is Empty</h3>
+                <p class="text-muted mb-4">You haven't added any silver articles to your inquiry list yet.</p>
+                <a href="index.html#antique-collection" class="btn btn-premium btn-premium-primary px-4 py-2">
+                  <i class="bi bi-shop me-2"></i> Explore Showroom
+                </a>
+              </div>
+            </div>
+          `;
+          return;
+        }
+        
+        let html = '<div class="card bg-dark text-white p-4 border border-secondary rounded-4 shadow-lg">';
+        html += '<h3 class="mb-4" style="font-family: var(--font-headings); font-weight: 700; color: var(--primary-color); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px;">Inquiry Item List</h3>';
+        
+        html += '<div class="d-flex flex-column gap-3 mb-4">';
+        cartItems.forEach((item, index) => {
+          let displayPrice = item.price || '';
+          if (item.title === "Antique Nakshi Pure Silver Electric Bedside Lamp") displayPrice = "Net Wt: 620g";
+          if (item.title === "Antique Nakshi Pure Silver Peacock Standing Lamps (Pair)") displayPrice = "Net Wt: 1450g";
+          if (item.title === "Antique Pure Silver Geometric Cutout Ice Bucket & Tongs Set") displayPrice = "Net Wt: 310g";
+          
+          html += `
+            <div class="d-flex align-items-center gap-3 p-2 border-bottom border-secondary">
+              <img src="${item.img}" alt="${item.title}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px; border: 1px solid var(--accent-color);">
+              <div class="flex-grow-1">
+                <h6 class="mb-0 text-white" style="font-family: var(--font-headings); font-weight: 600;">${item.title}</h6>
+                <div class="d-flex align-items-center gap-2 mt-1">
+                  <small class="text-white-50">92.5 Sterling / 99.0+ Pure Silver</small>
+                  <span class="badge bg-success text-white border border-success py-1 px-2" style="font-size: 0.75rem;">${displayPrice}</span>
+                </div>
+              </div>
+              <button class="btn btn-sm btn-outline-danger btn-remove-cart" data-index="${index}" title="Remove" style="padding: 6px 10px; border-radius: 4px;">
+                <i class="bi bi-trash-fill"></i>
+              </button>
+            </div>
+          `;
+        });
+        html += '</div>';
+        
+        const cartSummaryMsg = cartItems.map(item => `• ${item.title}`).join('%0A');
+        
+        html += `
+          <div class="pt-2">
+            <a href="https://wa.me/919440635058?text=Hi%20SaiVedha%20Silver%20Palace%2C%20I%20would%20like%20to%20submit%20an%20inquiry%20regarding%20the%20following%20articles%20in%20my%20selection%20list%3A%0A${cartSummaryMsg}" 
+               target="_blank" class="btn btn-premium btn-premium-primary w-100 py-3 d-flex align-items-center justify-content-center gap-2" style="font-size: 1rem; font-weight: 700;">
+              <i class="bi bi-whatsapp fs-5"></i> Submit Inquiry via WhatsApp
+            </a>
+          </div>
+        `;
+        
+        html += '</div>';
+        container.innerHTML = html;
+        
+        // Bind remove actions
+        container.querySelectorAll('.btn-remove-cart').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const idx = parseInt(btn.getAttribute('data-index'));
+            cartItems.splice(idx, 1);
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            updateBadges();
+            renderCartGrid();
+          });
+        });
+      }
+      
+      function initCustomerAuth() {
+        const loginModal = document.getElementById('loginModal');
+        if (!loginModal) return;
+        
+        const loginForm = document.getElementById('customerLoginForm');
+        const registerForm = document.getElementById('customerRegisterForm');
+        const switchToSignUp = document.getElementById('switchToSignUp');
+        const switchToSignIn = document.getElementById('switchToSignIn');
+        
+        const loginBtn = document.getElementById('loginBtn');
+        
+        // Toggle between login and register forms
+        if (switchToSignUp && switchToSignIn && loginForm && registerForm) {
+          switchToSignUp.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+            document.getElementById('loginModalLabel').textContent = 'Create Royal Showroom Profile';
+          });
+          
+          switchToSignIn.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerForm.style.display = 'none';
+            loginForm.style.display = 'block';
+            document.getElementById('loginModalLabel').textContent = 'Access Royal Showroom';
+          });
+        }
+        
+        // Check customer session state
+        const customerSession = JSON.parse(localStorage.getItem('customerSession'));
+        if (customerSession && loginBtn) {
+          loginBtn.title = `Showroom Profile: ${customerSession.name}`;
+          loginBtn.innerHTML = `<i class="bi bi-person-check-fill text-warning"></i>`;
+          
+          // Override modal opening to support log out
+          loginBtn.removeAttribute('data-bs-toggle');
+          loginBtn.removeAttribute('data-bs-target');
+          
+          loginBtn.addEventListener('click', () => {
+            window.location.href = 'profile.html';
+          });
+        }
+        
+        // Submit Registration Form
+        if (registerForm) {
+          registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('regName').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const phone = document.getElementById('regPhone').value.trim();
+            const password = document.getElementById('regPassword').value;
+            
+            try {
+              const res = await fetch('/api/customer/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, phone, password })
+              });
+              const data = await res.json();
+              
+              if (data.success) {
+                alert('Registration successful! You can now log in.');
+                registerForm.reset();
+                registerForm.style.display = 'none';
+                loginForm.style.display = 'block';
+                document.getElementById('loginModalLabel').textContent = 'Access Royal Showroom';
+              } else {
+                alert(data.error || 'Failed to create profile.');
+              }
+            } catch (err) {
+              alert('Server connection failed. Please try again.');
+            }
+          });
+        }
+        
+        // Submit Login Form
+        if (loginForm) {
+          loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            
+            try {
+              const res = await fetch('/api/customer/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+              });
+              const data = await res.json();
+              
+              if (data.success) {
+                localStorage.setItem('customerSession', JSON.stringify({
+                  name: data.customer.name,
+                  email: data.customer.email,
+                  token: data.token
+                }));
+                
+                alert(`Welcome back to SaiVedha Showroom, ${data.customer.name}!`);
+                window.location.reload();
+              } else {
+                alert(data.error || 'Invalid email or password.');
+              }
+            } catch (err) {
+              alert('Server connection failed. Please try again.');
+            }
+          });
+        }
+      }
+      
+      initCustomerAuth();
+      
+      updateBadges();
+      renderCartGrid();
+    });
+  </script>
+  <!-- --- Customer Account Access Modal --- -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border: 1px solid var(--accent-color); border-radius: 12px; background: var(--bg-color); color: var(--text-light);">
+        <div class="modal-header border-0 bg-dark text-white p-4" style="border-radius: 11px 11px 0 0;">
+          <h4 class="modal-title" id="loginModalLabel" style="font-family: var(--font-headings); font-weight: 700;">Access Royal Showroom</h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <!-- Slide Carousel -->
+          <div id="authCarousel" class="carousel slide" data-bs-interval="false" data-bs-touch="false">
+            <div class="carousel-inner">
+              
+              <!-- Slide 1: Sign In -->
+              <div class="carousel-item active" id="slideSignIn">
+                <form id="customerLoginForm">
+                  <div class="mb-3">
+                    <label for="loginEmail" class="form-label text-muted" style="font-size: 0.8rem; font-weight: 600;">EMAIL ADDRESS</label>
+                    <input type="email" class="form-control form-control-luxury" id="loginEmail" placeholder="name@domain.com" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="loginPassword" class="form-label text-muted" style="font-size: 0.8rem; font-weight: 600;">PASSWORD</label>
+                    <input type="password" class="form-control form-control-luxury" id="loginPassword" placeholder="••••••••" required>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mb-4" style="font-size: 0.8rem;">
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="rememberMe">
+                      <label class="form-check-label text-muted" for="rememberMe">Remember me</label>
+                    </div>
+                    <a href="#" class="text-success fw-bold" onclick="event.preventDefault(); alert('Please register a new account.');">Forgot password?</a>
+                  </div>
+                  <button type="submit" class="btn btn-premium btn-premium-primary w-100 mb-3">Sign In</button>
+                  <div class="text-center text-muted" style="font-size: 0.85rem;">
+                    Don't have a showroom account? <a href="#" class="text-success fw-bold" id="switchToSignUp">Sign Up</a>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Slide 2: Sign Up -->
+              <div class="carousel-item" id="slideSignUp">
+                <form id="customerRegisterForm">
+                  <div class="mb-3">
+                    <label for="regName" class="form-label text-muted" style="font-size: 0.8rem; font-weight: 600;">FULL NAME</label>
+                    <input type="text" class="form-control form-control-luxury" id="regName" placeholder="John Doe" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="regEmail" class="form-label text-muted" style="font-size: 0.8rem; font-weight: 600;">EMAIL ADDRESS</label>
+                    <input type="email" class="form-control form-control-luxury" id="regEmail" placeholder="john@domain.com" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="regPhone" class="form-label text-muted" style="font-size: 0.8rem; font-weight: 600;">PHONE / CONTACT (OPTIONAL)</label>
+                    <input type="tel" class="form-control form-control-luxury" id="regPhone" placeholder="9440635058">
+                  </div>
+                  <div class="mb-3">
+                    <label for="regPassword" class="form-label text-muted" style="font-size: 0.8rem; font-weight: 600;">PASSWORD</label>
+                    <input type="password" class="form-control form-control-luxury" id="regPassword" placeholder="••••••••" required>
+                  </div>
+                  <button type="submit" class="btn btn-premium btn-premium-primary w-100 mb-3">Create Showroom Profile</button>
+                  <div class="text-center text-muted" style="font-size: 0.85rem;">
+                    Already have an account? <a href="#" class="text-success fw-bold" id="switchToSignIn">Sign In</a>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Slide 3: Customer Details Profile -->
+              <div class="carousel-item" id="slideProfile">
+                <div class="text-center py-2">
+                  <div class="mb-3">
+                    <span class="fs-1 d-inline-block p-2 bg-black rounded-circle border border-warning" style="width: 70px; height: 70px; line-height: 1;">👑</span>
+                  </div>
+                  <h4 class="fw-bold text-white mb-1" id="modalProfileName">Loading Profile...</h4>
+                  <span class="badge bg-warning-subtle text-warning border border-warning py-1 px-3 rounded-pill small mb-4" style="font-size: 0.7rem;">Premium Customer</span>
+                  
+                  <div class="text-start border border-secondary p-3 rounded mb-4" style="background: rgba(0,0,0,0.3);">
+                    <div style="font-size: 0.75rem; color: var(--primary-color); font-weight: 700; text-transform: uppercase;">Email Address</div>
+                    <div class="text-white mb-2" id="modalProfileEmail">---</div>
+                    
+                    <div style="font-size: 0.75rem; color: var(--primary-color); font-weight: 700; text-transform: uppercase;">Contact Phone</div>
+                    <div class="text-white mb-2" id="modalProfilePhone">---</div>
+                  </div>
+
+                  <button class="btn btn-outline-danger w-100 py-2" id="modalLogoutBtn">
+                    <i class="bi bi-box-arrow-right me-1"></i> Sign Out from Portal
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
