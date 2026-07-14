@@ -381,8 +381,8 @@
       }
 
       // Check current token
-      const sessionToken = sessionStorage.getItem('adminToken');
-      if (sessionToken === 'saivedha-session-token-9440635058') {
+      const sessionToken = localStorage.getItem('adminToken');
+      if (sessionToken === 'saivedha-session-token-9440635761') {
         showDashboard();
       }
 
@@ -397,7 +397,7 @@
       }
 
       function hideDashboard() {
-        sessionStorage.removeItem('adminToken');
+        localStorage.removeItem('adminToken');
         loginSection.classList.remove('d-none');
         dashboardSection.classList.add('d-none');
         adminNav.classList.add('d-none');
@@ -421,7 +421,7 @@
           });
           const data = await res.json();
           if (data.success) {
-            sessionStorage.setItem('adminToken', data.token);
+            localStorage.setItem('adminToken', data.token);
             showDashboard();
             showToast('Welcome back, Royal Administrator!');
           } else {
@@ -461,7 +461,7 @@
         const mode = modeAuto.checked ? 'auto' : 'manual';
         const customRate = parseFloat(customRateVal.value);
         
-        const token = sessionStorage.getItem('adminToken');
+        const token = localStorage.getItem('adminToken');
         
         try {
           const res = await fetch('/api/rate', {
@@ -486,7 +486,7 @@
 
       // 4. Load Customer Inquiries Log
       async function loadInquiries() {
-        const token = sessionStorage.getItem('adminToken');
+        const token = localStorage.getItem('adminToken');
         try {
           const res = await fetch('/api/inquiries', {
             headers: { 'Authorization': token }
@@ -524,7 +524,7 @@
 
       // 5. Load Login Audit Trail Logs
       async function loadLoginLogs() {
-        const token = sessionStorage.getItem('adminToken');
+        const token = localStorage.getItem('adminToken');
         try {
           const res = await fetch('/api/logins', {
             headers: { 'Authorization': token }
@@ -562,7 +562,7 @@
 
       // 6. Load Customer Login History Logs
       async function loadCustomerLoginLogs() {
-        const token = sessionStorage.getItem('adminToken');
+        const token = localStorage.getItem('adminToken');
         try {
           const res = await fetch('/api/admin/customer-logins', {
             headers: { 'Authorization': token }
