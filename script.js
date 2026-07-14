@@ -297,7 +297,7 @@ function initCartAndWishlist() {
             <button class="btn btn-sm btn-outline-danger btn-remove-wishlist" data-index="${index}" title="Remove">
               <i class="bi bi-trash"></i>
             </button>
-            <a href="https://wa.me/919440635058?text=Hi%20SaiVedha%20Silver%20Palace%2C%20I%20am%20interested%20in%20inquiring%20about%20the%20${encodeURIComponent(item.title)}." 
+            <a href="https://wa.me/919440635761?text=Hi%20SaiVedha%20Silver%20Palace%2C%20I%20am%20interested%20in%20inquiring%20about%20the%20${encodeURIComponent(item.title)}." 
                target="_blank" class="btn btn-sm btn-success d-flex align-items-center gap-1" style="font-size: 0.75rem; padding: 4px 8px;">
               <i class="bi bi-whatsapp"></i> Inquire
             </a>
@@ -367,7 +367,7 @@ function initCartAndWishlist() {
     const cartSummaryMsg = cartItems.map(item => `• ${item.title}`).join('%0A');
     html += `
       <div class="pt-3 border-top mt-2">
-        <a href="https://wa.me/919440635058?text=Hi%20SaiVedha%20Silver%20Palace%2C%20I%20would%20like%20to%20inquire%20about%20the%20following%20articles%20in%20my%20list%3A%0A${cartSummaryMsg}" 
+        <a href="https://wa.me/919440635761?text=Hi%20SaiVedha%20Silver%20Palace%2C%20I%20would%20like%20to%20inquire%20about%20the%20following%20articles%20in%20my%20list%3A%0A${cartSummaryMsg}" 
            target="_blank" class="btn btn-premium btn-premium-primary w-100 py-2 d-flex align-items-center justify-content-center gap-2">
           <i class="bi bi-whatsapp"></i> Inquire Entire Cart
         </a>
@@ -786,7 +786,7 @@ function initCustomerAuth() {
     const pPhone = document.getElementById('modalProfilePhone');
     if (pName) pName.textContent = customerSession.name;
     if (pEmail) pEmail.textContent = customerSession.email;
-    if (pPhone) pPhone.textContent = customerSession.phone || '94406 35058';
+    if (pPhone) pPhone.textContent = customerSession.phone || '94406 35761';
     
     // Auto-slide to Slide 3 when opening modal
     if (loginModal) {

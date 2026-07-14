@@ -83,7 +83,7 @@ app.post('/api/login', (req, res) => {
     db.loginLogs.unshift(newLog); // Push to the top of the feed
     writeDb(db);
     
-    res.json({ success: true, token: 'saivedha-session-token-9440635058' });
+    res.json({ success: true, token: 'saivedha-session-token-9440635761' });
   } else {
     res.status(401).json({ success: false, error: 'Incorrect username or password' });
   }
@@ -160,7 +160,7 @@ app.post('/api/customer/login', (req, res) => {
 // GET all customer login logs (authorized with admin token)
 app.get('/api/admin/customer-logins', (req, res) => {
   const token = req.headers.authorization;
-  if (token !== 'saivedha-session-token-9440635058') {
+  if (token !== 'saivedha-session-token-9440635761') {
     return res.status(403).json({ success: false, error: 'Unauthorized administrative action' });
   }
   
@@ -171,7 +171,7 @@ app.get('/api/admin/customer-logins', (req, res) => {
 // GET all login logs (requires authorization)
 app.get('/api/logins', (req, res) => {
   const token = req.headers.authorization;
-  if (token !== 'saivedha-session-token-9440635058') {
+  if (token !== 'saivedha-session-token-9440635761') {
     return res.status(403).json({ success: false, error: 'Unauthorized administrative action' });
   }
   
@@ -220,7 +220,7 @@ app.get('/api/rate', async (req, res) => {
 // POST to update silver rate details (requires authorization)
 app.post('/api/rate', (req, res) => {
   const token = req.headers.authorization;
-  if (token !== 'saivedha-session-token-9440635058') {
+  if (token !== 'saivedha-session-token-9440635761') {
     return res.status(403).json({ success: false, error: 'Unauthorized administrative action' });
   }
   
@@ -259,7 +259,7 @@ app.post('/api/inquiry', (req, res) => {
 // GET all submitted inquiries (requires authorization)
 app.get('/api/inquiries', (req, res) => {
   const token = req.headers.authorization;
-  if (token !== 'saivedha-session-token-9440635058') {
+  if (token !== 'saivedha-session-token-9440635761') {
     return res.status(403).json({ success: false, error: 'Unauthorized administrative action' });
   }
   

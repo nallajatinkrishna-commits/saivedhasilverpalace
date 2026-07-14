@@ -1,0 +1,40 @@
+{
+  "rateSettings": {
+    "mode": "auto",
+    "customRate": 235
+  },
+  "inquiries": [],
+  "loginLogs": [
+    {
+      "username": "admin",
+      "ip": "::1",
+      "date": "14/7/2026, 7:03:05 pm"
+    }
+  ],
+  "customers": [
+    {
+      "id": "cust_default",
+      "name": "Jatin",
+      "email": "jatin@gmail.com",
+      "phone": "9440635761",
+      "password": "password123",
+      "joined": "14/07/2026"
+    },
+    {
+      "id": "cust_1784035439964",
+      "name": "jatin",
+      "email": "nallajatinkrishna@gmail.com",
+      "phone": "",
+      "password": "123456789",
+      "joined": "14/7/2026"
+    }
+  ],
+  "customerLogins": [
+    {
+      "name": "jatin",
+      "email": "nallajatinkrishna@gmail.com",
+      "ip": "::1",
+      "date": "14/7/2026, 6:54:37 pm"
+    }
+  ]
+}
