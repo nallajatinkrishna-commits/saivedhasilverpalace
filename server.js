@@ -271,6 +271,21 @@ app.get('/api/inquiries', (req, res) => {
 const distPath = path.join(__dirname, 'dist');
 if (fs.existsSync(distPath)) {
   app.use(express.static(distPath));
+  
+  // Explicit page routing for clean URLs
+  app.get('/admin', (req, res) => {
+    res.sendFile(path.join(distPath, 'admin.html'));
+  });
+  app.get('/wishlist', (req, res) => {
+    res.sendFile(path.join(distPath, 'wishlist.html'));
+  });
+  app.get('/cart', (req, res) => {
+    res.sendFile(path.join(distPath, 'cart.html'));
+  });
+  app.get('/profile', (req, res) => {
+    res.sendFile(path.join(distPath, 'profile.html'));
+  });
+  
   app.get('*', (req, res) => {
     res.sendFile(path.join(distPath, 'index.html'));
   });
