@@ -12,28 +12,34 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Outfit:wght@300;400;500;700&display=swap');
+
     :root {
-      --bg-color: #0c0d0e;
-      --card-bg: #141517;
-      --primary-color: #d4af37; /* Gold */
-      --accent-color: #c0c0c0; /* Silver */
+      --bg-color: #08090a;
+      --card-bg: rgba(18, 19, 21, 0.7);
+      --primary-color: #d4af37; /* Royal Gold */
+      --accent-color: #e5e5e5; /* Royal Silver */
       --text-light: #f8f9fa;
-      --text-muted: #a0a5aa;
+      --text-muted: #8e959c;
     }
     
     body {
       background-color: var(--bg-color);
+      background-image: radial-gradient(circle at 50% 10%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
       color: var(--text-light);
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-family: 'Outfit', system-ui, -apple-system, sans-serif;
       min-height: 100vh;
     }
     
     .navbar-admin {
-      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-      background: var(--card-bg) !important;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+      background: rgba(18, 19, 21, 0.85) !important;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
     
     .logo-text {
+      font-family: 'Cinzel', serif;
       color: var(--text-light);
       font-weight: 800;
       letter-spacing: 2px;
@@ -48,14 +54,18 @@
     
     .admin-card {
       background: var(--card-bg);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-      transition: border-color 0.3s;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
     
     .admin-card:hover {
-      border-color: rgba(212, 175, 55, 0.3);
+      border-color: rgba(212, 175, 55, 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 45px rgba(212, 175, 55, 0.05);
     }
     
     .btn-gold {
@@ -63,63 +73,68 @@
       color: #000;
       font-weight: 700;
       border: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: all 0.3s;
+      border-radius: 8px;
     }
     
     .btn-gold:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
       color: #000;
     }
     
     .form-control-admin {
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       color: var(--text-light);
+      border-radius: 8px;
+      padding: 10px 14px;
     }
     
     .form-control-admin:focus {
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.6);
       border-color: var(--primary-color);
       color: var(--text-light);
-      box-shadow: none;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
     }
     
     /* Login Page Styling */
     .login-container {
-      max-width: 420px;
-      margin-top: 10vh;
+      max-width: 440px;
+      margin-top: 12vh;
+      animation: fadeInUp 0.8s ease-out;
     }
     
     /* Pulsing Active Indicator */
     .active-badge {
       font-size: 0.75rem;
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 50px;
-      background: rgba(40, 167, 69, 0.15);
-      color: #28a745;
-      border: 1px solid rgba(40, 167, 69, 0.3);
+      background: rgba(40, 167, 69, 0.12);
+      color: #2ec4b6;
+      border: 1px solid rgba(40, 167, 69, 0.25);
     }
     
     /* Table Styling */
     .table-luxury {
       color: var(--text-light);
       border-collapse: separate;
-      border-spacing: 0 8px;
+      border-spacing: 0 10px;
     }
     
     .table-luxury tr {
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.015);
+      border-radius: 10px;
+      transition: transform 0.2s, background-color 0.2s;
     }
     
     .table-luxury th {
       border: none;
       color: var(--text-muted);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 12px;
+      letter-spacing: 1.5px;
+      padding: 14px 12px;
     }
     
     .table-luxury td {
@@ -128,12 +143,40 @@
       vertical-align: middle;
     }
     
-    .table-luxury tbody tr {
-      transition: background 0.2s;
+    .table-luxury tbody tr:hover {
+      background: rgba(255, 255, 255, 0.035);
+      transform: scale(1.005);
     }
     
-    .table-luxury tbody tr:hover {
-      background: rgba(255, 255, 255, 0.05);
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.02);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(212, 175, 55, 0.2);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(212, 175, 55, 0.4);
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in {
+      animation: fadeInUp 0.6s ease-out;
     }
   </style>
 </head>
@@ -185,7 +228,55 @@
 
     <!-- --- Main Control Panel (Visible only after auth) --- -->
     <div id="dashboardSection" class="d-none">
-      <div class="row g-4">
+      <!-- Premium Stats Cards Row -->
+      <div class="row g-4 mb-4 animate-fade-in">
+        <!-- Stat Card 1 -->
+        <div class="col-md-3">
+          <div class="admin-card p-4 text-center d-flex flex-column justify-content-center align-items-center h-100" style="background: linear-gradient(135deg, rgba(20, 21, 23, 0.7) 0%, rgba(212, 175, 55, 0.05) 100%);">
+            <div class="rounded-circle bg-dark border border-warning d-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
+              <i class="bi bi-currency-rupee text-warning fs-4"></i>
+            </div>
+            <div class="text-muted small uppercase fw-bold" style="letter-spacing: 1px;">Live Rate Displayed</div>
+            <div class="fs-3 fw-bold text-success mt-1" id="statActiveRate">₹ --.--</div>
+            <span class="badge bg-secondary mt-1" id="statRateMode">Mode: --</span>
+          </div>
+        </div>
+        <!-- Stat Card 2 -->
+        <div class="col-md-3">
+          <div class="admin-card p-4 text-center d-flex flex-column justify-content-center align-items-center h-100" style="background: linear-gradient(135deg, rgba(20, 21, 23, 0.7) 0%, rgba(192, 192, 192, 0.05) 100%);">
+            <div class="rounded-circle bg-dark border border-secondary d-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
+              <i class="bi bi-people-fill text-light fs-4"></i>
+            </div>
+            <div class="text-muted small uppercase fw-bold" style="letter-spacing: 1px;">Customer Logins</div>
+            <div class="fs-2 fw-bold text-white mt-1" id="statCustomerCount">0</div>
+            <span class="text-muted small mt-1">Total visits recorded</span>
+          </div>
+        </div>
+        <!-- Stat Card 3 -->
+        <div class="col-md-3">
+          <div class="admin-card p-4 text-center d-flex flex-column justify-content-center align-items-center h-100" style="background: linear-gradient(135deg, rgba(20, 21, 23, 0.7) 0%, rgba(13, 110, 253, 0.05) 100%);">
+            <div class="rounded-circle bg-dark border border-primary d-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
+              <i class="bi bi-envelope-check-fill text-primary fs-4"></i>
+            </div>
+            <div class="text-muted small uppercase fw-bold" style="letter-spacing: 1px;">Inquiries Filed</div>
+            <div class="fs-2 fw-bold text-white mt-1" id="statInquiryCount">0</div>
+            <span class="text-muted small mt-1">Pending response</span>
+          </div>
+        </div>
+        <!-- Stat Card 4 -->
+        <div class="col-md-3">
+          <div class="admin-card p-4 text-center d-flex flex-column justify-content-center align-items-center h-100" style="background: linear-gradient(135deg, rgba(20, 21, 23, 0.7) 0%, rgba(220, 53, 69, 0.05) 100%);">
+            <div class="rounded-circle bg-dark border border-danger d-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
+              <i class="bi bi-shield-lock-fill text-danger fs-4"></i>
+            </div>
+            <div class="text-muted small uppercase fw-bold" style="letter-spacing: 1px;">Admin Sessions</div>
+            <div class="fs-2 fw-bold text-white mt-1" id="statAdminCount">0</div>
+            <span class="text-muted small mt-1">Authorized entries</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 animate-fade-in">
         <!-- Rate Control Panel -->
         <div class="col-lg-4">
           <div class="admin-card p-4 h-100">
@@ -443,12 +534,20 @@
             customRateGroup.classList.add('d-none');
             activeRateLabel.textContent = 'Auto Spot Sync';
             activeModeLabel.textContent = 'Mode: Auto Spot Price';
+            
+            document.getElementById('statActiveRate').textContent = 'Live API';
+            document.getElementById('statRateMode').textContent = 'Auto Sync';
+            document.getElementById('statRateMode').className = 'badge bg-success mt-1';
           } else {
             modeManual.checked = true;
             customRateGroup.classList.remove('d-none');
             customRateVal.value = data.customRate;
             activeRateLabel.textContent = `₹${data.customRate.toFixed(2)} / g`;
             activeModeLabel.textContent = 'Mode: Manual Locked';
+            
+            document.getElementById('statActiveRate').textContent = `₹${data.customRate.toFixed(2)}`;
+            document.getElementById('statRateMode').textContent = 'Manual Lock';
+            document.getElementById('statRateMode').className = 'badge bg-warning text-dark mt-1';
           }
         } catch (err) {
           console.error('Failed to load settings', err);
@@ -494,6 +593,7 @@
           const data = await res.json();
           
           inquiryCount.textContent = `${data.length} Messages`;
+          document.getElementById('statInquiryCount').textContent = data.length;
           
           if (data.length === 0) {
             inquiriesBody.innerHTML = '';
@@ -532,6 +632,7 @@
           const data = await res.json();
           
           loginLogCount.textContent = `${data.length} Sessions`;
+          document.getElementById('statAdminCount').textContent = data.length;
           
           if (data.length === 0) {
             loginLogsBody.innerHTML = '';
@@ -570,6 +671,7 @@
           const data = await res.json();
           
           customerLogCount.textContent = `${data.length} Logins`;
+          document.getElementById('statCustomerCount').textContent = data.length;
           
           if (data.length === 0) {
             customerLogsBody.innerHTML = '';
