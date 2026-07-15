@@ -48,6 +48,15 @@ function readDb() {
     if (!data.loginLogs) data.loginLogs = [];
     if (!data.customers) data.customers = [];
     if (!data.customerLogins) data.customerLogins = [];
+    if (!data.settings) {
+      data.settings = {
+        announcement: "PURE SILVER GUARANTEE • 100% HALLMARKED CERTIFICATE WITH EVERY PURCHASE",
+        storeHours: "Monday - Saturday: 10:30 AM - 8:30 PM",
+        telephone: "+91 94406 35761",
+        address: "Governorpet, Vijayawada, Andhra Pradesh 520002"
+      };
+    }
+    if (!data.appointments) data.appointments = [];
     return data;
   } catch (err) {
     console.error('Failed to read db file, recreating...', err);
@@ -265,6 +274,113 @@ app.get('/api/inquiries', (req, res) => {
   
   const db = readDb();
   res.json(db.inquiries);
+});
+
+// GET CMS settings details
+app.get('/api/settings', (req, res) => {
+  const db = readDb();
+  res.json(db.settings);
+});
+
+// POST to update CMS settings (requires authorization)
+app.post('/api/settings', (req, res) => {
+  const token = req.headers.authorization;
+  if (token !== 'saivedha-session-token-9440635761') {
+    return res.status(403).json({ success: false, error: 'Unauthorized administrative action' });
+  }
+  
+  const { announcement, storeHours, telephone, address } = req.body;
+  const db = readDb();
+  
+  db.settings = {
+    announcement: announcement !== undefined ? announcement : db.settings.announcement,
+    storeHours: storeHours !== undefined ? storeHours : db.settings.storeHours,
+    telephone: telephone !== undefined ? telephone : db.settings.telephone,
+    address: address !== undefined ? address : db.settings.address
+  };
+  
+  writeDb(db);
+  res.json({ success: true, settings: db.settings });
+});
+
+// GET all VIP showroom visit appointments (requires authorization)
+app.get('/api/appointments', (req, res) => {
+  const token = req.headers.authorization;
+  if (token !== 'saivedha-session-token-9440635761') {
+    return res.status(403).json({ success: false, error: 'Unauthorized administrative action' });
+  }
+  
+  const db = readDb();
+  res.json(db.appointments || []);
+});
+
+// POST to submit a new VIP appointment booking
+app.post('/api/appointment', (req, res) => {
+  const { name, email, phone, date, timeSlot, collection } = req.body;
+  if (!name || !email || !phone || !date || !timeSlot) {
+    return res.status(400).json({ success: false, error: 'Required fields missing for scheduling appointment' });
+  }
+  
+  const db = readDb();
+  const newAppointment = {
+    id: 'apt_' + Date.now(),
+    name,
+    email,
+    phone,
+    date,
+    timeSlot,
+    collection: collection || 'General Showroom Viewing',
+    status: 'Pending Approved',
+    createdDate: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+  };
+  
+  if (!db.appointments) db.appointments = [];
+  db.appointments.unshift(newAppointment);
+  writeDb(db);
+  res.json({ success: true, appointment: newAppointment });
+});
+
+// GET to verify a certificate number
+app.get('/api/verify-certificate', (req, res) => {
+  const { code } = req.query;
+  if (!code) {
+    return res.status(400).json({ success: false, error: 'Certificate code is required' });
+  }
+  const normalized = code.trim().toUpperCase();
+  
+  const mockCertificates = {
+    'SV-999-FINE': {
+      certificateNumber: 'SV-999-FINE',
+      purity: '99.9% Fine Pure Silver',
+      itemCategory: 'Silver Coins & Pooja Idols',
+      hallmarkBadge: 'BIS 999 Hallmark Licensed',
+      issueDate: 'July 12, 2026',
+      status: 'Active Verified'
+    },
+    'SV-925-STERLING': {
+      certificateNumber: 'SV-925-STERLING',
+      purity: '92.5% Sterling Luxury Silver',
+      itemCategory: 'Luxury Tableware & Designer Jewelry',
+      hallmarkBadge: 'BIS 925 Hallmark Licensed',
+      issueDate: 'July 14, 2026',
+      status: 'Active Verified'
+    },
+    'SV-800-POOJA': {
+      certificateNumber: 'SV-800-POOJA',
+      purity: '80.0% Purity Pooja Ware',
+      itemCategory: 'Traditional Diya & Harathi Holders',
+      hallmarkBadge: 'BIS 800 Hallmark Licensed',
+      issueDate: 'July 15, 2026',
+      status: 'Active Verified'
+    }
+  };
+
+  const cert = mockCertificates[normalized];
+  if (cert) {
+    res.json({ success: true, certificate: cert });
+  } else {
+    res.json({ success: false, error: 'Certificate code not found in hallmarking database.' });
+  }
 });
 
 // Serve compiled static frontend assets in production mode

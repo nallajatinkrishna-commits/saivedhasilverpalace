@@ -36,5 +36,12 @@
       "ip": "::1",
       "date": "14/7/2026, 6:54:37 pm"
     }
-  ]
+  ],
+  "settings": {
+    "announcement": "PURE SILVER GUARANTEE • 100% HALLMARKED CERTIFICATE WITH EVERY PURCHASE",
+    "storeHours": "Monday - Saturday: 10:30 AM - 8:30 PM",
+    "telephone": "+91 94406 35761",
+    "address": "Governorpet, Vijayawada, Andhra Pradesh 520002"
+  },
+  "appointments": []
 }
