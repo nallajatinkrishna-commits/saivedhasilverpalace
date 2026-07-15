@@ -23,6 +23,16 @@
   
   <!-- Custom JS -->
   <script type="module" src="script.js"></script>
+
+  <style>
+    .web-slide {
+      display: none;
+    }
+    .web-slide.active {
+      display: block;
+      animation: fadeInUp 0.6s ease-out;
+    }
+  </style>
 </head>
 <body>
 
@@ -118,6 +128,7 @@
     </div>
   </nav>
 
+<div class="web-slide active" id="slide-home">
   <!-- --- 1. Luxury Hero Section --- -->
   <header class="hero-luxury" id="home">
     <!-- Floating Silver Ornaments background -->
@@ -209,6 +220,8 @@
     </div>
   </section>
 
+</div>
+<div class="web-slide" id="slide-antique">
   <!-- --- 4. Signature Heritage Collection (40% Weight) --- -->
   <section class="py-5" id="antique-collection">
     <div class="container py-4">
@@ -452,6 +465,8 @@
   </section>
 
   <!-- --- 5. Best Selling Silver Articles (30% Weight) --- -->
+</div>
+<div class="web-slide" id="slide-articles">
   <section class="py-5" id="silver-articles" style="background-color: #F4F7F5;">
     <div class="container py-4">
       <div class="text-center">
@@ -1812,6 +1827,8 @@
   </section>
 
   <!-- --- 6. Women's Silver Collection (20% Weight) --- -->
+</div>
+<div class="web-slide" id="slide-womens">
   <section class="py-5" id="womens-collection">
     <div class="container py-4">
       <div class="text-center">
@@ -2029,6 +2046,8 @@
   </section>
 
   <!-- --- 7. Men's Silver Collection (10% Weight) --- -->
+</div>
+<div class="web-slide" id="slide-mens">
   <section class="py-5 bg-light" id="mens-collection">
     <div class="container py-4">
       <div class="text-center">
@@ -2195,6 +2214,8 @@
   </section>
 
   <!-- --- 9. About the Showroom --- -->
+</div>
+<div class="web-slide" id="slide-about">
   <section class="py-5" id="about">
     <div class="container py-4">
       <div class="row align-items-center g-5">
@@ -2248,6 +2269,8 @@
   </section>
 
   <!-- --- 10. Gallery --- -->
+</div>
+<div class="web-slide" id="slide-gallery">
   <section class="py-5" id="gallery" style="background-color: #F8F9FA;">
     <div class="container py-4">
       <div class="text-center">
@@ -2426,6 +2449,8 @@
   </section>
 
   <!-- --- 11. Customer Reviews --- -->
+</div>
+<div class="web-slide" id="slide-contact">
   <section class="py-5" id="reviews">
     <div class="container py-4">
       <div class="text-center">
@@ -2622,6 +2647,7 @@
     </div>
   </section>
 
+</div>
   <!-- --- 13. Footer Section --- -->
   <footer class="footer-luxury">
     <div class="container">
@@ -2807,5 +2833,55 @@
   <!-- Bootstrap 5 Bundle JS with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slides = {
+        '#home': document.getElementById('slide-home'),
+        '#antique-collection': document.getElementById('slide-antique'),
+        '#silver-articles': document.getElementById('slide-articles'),
+        '#womens-collection': document.getElementById('slide-womens'),
+        '#mens-collection': document.getElementById('slide-mens'),
+        '#gallery': document.getElementById('slide-gallery'),
+        '#about': document.getElementById('slide-about'),
+        '#contact': document.getElementById('slide-contact')
+      };
+
+      function switchSlide(hash) {
+        const targetHash = hash || '#home';
+        const activeSlide = slides[targetHash] || slides['#home'];
+        
+        // Hide all slides
+        Object.values(slides).forEach(slide => {
+          if (slide) slide.classList.remove('active');
+        });
+
+        // Show active slide
+        if (activeSlide) {
+          activeSlide.classList.add('active');
+        }
+
+        // Update active class on nav links
+        const navLinks = document.querySelectorAll('.nav-link-luxury');
+        navLinks.forEach(link => {
+          const linkHash = link.getAttribute('href');
+          if (linkHash === targetHash) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+
+        // Scroll to top of window instantly
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+
+      window.addEventListener('hashchange', () => {
+        switchSlide(window.location.hash);
+      });
+
+      switchSlide(window.location.hash);
+    });
+  </script>
 </body>
 </html>
