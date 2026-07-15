@@ -15,32 +15,33 @@
     @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Outfit:wght@300;400;500;700&display=swap');
 
     :root {
-      --bg-color: #08090a;
-      --card-bg: rgba(18, 19, 21, 0.7);
-      --primary-color: #d4af37; /* Royal Gold */
-      --accent-color: #e5e5e5; /* Royal Silver */
-      --text-light: #f8f9fa;
-      --text-muted: #8e959c;
+      --bg-color: #f6f5f0; /* Light Alabaster/Marble */
+      --card-bg: #ffffff;  /* Pure White cards */
+      --primary-color: #b8972c; /* Rich Gold Accent */
+      --accent-color: #1b263b; /* Deep Luxury Navy */
+      --text-light: #1b263b; /* Text color */
+      --text-muted: #5c677d; /* Slate gray text */
     }
     
     body {
       background-color: var(--bg-color);
-      background-image: radial-gradient(circle at 50% 10%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+      background-image: radial-gradient(circle at 50% 10%, rgba(184, 151, 44, 0.06) 0%, transparent 60%);
       color: var(--text-light);
       font-family: 'Outfit', system-ui, -apple-system, sans-serif;
       min-height: 100vh;
     }
     
     .navbar-admin {
-      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-      background: rgba(18, 19, 21, 0.85) !important;
+      border-bottom: 2px solid rgba(184, 151, 44, 0.15);
+      background: #ffffff !important;
+      box-shadow: 0 4px 20px rgba(27, 38, 59, 0.04);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
     
     .logo-text {
       font-family: 'Cinzel', serif;
-      color: var(--text-light);
+      color: var(--text-light) !important;
       font-weight: 800;
       letter-spacing: 2px;
     }
@@ -54,24 +55,22 @@
     
     .admin-card {
       background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(184, 151, 44, 0.15);
       border-radius: 16px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 10px 30px rgba(27, 38, 59, 0.04);
       transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
     
     .admin-card:hover {
-      border-color: rgba(212, 175, 55, 0.25);
+      border-color: var(--primary-color);
       transform: translateY(-2px);
-      box-shadow: 0 16px 45px rgba(212, 175, 55, 0.05);
+      box-shadow: 0 15px 40px rgba(184, 151, 44, 0.12);
     }
     
     .btn-gold {
       background: linear-gradient(135deg, #d4af37 0%, #b8972c 100%);
-      color: #000;
-      font-weight: 700;
+      color: #ffffff !important;
+      font-weight: 600;
       border: none;
       transition: all 0.3s;
       border-radius: 8px;
@@ -79,23 +78,37 @@
     
     .btn-gold:hover {
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-      color: #000;
+      box-shadow: 0 6px 20px rgba(184, 151, 44, 0.35);
+    }
+
+    .btn-outline-gold {
+      background: transparent;
+      color: var(--primary-color) !important;
+      border: 1.5px solid var(--primary-color);
+      font-weight: 600;
+      transition: all 0.3s;
+      border-radius: 8px;
+    }
+    .btn-outline-gold:hover {
+      background: var(--primary-color);
+      color: #ffffff !important;
+      box-shadow: 0 6px 15px rgba(184, 151, 44, 0.25);
     }
     
     .form-control-admin {
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #fbfbfa;
+      border: 1px solid rgba(184, 151, 44, 0.25);
       color: var(--text-light);
       border-radius: 8px;
       padding: 10px 14px;
+      transition: all 0.3s;
     }
     
     .form-control-admin:focus {
-      background: rgba(0, 0, 0, 0.6);
+      background: #ffffff;
       border-color: var(--primary-color);
       color: var(--text-light);
-      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+      box-shadow: 0 0 0 3px rgba(184, 151, 44, 0.12);
     }
     
     /* Login Page Styling */
@@ -111,7 +124,7 @@
       padding: 4px 12px;
       border-radius: 50px;
       background: rgba(40, 167, 69, 0.12);
-      color: #2ec4b6;
+      color: #10b981;
       border: 1px solid rgba(40, 167, 69, 0.25);
     }
     
@@ -123,9 +136,11 @@
     }
     
     .table-luxury tr {
-      background: rgba(255, 255, 255, 0.015);
+      background: #fdfdfd;
+      border: 1px solid rgba(184, 151, 44, 0.08);
       border-radius: 10px;
       transition: transform 0.2s, background-color 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.01);
     }
     
     .table-luxury th {
@@ -144,8 +159,30 @@
     }
     
     .table-luxury tbody tr:hover {
-      background: rgba(255, 255, 255, 0.035);
-      transform: scale(1.005);
+      background: #fbfaf7;
+      transform: scale(1.003);
+      box-shadow: 0 4px 12px rgba(184, 151, 44, 0.08);
+    }
+
+    /* Smart overrides to ensure dark utility classes adapt to Light Ivory Theme */
+    .table-luxury td, .table-luxury td * {
+      color: var(--text-light) !important;
+    }
+    .table-luxury .badge.bg-black {
+      background-color: var(--accent-color) !important;
+      color: #ffffff !important;
+    }
+    .table-luxury .badge.bg-black i {
+      color: var(--primary-color) !important;
+    }
+    .bg-black {
+      background-color: #f7f6f2 !important;
+    }
+    .border-secondary {
+      border-color: rgba(184, 151, 44, 0.2) !important;
+    }
+    .text-warning {
+      color: #a07e15 !important;
     }
     
     /* Custom Scrollbars */
@@ -154,14 +191,14 @@
       height: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: rgba(255,255,255,0.02);
+      background: rgba(0,0,0,0.02);
     }
     ::-webkit-scrollbar-thumb {
-      background: rgba(212, 175, 55, 0.2);
+      background: rgba(184, 151, 44, 0.3);
       border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: rgba(212, 175, 55, 0.4);
+      background: rgba(184, 151, 44, 0.5);
     }
     
     @keyframes fadeInUp {
@@ -323,9 +360,15 @@
         <div class="col-lg-8">
           <!-- Customer Inquiries Card -->
           <div class="admin-card p-4 mb-4">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-3">
               <h4 class="fw-bold mb-0" style="color: var(--accent-color);">Customer Inquiries Log</h4>
-              <span class="badge bg-secondary" id="inquiryCount">0 Messages</span>
+              <div class="d-flex align-items-center gap-2">
+                <input type="text" class="form-control form-control-admin form-control-sm" id="searchInquiries" placeholder="Search inquiries..." style="max-width: 180px;">
+                <button class="btn btn-sm btn-outline-gold" id="exportInquiriesBtn" title="Export to CSV">
+                  <i class="bi bi-download me-1"></i> Export
+                </button>
+                <span class="badge bg-secondary" id="inquiryCount">0 Messages</span>
+              </div>
             </div>
             
             <div class="table-responsive" style="max-height: 250px;">
@@ -352,9 +395,15 @@
 
           <!-- Customer Login History Card -->
           <div class="admin-card p-4 mb-4">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-3">
               <h4 class="fw-bold mb-0" style="color: var(--accent-color);"><i class="bi bi-people-fill me-1"></i> Customer Login History</h4>
-              <span class="badge bg-secondary" id="customerLogCount">0 Logins</span>
+              <div class="d-flex align-items-center gap-2">
+                <input type="text" class="form-control form-control-admin form-control-sm" id="searchCustomerLogs" placeholder="Search customer logins..." style="max-width: 180px;">
+                <button class="btn btn-sm btn-outline-gold" id="exportCustomerLogsBtn" title="Export to CSV">
+                  <i class="bi bi-download me-1"></i> Export
+                </button>
+                <span class="badge bg-secondary" id="customerLogCount">0 Logins</span>
+              </div>
             </div>
             
             <div class="table-responsive" style="max-height: 200px;">
@@ -381,9 +430,14 @@
 
           <!-- Access Audit Card -->
           <div class="admin-card p-4">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-3">
               <h4 class="fw-bold mb-0" style="color: var(--primary-color);"><i class="bi bi-clock-history me-1"></i> Admin Login Audit Trail</h4>
-              <span class="badge bg-secondary" id="loginLogCount">0 Sessions</span>
+              <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-sm btn-outline-gold" id="exportAdminLogsBtn" title="Export to CSV">
+                  <i class="bi bi-download me-1"></i> Export
+                </button>
+                <span class="badge bg-secondary" id="loginLogCount">0 Sessions</span>
+              </div>
             </div>
             
             <div class="table-responsive" style="max-height: 200px;">
@@ -583,6 +637,83 @@
         }
       });
 
+      // Caching data arrays for instant client-side searches and reports
+      let cachedInquiries = [];
+      let cachedCustomerLogs = [];
+      let cachedAdminLogs = [];
+
+      // Rendering Helper for Customer Inquiries
+      function renderInquiries(data) {
+        if (data.length === 0) {
+          inquiriesBody.innerHTML = '';
+          emptyInquiries.classList.remove('d-none');
+          return;
+        }
+        emptyInquiries.classList.add('d-none');
+        let html = '';
+        data.forEach(inq => {
+          html += `
+            <tr>
+              <td style="font-size: 0.75rem; color: var(--text-muted); width: 140px;">${inq.date}</td>
+              <td>
+                <div class="fw-bold">${inq.name}</div>
+                <div style="font-size: 0.7rem; color: var(--primary-color);">${inq.email}</div>
+              </td>
+              <td style="font-size: 0.85rem; font-weight: 600; width: 160px;">${inq.subject}</td>
+              <td style="font-size: 0.85rem; color: var(--text-muted); max-width: 300px; word-wrap: break-word;">${inq.message}</td>
+            </tr>
+          `;
+        });
+        inquiriesBody.innerHTML = html;
+      }
+
+      // Rendering Helper for Customer Logins
+      function renderCustomerLogs(data) {
+        if (data.length === 0) {
+          customerLogsBody.innerHTML = '';
+          emptyCustomerLogs.classList.remove('d-none');
+          return;
+        }
+        emptyCustomerLogs.classList.add('d-none');
+        let html = '';
+        data.forEach(log => {
+          html += `
+            <tr>
+              <td style="font-size: 0.75rem; color: var(--text-muted); width: 185px;">${log.date}</td>
+              <td><div class="fw-bold">${log.name}</div></td>
+              <td><span style="font-size: 0.85rem; color: var(--primary-color);">${log.email}</span></td>
+              <td style="font-family: monospace; font-size: 0.85rem;">${log.ip}</td>
+            </tr>
+          `;
+        });
+        customerLogsBody.innerHTML = html;
+      }
+
+      // Rendering Helper for Admin Sessions
+      function renderAdminLogs(data) {
+        if (data.length === 0) {
+          loginLogsBody.innerHTML = '';
+          emptyLoginLogs.classList.remove('d-none');
+          return;
+        }
+        emptyLoginLogs.classList.add('d-none');
+        let html = '';
+        data.forEach(log => {
+          html += `
+            <tr>
+              <td style="font-size: 0.75rem; color: var(--text-muted); width: 180px;">${log.date}</td>
+              <td>
+                <span class="badge bg-black border border-warning text-warning fw-bold py-1 px-2">
+                  <i class="bi bi-person-fill text-warning me-1"></i> ${log.username}
+                </span>
+              </td>
+              <td style="font-family: monospace; font-size: 0.85rem;">${log.ip}</td>
+            </tr>
+          `;
+        });
+        loginLogsBody.innerHTML = html;
+      }
+
       // 4. Load Customer Inquiries Log
       async function loadInquiries() {
         const token = localStorage.getItem('adminToken');
@@ -590,33 +721,12 @@
           const res = await fetch('/api/inquiries', {
             headers: { 'Authorization': token }
           });
-          const data = await res.json();
+          cachedInquiries = await res.json();
           
-          inquiryCount.textContent = `${data.length} Messages`;
-          document.getElementById('statInquiryCount').textContent = data.length;
+          inquiryCount.textContent = `${cachedInquiries.length} Messages`;
+          document.getElementById('statInquiryCount').textContent = cachedInquiries.length;
           
-          if (data.length === 0) {
-            inquiriesBody.innerHTML = '';
-            emptyInquiries.classList.remove('d-none');
-            return;
-          }
-          
-          emptyInquiries.classList.add('d-none');
-          let html = '';
-          data.forEach(inq => {
-            html += `
-              <tr>
-                <td style="font-size: 0.75rem; color: var(--text-muted); width: 140px;">${inq.date}</td>
-                <td>
-                  <div class="fw-bold">${inq.name}</div>
-                  <div style="font-size: 0.7rem; color: var(--primary-color);">${inq.email}</div>
-                </td>
-                <td style="font-size: 0.85rem; font-weight: 600; width: 160px;">${inq.subject}</td>
-                <td style="font-size: 0.85rem; color: var(--text-muted); max-width: 300px; word-wrap: break-word;">${inq.message}</td>
-              </tr>
-            `;
-          });
-          inquiriesBody.innerHTML = html;
+          renderInquiries(cachedInquiries);
         } catch (err) {
           console.error('Failed to load inquiries', err);
         }
@@ -629,33 +739,12 @@
           const res = await fetch('/api/logins', {
             headers: { 'Authorization': token }
           });
-          const data = await res.json();
+          cachedAdminLogs = await res.json();
           
-          loginLogCount.textContent = `${data.length} Sessions`;
-          document.getElementById('statAdminCount').textContent = data.length;
+          loginLogCount.textContent = `${cachedAdminLogs.length} Sessions`;
+          document.getElementById('statAdminCount').textContent = cachedAdminLogs.length;
           
-          if (data.length === 0) {
-            loginLogsBody.innerHTML = '';
-            emptyLoginLogs.classList.remove('d-none');
-            return;
-          }
-          
-          emptyLoginLogs.classList.add('d-none');
-          let html = '';
-          data.forEach(log => {
-            html += `
-              <tr>
-                <td style="font-size: 0.75rem; color: var(--text-muted); width: 180px;">${log.date}</td>
-                <td>
-                  <span class="badge bg-black border border-warning text-warning fw-bold py-1 px-2">
-                    <i class="bi bi-person-fill text-warning me-1"></i> ${log.username}
-                  </span>
-                </td>
-                <td style="font-family: monospace; font-size: 0.85rem; color: var(--text-light);">${log.ip}</td>
-              </tr>
-            `;
-          });
-          loginLogsBody.innerHTML = html;
+          renderAdminLogs(cachedAdminLogs);
         } catch (err) {
           console.error('Failed to load login audit logs:', err);
         }
@@ -668,34 +757,93 @@
           const res = await fetch('/api/admin/customer-logins', {
             headers: { 'Authorization': token }
           });
-          const data = await res.json();
+          cachedCustomerLogs = await res.json();
           
-          customerLogCount.textContent = `${data.length} Logins`;
-          document.getElementById('statCustomerCount').textContent = data.length;
+          customerLogCount.textContent = `${cachedCustomerLogs.length} Logins`;
+          document.getElementById('statCustomerCount').textContent = cachedCustomerLogs.length;
           
-          if (data.length === 0) {
-            customerLogsBody.innerHTML = '';
-            emptyCustomerLogs.classList.remove('d-none');
-            return;
-          }
-          
-          emptyCustomerLogs.classList.add('d-none');
-          let html = '';
-          data.forEach(log => {
-            html += `
-              <tr>
-                <td style="font-size: 0.75rem; color: var(--text-muted); width: 185px;">${log.date}</td>
-                <td><div class="fw-bold text-white">${log.name}</div></td>
-                <td><span style="font-size: 0.85rem; color: var(--primary-color);">${log.email}</span></td>
-                <td style="font-family: monospace; font-size: 0.85rem; color: var(--text-light);">${log.ip}</td>
-              </tr>
-            `;
-          });
-          customerLogsBody.innerHTML = html;
+          renderCustomerLogs(cachedCustomerLogs);
         } catch (err) {
           console.error('Failed to load customer access logs:', err);
         }
       }
+
+      // --- Interactive Search Inputs ---
+      document.getElementById('searchInquiries').addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        const filtered = cachedInquiries.filter(inq => 
+          inq.name.toLowerCase().includes(query) ||
+          inq.email.toLowerCase().includes(query) ||
+          inq.subject.toLowerCase().includes(query) ||
+          inq.message.toLowerCase().includes(query) ||
+          inq.date.toLowerCase().includes(query)
+        );
+        renderInquiries(filtered);
+      });
+
+      document.getElementById('searchCustomerLogs').addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        const filtered = cachedCustomerLogs.filter(log => 
+          log.name.toLowerCase().includes(query) ||
+          log.email.toLowerCase().includes(query) ||
+          log.ip.toLowerCase().includes(query) ||
+          log.date.toLowerCase().includes(query)
+        );
+        renderCustomerLogs(filtered);
+      });
+
+      // --- Export to CSV Engine ---
+      function downloadCSV(filename, headers, rows) {
+        const csvContent = [
+          headers.join(','),
+          ...rows.map(row => row.map(val => `"${String(val).replace(/"/g, '""')}"`).join(','))
+        ].join('\n');
+        
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement("a");
+        if (link.download !== undefined) {
+          const url = URL.createObjectURL(blob);
+          link.setAttribute("href", url);
+          link.setAttribute("download", filename);
+          link.style.visibility = 'hidden';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+      }
+
+      document.getElementById('exportInquiriesBtn').addEventListener('click', () => {
+        if (cachedInquiries.length === 0) {
+          showToast('No inquiries to export', true);
+          return;
+        }
+        const headers = ['Date', 'Name', 'Email', 'Subject', 'Message'];
+        const rows = cachedInquiries.map(inq => [inq.date, inq.name, inq.email, inq.subject, inq.message]);
+        downloadCSV('customer_inquiries.csv', headers, rows);
+        showToast('Exported inquiries successfully!');
+      });
+
+      document.getElementById('exportCustomerLogsBtn').addEventListener('click', () => {
+        if (cachedCustomerLogs.length === 0) {
+          showToast('No customer logins to export', true);
+          return;
+        }
+        const headers = ['Date', 'Name', 'Email', 'IP Address'];
+        const rows = cachedCustomerLogs.map(log => [log.date, log.name, log.email, log.ip]);
+        downloadCSV('customer_logins.csv', headers, rows);
+        showToast('Exported customer logins successfully!');
+      });
+
+      document.getElementById('exportAdminLogsBtn').addEventListener('click', () => {
+        if (cachedAdminLogs.length === 0) {
+          showToast('No admin sessions to export', true);
+          return;
+        }
+        const headers = ['Date', 'Username', 'IP Address'];
+        const rows = cachedAdminLogs.map(log => [log.date, log.username, log.ip]);
+        downloadCSV('admin_sessions.csv', headers, rows);
+        showToast('Exported admin sessions successfully!');
+      });
 
       // Logout handler
       logoutBtn.addEventListener('click', () => {
