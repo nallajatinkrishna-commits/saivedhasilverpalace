@@ -17,7 +17,18 @@ export default defineConfig({
         wishlist: './wishlist.html',
         cart: './cart.html',
         admin: './admin.html',
-        profile: './profile.html'
+        profile: './profile.html',
+        antique: './antique.html',
+        articles: './articles.html',
+        womens: './womens.html',
+        mens: './mens.html',
+        gallery: './gallery.html',
+        about: './about.html',
+        contact: './contact.html',
+        adminPrice: './admin-price.html',
+        adminInquiries: './admin-inquiries.html',
+        adminCustomerLogins: './admin-customer-logins.html',
+        adminSessions: './admin-sessions.html'
       }
     }
   }

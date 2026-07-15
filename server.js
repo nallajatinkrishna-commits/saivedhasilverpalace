@@ -285,6 +285,39 @@ if (fs.existsSync(distPath)) {
   app.get('/profile', (req, res) => {
     res.sendFile(path.join(distPath, 'profile.html'));
   });
+  app.get('/antique', (req, res) => {
+    res.sendFile(path.join(distPath, 'antique.html'));
+  });
+  app.get('/articles', (req, res) => {
+    res.sendFile(path.join(distPath, 'articles.html'));
+  });
+  app.get('/womens', (req, res) => {
+    res.sendFile(path.join(distPath, 'womens.html'));
+  });
+  app.get('/mens', (req, res) => {
+    res.sendFile(path.join(distPath, 'mens.html'));
+  });
+  app.get('/gallery', (req, res) => {
+    res.sendFile(path.join(distPath, 'gallery.html'));
+  });
+  app.get('/about', (req, res) => {
+    res.sendFile(path.join(distPath, 'about.html'));
+  });
+  app.get('/contact', (req, res) => {
+    res.sendFile(path.join(distPath, 'contact.html'));
+  });
+  app.get('/admin-price', (req, res) => {
+    res.sendFile(path.join(distPath, 'admin-price.html'));
+  });
+  app.get('/admin-inquiries', (req, res) => {
+    res.sendFile(path.join(distPath, 'admin-inquiries.html'));
+  });
+  app.get('/admin-customer-logins', (req, res) => {
+    res.sendFile(path.join(distPath, 'admin-customer-logins.html'));
+  });
+  app.get('/admin-sessions', (req, res) => {
+    res.sendFile(path.join(distPath, 'admin-sessions.html'));
+  });
   
   app.get('*', (req, res) => {
     res.sendFile(path.join(distPath, 'index.html'));
