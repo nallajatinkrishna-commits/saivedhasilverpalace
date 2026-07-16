@@ -387,6 +387,8 @@ app.get('/api/verify-certificate', (req, res) => {
 const distPath = path.join(__dirname, 'dist');
 if (fs.existsSync(distPath)) {
   app.use(express.static(distPath));
+  // Serve the source assets folder under /assets to resolve uncompiled data-bs-img paths in Quick View
+  app.use('/assets', express.static(path.join(__dirname, 'assets')));
   
   // Explicit page routing for clean URLs
   app.get('/admin', (req, res) => {
@@ -400,9 +402,6 @@ if (fs.existsSync(distPath)) {
   });
   app.get('/profile', (req, res) => {
     res.sendFile(path.join(distPath, 'profile.html'));
-  });
-  app.get('/antique', (req, res) => {
-    res.sendFile(path.join(distPath, 'antique.html'));
   });
   app.get('/articles', (req, res) => {
     res.sendFile(path.join(distPath, 'articles.html'));
