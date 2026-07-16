@@ -825,7 +825,7 @@ a {
   border-radius: 8px;
   box-shadow: var(--shadow-premium);
   border: 1px solid rgba(192, 192, 192, 0.3);
-  cursor: pointer;
+  cursor: default;
 }
 
 .gallery-item img {
