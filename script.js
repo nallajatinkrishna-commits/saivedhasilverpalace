@@ -9,7 +9,7 @@ window.onerror = function (message, url, line, col, error) {
 */
 
 document.addEventListener('DOMContentLoaded', () => {
-  alert("SaiVedha script loaded successfully!");
+  initDynamicCatalog();
   initNavbarScroll();
   initTestimonialsSlider();
   initLightbox();
@@ -105,45 +105,7 @@ function initTestimonialsSlider() {
 
 /* --- Interactive Lightbox --- */
 function initLightbox() {
-  const lightbox = document.getElementById('luxuryLightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
-  const lightboxCaption = document.getElementById('lightboxCaption');
-  const closeBtn = document.querySelector('.lightbox-close');
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  
-  if (!lightbox || !lightboxImg || !lightboxCaption || !closeBtn) return;
-  
-  galleryItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const img = item.querySelector('img');
-      const title = item.querySelector('.gallery-item-title').textContent;
-      const category = item.querySelector('.gallery-item-category').textContent;
-      
-      lightboxImg.src = img.src;
-      lightboxCaption.textContent = `${title} - ${category}`;
-      lightbox.style.display = 'block';
-      document.body.style.overflow = 'hidden'; // Stop background scrolling
-    });
-  });
-  
-  closeBtn.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-    document.body.style.overflow = 'auto';
-  });
-  
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox || e.target.classList.contains('lightbox-content-wrapper')) {
-      lightbox.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-  });
-  
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox.style.display === 'block') {
-      lightbox.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-  });
+  // Lightbox modal disabled to show photos normally without popups
 }
 
 /* --- Cart and Wishlist Systems --- */
@@ -896,16 +858,15 @@ function initCustomerAuth() {
       }
     });
   }
+}
 
   // Dynamic Product Catalog Loader
   async function initDynamicCatalog() {
-    alert("initDynamicCatalog: entered!");
     const antiqueGrid = document.getElementById('antique-articles-grid');
     const silverGrid = document.getElementById('silver-articles-grid');
     const mensGrid = document.getElementById('mens-articles-grid');
     const womensGrid = document.getElementById('womens-articles-grid');
     
-    alert("initDynamicCatalog: grids found -> antique: " + !!antiqueGrid + ", silver: " + !!silverGrid);
     if (!antiqueGrid && !silverGrid && !mensGrid && !womensGrid) return;
     
     let products = [];
@@ -918,9 +879,8 @@ function initCustomerAuth() {
       if (!products || products.length === 0) {
         throw new Error('Empty product catalog from server.');
       }
-      alert("initDynamicCatalog: fetched from server successfully! Count: " + products.length);
     } catch (err) {
-      alert("initDynamicCatalog: fallback triggered! Error: " + err.message);
+      console.warn("initDynamicCatalog: fallback triggered! Error: " + err.message);
       products = [
         {
           id: "ant-1",
@@ -1291,9 +1251,6 @@ function initCustomerAuth() {
       if (womensGrid) {
         renderGrid(womensGrid, products.filter(p => p.category === 'womens'));
       }
-      
-      alert("initDynamicCatalog: rendering complete! Items count: " + products.length);
   }
 
   initDynamicCatalog();
-}
