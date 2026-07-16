@@ -1538,88 +1538,43 @@ function initCustomerAuth() {
           } else {
             carouselHtml = `<img src="${mainImg}" alt="${p.title}" class="antique-img">`;
           }
-          
-          const isWide = (p.id === 'ant-9' || p.id === 'ant-10' || p.title === "Antique Silver Lamp" || p.title === "Silver Filigree Box");
-          const colClass = isWide ? 'col-lg-6 col-md-12' : 'col-lg-4 col-md-6';
-          
-          if (isWide) {
-            return `
-              <div class="${colClass}">
-                <div class="antique-card">
-                  <div class="row g-0 h-100">
-                    <div class="col-sm-6 position-relative" style="min-height: 250px;">
-                      <div class="antique-img-container h-100 p-0">
-                        ${carouselHtml}
-                      </div>
-                      <span class="heritage-badge">Heritage Collection</span>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="antique-card-body d-flex flex-column h-100 justify-content-between">
-                        <div>
-                          <h3 class="antique-title">${p.title}</h3>
-                          <p class="antique-description text-muted">${p.description}</p>
-                        </div>
-                        <div class="antique-price-row mt-3">
-                          <span class="antique-price">${p.price}</span>
-                          <div class="antique-actions">
-                            <button class="btn-action-round btn-add-wishlist" data-product="${p.title}" title="Add to Wishlist"><i class="bi bi-heart"></i></button>
-                            <button class="btn-action-round btn-add-cart" data-product="${p.title}" title="Add to Cart"><i class="bi bi-bag"></i></button>
-                            <button class="btn-action-text btn-quick-view ms-2" 
-                                    data-bs-toggle="modal" 
-                                    data-bs-target="#quickViewModal"
-                                    data-bs-title="${p.title}"
-                                    data-bs-price="${p.price}"
-                                    data-bs-img="${mainImg}"
-                                    data-bs-desc="${p.description}"
-                                    data-bs-detail="${p.detail}">
-                              Quick View
-                            </button>
-                          </div>
-                        </div>
-                      </div>
+
+          return `
+            <div class="col-lg-4 col-md-6">
+              <div class="antique-card">
+                <div class="position-relative">
+                  <div class="antique-img-container">
+                    ${carouselHtml}
+                  </div>
+                  <span class="heritage-badge">${p.category === 'antique' ? 'Heritage Collection' : 'Daily Elegance'}</span>
+                </div>
+                <div class="antique-card-body">
+                  <h3 class="antique-title">${p.title}</h3>
+                  <p class="antique-description text-muted">${p.description}</p>
+                  <div class="antique-price-row">
+                    <span class="antique-price">${p.price}</span>
+                    <div class="antique-actions">
+                      <button class="btn-action-round btn-add-wishlist" data-product="${p.title}" title="Add to Wishlist"><i class="bi bi-heart"></i></button>
+                      <button class="btn-action-round btn-add-cart" data-product="${p.title}" title="Add to Cart"><i class="bi bi-bag"></i></button>
+                      <button class="btn-action-text btn-quick-view ms-1" 
+                              data-bs-toggle="modal" 
+                              data-bs-target="#quickViewModal"
+                              data-bs-title="${p.title}"
+                              data-bs-price="${p.price}"
+                              data-bs-img="${mainImg}"
+                              data-bs-desc="${p.description}"
+                              data-bs-detail="${p.detail}">
+                        Quick View
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
-            `;
-          } else {
-            return `
-              <div class="${colClass}">
-                <div class="antique-card">
-                  <div class="position-relative" style="${p.images.length > 1 ? 'min-height: 250px;' : ''}">
-                    <div class="antique-img-container ${p.images.length > 1 ? 'h-100 p-0' : ''}">
-                      ${carouselHtml}
-                    </div>
-                    <span class="heritage-badge">${p.category === 'antique' ? 'Heritage Collection' : 'Daily Elegance'}</span>
-                  </div>
-                  <div class="antique-card-body">
-                    <h3 class="antique-title">${p.title}</h3>
-                    <p class="antique-description text-muted">${p.description}</p>
-                    <div class="antique-price-row">
-                      <span class="antique-price">${p.price}</span>
-                      <div class="antique-actions">
-                        <button class="btn-action-round btn-add-wishlist" data-product="${p.title}" title="Add to Wishlist"><i class="bi bi-heart"></i></button>
-                        <button class="btn-action-round btn-add-cart" data-product="${p.title}" title="Add to Cart"><i class="bi bi-bag"></i></button>
-                        <button class="btn-action-text btn-quick-view ms-1" 
-                                data-bs-toggle="modal" 
-                                data-bs-target="#quickViewModal"
-                                data-bs-title="${p.title}"
-                                data-bs-price="${p.price}"
-                                data-bs-img="${mainImg}"
-                                data-bs-desc="${p.description}"
-                                data-bs-detail="${p.detail}">
-                          Quick View
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            `;
-          }
+            </div>
+          `;
         }).join('');
       };
-      
+
       if (antiqueGrid) {
         renderGrid(antiqueGrid, products.filter(p => p.category === 'antique'));
       }
