@@ -686,6 +686,22 @@ app.get('/api/verify-certificate', (req, res) => {
   }
 });
 
+// GET to list all gallery images dynamically
+app.get('/api/gallery-images', (req, res) => {
+  const imagesDir = path.join(__dirname, 'assets', 'images');
+  if (!fs.existsSync(imagesDir)) {
+    return res.json({ success: true, images: [] });
+  }
+  try {
+    const files = fs.readdirSync(imagesDir);
+    // Filter only image files (jpg, jpeg, png, gif, webp)
+    const images = files.filter(f => /\.(jpg|jpeg|png|gif|webp)$/i.test(f));
+    res.json({ success: true, images });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // Serve compiled static frontend assets in production mode
 const distPath = path.join(__dirname, 'dist');
 if (fs.existsSync(distPath)) {

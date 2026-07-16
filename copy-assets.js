@@ -39,6 +39,14 @@ try {
     fs.copyFileSync(srcScript, destScript);
     console.log('Successfully copied script.js to dist/script.js');
   }
+
+  // Copy debug-images.html to dist/debug-images.html
+  const srcDebug = path.join(__dirname, 'debug-images.html');
+  const destDebug = path.join(__dirname, 'dist', 'debug-images.html');
+  if (fs.existsSync(srcDebug)) {
+    fs.copyFileSync(srcDebug, destDebug);
+    console.log('Successfully copied debug-images.html to dist/debug-images.html');
+  }
 } catch (err) {
   console.error('Error copying assets:', err);
 }

@@ -882,250 +882,631 @@ function initCustomerAuth() {
     } catch (err) {
       console.warn("initDynamicCatalog: fallback triggered! Error: " + err.message);
       products = [
-        {
-          id: "ant-1",
-          title: "Pure Silver Bottle & Glass Set",
-          category: "antique",
-          price: "₹1,45,000",
-          images: ["assets/images/silver_bottleset.png"],
-          description: "An exquisite royal beverage set featuring a heavy, floral-engraved pure silver bottle accompanied by four matching silver stemmed chalice glasses. Ideal for luxury hosting.",
-          detail: "This limited heritage beverage set is created from heavy-gauge certified pure silver. Features intricate hand-engraved floral designs. Includes a 1-litre silver bottle and four matching stemmed chalice glasses. Weighs approximately 1.4 kg, hallmarked, and delivered in a velvet lined presentation chest."
-        },
-        {
-          id: "ant-2",
-          title: "Pure Silver Lakshmi Deepams (Pair)",
-          category: "antique",
-          price: "₹24,500",
-          images: ["assets/images/silver_deepams.png"],
-          description: "A divine pair of oil lamps featuring detailed engravings of Goddess Lakshmi. Handcrafted to bring prosperity and auspicious glow to your pooja mandir.",
-          detail: "Certified pure silver lamps, weighing approximately 280g for the pair. Highly detailed repoussé work of Goddess Lakshmi sitting on a lotus base. Ideal for daily prayers, wedding gifts, and festive occasions."
-        },
-        {
-          id: "ant-3",
-          title: "Antique Nakshi Pure Silver Electric Bedside Lamp",
-          category: "antique",
-          price: "Net Wt: 620g",
-          images: ["assets/images/silver_electric_lamp.jpg"],
-          description: "A stunning combination of vintage aesthetics and modern utility, featuring detailed Nakshi relief panels of peacocks and creepers, pre-wired for soft lighting.",
-          detail: "Crafted in 92.5 Sterling Silver, weighing approximately 620g (silver content only). Features hand-crafted Nakshi artwork panels depicting traditional forest scenes. Wired with high-quality LED fittings, standard socket, and toggle switch. Includes certificate of purity."
-        },
-        {
-          id: "ant-4",
-          title: "Antique Nakshi Pure Silver Peacock Standing Lamps (Pair)",
-          category: "antique",
-          price: "Net Wt: 1450g",
-          images: ["assets/images/silver_peacock_diya.jpg"],
-          description: "A majestic set of two tall standing lamps, topped with highly detailed peacock finials, standing as a testament to royal temple craftsmanship.",
-          detail: "Crafted in premium pure silver, standing 12 inches tall, weighing 1.45 kg for the pair. Features highly intricate hand-carved peacock accents, tiered oil wells, and a solid circular base with floral Nakshi designs."
-        },
-        {
-          id: "ant-5",
-          title: "Antique Pure Silver Geometric Cutout Ice Bucket & Tongs Set",
-          category: "antique",
-          price: "Net Wt: 310g",
-          images: ["assets/images/silver_ice_bucket.jpg"],
-          description: "A modern luxury item featuring intricate geometric cutouts on a heavy pure silver frame, complete with matching silver ice tongs.",
-          detail: "Pure silver construction, weighing 310g. Sleek, contemporary geometric patterns, with a removable glass liner for easy cleaning. The matching silver tongs feature a clean modern design. Certified pure silver with BIS hallmark."
-        },
-        {
-          id: "ant-6",
-          title: "Pure Silver Ludo Board Set",
-          category: "antique",
-          price: "₹2,10,000",
-          images: ["assets/images/silver_ludo.png"],
-          description: "A luxurious handcrafted Ludo board game featuring a heavy solid silver frame with elaborate floral carvings and colorful playing grids.",
-          detail: "Weighing approximately 1.95 kg. The frame features traditional Indian repoussé artwork depicting leaves and flowers. The board itself is decorated with premium high-gloss colors over a pure silver structure. Includes silver coins and dice."
-        },
-        {
-          id: "ant-7",
-          title: "Antique Silver Tea Set",
-          category: "antique",
-          price: "₹2,45,000",
-          images: ["assets/images/antique_tea_set.jpg"],
-          description: "A royal five-piece antique silver tea service set with hand-chased floral scrollwork and elegant ebony handles.",
-          detail: "This luxury heritage tea set is crafted from heavy-gauge certified pure silver. Includes a teapot, sugar bowl, milk jug, and a matching serving tray. Features intricate hand-engraved royal floral patterns. Weighs approximately 2.2 kg, hallmarked, and delivered in a velvet lined presentation chest."
-        },
-        {
-          id: "ant-8",
-          title: "Antique Silver Urli Bowl",
-          category: "antique",
-          price: "₹1,85,000",
-          images: ["assets/images/antique_urli.png"],
-          description: "A traditional footed urli bowl featuring ornate Nakshi carvings, ideal for floating flowers and candles.",
-          detail: "A majestic traditional pure silver urli bowl, hand-carved with detailed peacock patterns along the rim and supported by three elegant lion-head feet. Stand out as an exquisite heritage ornament. Weighs approximately 1.5 kg, hallmarked, and polished to a rich antique patina."
-        },
-        {
-          id: "ant-9",
-          title: "Antique Silver Lamp",
-          category: "antique",
-          price: "₹95,000",
-          images: ["assets/images/antique_lamp.jpg"],
-          description: "A grand traditional standing silver lamp featuring a detailed peacock finial and ornate tiered oil wells.",
-          detail: "Standing 1.5 feet tall, this pure silver lamp represents divinity and fine craftsmanship. Handcrafted by master silversmiths with intricate floral carvings on the base and stem, topped with a majestic five-wick oil container. Weighs approximately 980g, hallmarked."
-        },
-        {
-          id: "ant-10",
-          title: "Silver Filigree Box",
-          category: "antique",
-          price: "₹65,000",
-          images: ["assets/images/filigree_box.png"],
-          description: "A delicate hand-crafted silver box in fine filigree wire work, perfect for storing precious heirlooms.",
-          detail: "Crafted from pure sterling silver (92.5) by master filigree artisans from Karimnagar. Every detail is created using microscopic silver wire scrolls soldered onto a solid silver frame. Features a velvet interior and clasp. Weighs approximately 480g."
-        },
-        {
-          id: "sil-1",
-          title: "Handcrafted Nakshi Kalash",
-          category: "silver",
-          price: "₹28,500",
-          images: ["assets/images/silver_kalash.png"],
-          description: "A heavy-gauge pure silver Kalash pot featuring detailed hand-engraved Nakshi figures of dancers and traditional floral bands.",
-          detail: "Crafted by senior master artisans, this traditional pooja Kalash features elaborate repoussé carvings of dancer motifs and floral borders. Hallmarked pure silver. Weight: 480g."
-        },
-        {
-          id: "sil-2",
-          title: "Pure Silver Ram Sita Darbar",
-          category: "silver",
-          price: "₹45,500",
-          images: ["assets/images/silver_ramdarbar.png"],
-          description: "Elegantly carved pure silver Sri Ram Darbar set featuring Rama, Sita, Lakshmana, and Hanuman under a divine Prabhavali arch.",
-          detail: "This spiritual Ram Darbar idol features detailed carvings of Lord Rama, Goddess Sita, Lakshmana, and Lord Hanuman seated under a divine Prabhavali archway. Hallmarked pure silver. Weight: 550g."
-        },
-        {
-          id: "sil-3",
-          title: "Royal Nakshi Dessert Set",
-          category: "silver",
-          price: "₹1,25,000",
-          images: ["assets/images/silver_dinnerset.png"],
-          description: "A luxurious 13-piece silver serving set featuring 6 intricately carved octagonal dessert bowls, 6 matching spoons, and a hand-engraved serving tray.",
-          detail: "This premium serving set includes 6 octagonal dessert bowls, 6 matching spoons, and a large rectangular serving tray. Features heavy floral Nakshi borders and high-polish finish. Hallmarked pure silver. Weight: 1.8 kg."
-        },
-        {
-          id: "sil-4",
-          title: "Antique Silver Long Kundulu",
-          category: "silver",
-          price: "₹68,000",
-          images: ["assets/images/silver_kundulu.png"],
-          description: "A majestic pair of traditional tall Samai temple lamps featuring detailed floral carvings on the stem and royal peacock crown finials.",
-          detail: "Standing 1.5 feet tall, this pair of traditional Samai temple lamps features detailed floral carvings on the pedestal stem and a royal peacock finial. Hallmarked pure silver. Weight: 1.1 kg the pair."
-        },
-        {
-          id: "sil-5",
-          title: "Pure Silver Ram Mandir Replica",
-          category: "silver",
-          price: "₹2,50,000",
-          images: ["assets/images/silver_rammandir.png"],
-          description: "A detailed architectural model of the historic Ram Mandir temple, handcrafted in certified pure silver on an engraved pedestal with elephant legs.",
-          detail: "This magnificent heritage replica is handcrafted from premium certified pure silver. Every dome, pillar, carving, and flag of the historic Ram Mandir temple is meticulously detailed. Seated on a heavy, hand-engraved silver pedestal base with royal elephant support legs. An auspicious masterpiece for prestigious home showrooms and pooja rooms. Weight: 2.1 kg."
-        },
-        {
-          id: "sil-6",
-          title: "Pure Silver Gomukhi Abhisheka Set",
-          category: "silver",
-          price: "₹95,000",
-          images: ["assets/images/silver_gomukhi_slide1.jpg", "assets/images/silver_gomukhi_slide2.jpg"],
-          description: "A traditional pure silver Abhishekam set featuring a Gomukhi lota (spouted pot) on a pedestal inside a footed Nakshi urli bowl.",
-          detail: "This sacred Abhishekam set features a spouted Gomukhi lota pot placed on a central pillar pedestal, seated inside a matching three-footed Urli bowl. Every surface is hand-embossed with intricate floral patterns. Perfect for pouring holy water/milk over deities in daily pooja or festive rituals, where the water flows continuously from the spout. Hallmarked pure silver. Weight: 950g."
-        },
-        {
-          id: "sil-7",
-          title: "Pure Silver Nakshi Serving Box",
-          category: "silver",
-          price: "₹58,000",
-          images: ["assets/images/silver_box_slide1.jpg", "assets/images/silver_box_slide2.jpg"],
-          description: "A royal serving and dry fruit box handcrafted in pure silver with fine Nakshi carvings, a scalloped rim, and matching lid.",
-          detail: "This premium serving set features a rectangular serving box with four inner compartments. Intricate hand-carvings of peacocks and creepers, with a lid that has a peacock-shaped pull knob. Hallmarked pure silver. Weight: 680g."
-        },
-        {
-          id: "men-1",
-          title: "Chased Royal Silver Kada",
-          category: "mens",
-          price: "₹14,500",
-          images: ["https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=400&auto=format&fit=crop"],
-          description: "Thick solid pure silver kada bracelet with hand-engraved line texture. Weighs over 80g.",
-          detail: "A classic heavy solid kada for men, crafted in certified pure silver with hand-chased concentric lines and rounded terminals. Comfortable design for regular wear. Hallmarked pure silver."
-        },
-        {
-          id: "men-2",
-          title: "Interlocked Silver Chain",
-          category: "mens",
-          price: "₹18,900",
-          images: ["assets/images/plain_silver_chain.png"],
-          description: "Classic link-interlocking curb style silver chain with heavy lobster claw clasp.",
-          detail: "Traditional heavy curb chain in sterling silver. Smooth flat links with diamond-cut bevels for maximum brilliance and high strength. BIS certified 92.5 hallmark."
-        },
-        {
-          id: "men-3",
-          title: "Classic Signet Silver Ring",
-          category: "mens",
-          price: "₹4,200",
-          images: ["assets/images/plain_silver_ring.png"],
-          description: "Engraved signet-style silver ring with textured border details. Sleek and manly.",
-          detail: "Polished rectangular flat signet face with oxidised scrollwork on the shoulders. Smooth comfort fit inner shank. Certified sterling silver."
-        },
-        {
-          id: "men-4",
-          title: "Heavy Curb Silver Bracelet",
-          category: "mens",
-          price: "₹11,500",
-          images: ["assets/images/silver_bracelet.png"],
-          description: "Thick solid sterling silver curb-link bracelet, highly polished with secure clasp. Strong design.",
-          detail: "A classic link statement bracelet for men. Made from solid sterling silver with custom heavy box-locking mechanism and safety latch. Hallmarked."
-        },
-        {
-          id: "wom-1",
-          title: "Royal Ghungroo Ankle Strap",
-          category: "womens",
-          price: "₹12,500",
-          images: ["assets/images/silver_ankle_strap_1.png"],
-          description: "Heavy bridal silver ankle straps with sweet chiming ghungroos and traditional clasps. 100% pure silver, no gold coating.",
-          detail: "Weighs approximately 180 grams. Made of pure 92.5 hallmarked sterling silver, features custom locking clasp and sturdy silver rings connection. 100% plain silver with no gold coating."
-        },
-        {
-          id: "wom-2",
-          title: "Heritage Carved Ankle Strap",
-          category: "womens",
-          price: "₹7,800",
-          images: ["assets/images/silver_ankle_strap_2.png"],
-          description: "A sleek, semi-oxidized silver ankle strap with detailed heritage motifs. Combines retro charm with premium design. Plain silver only.",
-          detail: "A lighter, contemporary piece weighing 95 grams. Crafted with high quality plain silver and delicate carvings that match both ethnic and fusion wear. Absolutely no gold coating."
-        },
-        {
-          id: "wom-3",
-          title: "Traditional Silver Bichiya Pair",
-          category: "womens",
-          price: "₹2,400",
-          images: ["assets/images/plain_silver_ring.png"],
-          description: "Adjustable dual-ring toe ring (bichiya) set featuring floral motifs and a bright silver finish. An essential bride ornament.",
-          detail: "Premium 99% pure silver toe rings designed for regular wear. Hand-engraved using timeless die patterns, nickel-free and skin friendly."
-        },
-        {
-          id: "wom-4",
-          title: "Royal Nakshi Gilt Purse",
-          category: "womens",
-          price: "₹1,85,000",
-          images: ["assets/images/silver_purse_slide1.png", "assets/images/silver_purse_slide2.jpg"],
-          description: "An ornate pure silver bridal clutch, hand-gilded in 24K gold with intricate Nakshi carvings and premium settings.",
-          detail: "This heirloom-grade bridal bag is crafted from pure silver, heavily gilded in 24K gold. Features elaborate hand-chased Nakshi artwork showing mythological figures, framed with rubies and emeralds, and a matching gold-gilded handle. Weight: 740g."
-        },
-        {
-          id: "wom-5",
-          title: "Premium Floral Nakshi Round Silver Purse",
-          category: "womens",
-          price: "₹1,15,000",
-          images: ["assets/images/silver_round_purse.jpg"],
-          description: "A luxurious round bridal clutch handcrafted in pure silver with fine floral Nakshi carvings and a sleek gold-tone ring handle.",
-          detail: "This modern round bridal purse is handcrafted from premium certified pure silver. It features detailed hand-carved floral Nakshi engravings on both sides, a checkered pattern running down the middle with a central rose motif, and a polished gold-tone circular ring handle. Perfect for weddings and festive occasions. Hallmarked pure silver. Weight: 520g."
-        },
-        {
-          id: "wom-6",
-          title: "Antique Nakshi Silver Bridal Clutch with Gemstones",
-          category: "womens",
-          price: "₹1,45,000",
-          images: ["assets/images/silver_gemstone_clutch.jpg"],
-          description: "A luxurious oval bridal clutch handcrafted in antique pure silver with leaf Nakshi engravings, top crystal clasp, and red gemstones.",
-          detail: "This magnificent oval bridal clutch is handcrafted from premium certified pure silver with an antique oxidized finish. It features detailed leaf and floral Nakshi carvings fanning out across both sides, contrasted against a textured dotted background. Complete with a polished gold-tone arched handle, a top gold-tone clasp set with a brilliant crystal, and two small red drop-shaped gemstones set in silver frames on both sides of the leaf patterns. Perfect for weddings and festive styling. Hallmarked pure silver. Weight: 680g."
-        }
-      ];
+  {
+    "id": "ant-1",
+    "title": "Pure Silver Bottle & Glass Set",
+    "category": "antique",
+    "price": "₹1,45,000",
+    "images": [
+      "assets/images/silver_bottleset.png"
+    ],
+    "description": "An exquisite royal beverage set featuring a heavy, floral-engraved pure silver bottle accompanied by four matching silver stemmed chalice glasses. Ideal for luxury hosting.",
+    "detail": "This limited heritage beverage set is created from heavy-gauge certified pure silver. Features intricate hand-engraved floral designs. Includes a 1-litre silver bottle and four matching stemmed chalice glasses. Weighs approximately 1.4 kg, hallmarked, and delivered in a velvet lined presentation chest."
+  },
+  {
+    "id": "ant-2",
+    "title": "Pure Silver Lakshmi Deepams (Pair)",
+    "category": "antique",
+    "price": "₹24,500",
+    "images": [
+      "assets/images/silver_deepams.png"
+    ],
+    "description": "A divine pair of oil lamps featuring detailed engravings of Goddess Lakshmi. Handcrafted to bring prosperity and auspicious glow to your pooja mandir.",
+    "detail": "Certified pure silver lamps, weighing approximately 280g for the pair. Highly detailed repoussé work of Goddess Lakshmi sitting on a lotus base. Ideal for daily prayers, wedding gifts, and festive occasions."
+  },
+  {
+    "id": "ant-3",
+    "title": "Antique Nakshi Pure Silver Electric Bedside Lamp",
+    "category": "antique",
+    "price": "Net Wt: 620g",
+    "images": [
+      "assets/images/silver_electric_lamp.jpg"
+    ],
+    "description": "A stunning combination of vintage aesthetics and modern utility, featuring detailed Nakshi relief panels of peacocks and creepers, pre-wired for soft lighting.",
+    "detail": "Crafted in 92.5 Sterling Silver, weighing approximately 620g (silver content only). Features hand-crafted Nakshi artwork panels depicting traditional forest scenes. Wired with high-quality LED fittings, standard socket, and toggle switch. Includes certificate of purity."
+  },
+  {
+    "id": "ant-4",
+    "title": "Antique Nakshi Pure Silver Peacock Standing Lamps (Pair)",
+    "category": "antique",
+    "price": "Net Wt: 1450g",
+    "images": [
+      "assets/images/silver_peacock_diya.jpg"
+    ],
+    "description": "A majestic set of two tall standing lamps, topped with highly detailed peacock finials, standing as a testament to royal temple craftsmanship.",
+    "detail": "Crafted in premium pure silver, standing 12 inches tall, weighing 1.45 kg for the pair. Features highly intricate hand-carved peacock accents, tiered oil wells, and a solid circular base with floral Nakshi designs."
+  },
+  {
+    "id": "ant-5",
+    "title": "Antique Pure Silver Geometric Cutout Ice Bucket & Tongs Set",
+    "category": "antique",
+    "price": "Net Wt: 310g",
+    "images": [
+      "assets/images/silver_ice_bucket.jpg"
+    ],
+    "description": "A modern luxury item featuring intricate geometric cutouts on a heavy pure silver frame, complete with matching silver ice tongs.",
+    "detail": "Pure silver construction, weighing 310g. Sleek, contemporary geometric patterns, with a removable glass liner for easy cleaning. The matching silver tongs feature a clean modern design. Certified pure silver with BIS hallmark."
+  },
+  {
+    "id": "ant-6",
+    "title": "Pure Silver Ludo Board Set",
+    "category": "antique",
+    "price": "₹2,10,000",
+    "images": [
+      "assets/images/silver_ludo.png"
+    ],
+    "description": "A luxurious handcrafted Ludo board game featuring a heavy solid silver frame with elaborate floral carvings and colorful playing grids.",
+    "detail": "Weighing approximately 1.95 kg. The frame features traditional Indian repoussé artwork depicting leaves and flowers. The board itself is decorated with premium high-gloss colors over a pure silver structure. Includes silver coins and dice."
+  },
+  {
+    "id": "ant-7",
+    "title": "Antique Silver Tea Set",
+    "category": "antique",
+    "price": "₹2,45,000",
+    "images": [
+      "assets/images/antique_tea_set.jpg"
+    ],
+    "description": "A royal five-piece antique silver tea service set with hand-chased floral scrollwork and elegant ebony handles.",
+    "detail": "This luxury heritage tea set is crafted from heavy-gauge certified pure silver. Includes a teapot, sugar bowl, milk jug, and a matching serving tray. Features intricate hand-engraved royal floral patterns. Weighs approximately 2.2 kg, hallmarked, and delivered in a velvet lined presentation chest."
+  },
+  {
+    "id": "ant-8",
+    "title": "Antique Silver Urli Bowl",
+    "category": "antique",
+    "price": "₹1,85,000",
+    "images": [
+      "assets/images/antique_urli.png"
+    ],
+    "description": "A traditional footed urli bowl featuring ornate Nakshi carvings, ideal for floating flowers and candles.",
+    "detail": "A majestic traditional pure silver urli bowl, hand-carved with detailed peacock patterns along the rim and supported by three elegant lion-head feet. Stand out as an exquisite heritage ornament. Weighs approximately 1.5 kg, hallmarked, and polished to a rich antique patina."
+  },
+  {
+    "id": "ant-9",
+    "title": "Antique Silver Lamp",
+    "category": "antique",
+    "price": "₹95,000",
+    "images": [
+      "assets/images/antique_lamp.jpg"
+    ],
+    "description": "A grand traditional standing silver lamp featuring a detailed peacock finial and ornate tiered oil wells.",
+    "detail": "Standing 1.5 feet tall, this pure silver lamp represents divinity and fine craftsmanship. Handcrafted by master silversmiths with intricate floral carvings on the base and stem, topped with a majestic five-wick oil container. Weighs approximately 980g, hallmarked."
+  },
+  {
+    "id": "ant-10",
+    "title": "Silver Filigree Box",
+    "category": "antique",
+    "price": "₹65,000",
+    "images": [
+      "assets/images/filigree_box.png"
+    ],
+    "description": "A delicate hand-crafted silver box in fine filigree wire work, perfect for storing precious heirlooms.",
+    "detail": "Crafted from pure sterling silver (92.5) by master filigree artisans from Karimnagar. Every detail is created using microscopic silver wire scrolls soldered onto a solid silver frame. Features a velvet interior and clasp. Weighs approximately 480g."
+  },
+  {
+    "id": "sil-1",
+    "title": "Handcrafted Nakshi Kalash",
+    "category": "silver",
+    "price": "₹28,500",
+    "images": [
+      "assets/images/silver_kalash.png"
+    ],
+    "description": "A heavy-gauge pure silver Kalash pot featuring detailed hand-engraved Nakshi figures of dancers and traditional floral bands.",
+    "detail": "Crafted by senior master artisans, this traditional pooja Kalash features elaborate repoussé carvings of dancer motifs and floral borders. Hallmarked pure silver. Weight: 480g."
+  },
+  {
+    "id": "sil-2",
+    "title": "Pure Silver Ram Sita Darbar",
+    "category": "silver",
+    "price": "₹45,500",
+    "images": [
+      "assets/images/silver_ramdarbar.png"
+    ],
+    "description": "Elegantly carved pure silver Sri Ram Darbar set featuring Rama, Sita, Lakshmana, and Hanuman under a divine Prabhavali arch.",
+    "detail": "This spiritual Ram Darbar idol features detailed carvings of Lord Rama, Goddess Sita, Lakshmana, and Lord Hanuman seated under a divine Prabhavali archway. Hallmarked pure silver. Weight: 550g."
+  },
+  {
+    "id": "sil-3",
+    "title": "Royal Nakshi Dessert Set",
+    "category": "silver",
+    "price": "₹1,25,000",
+    "images": [
+      "assets/images/silver_dinnerset.png"
+    ],
+    "description": "A luxurious 13-piece silver serving set featuring 6 intricately carved octagonal dessert bowls, 6 matching spoons, and a hand-engraved serving tray.",
+    "detail": "This premium serving set includes 6 octagonal dessert bowls, 6 matching spoons, and a large rectangular serving tray. Features heavy floral Nakshi borders and high-polish finish. Hallmarked pure silver. Weight: 1.8 kg."
+  },
+  {
+    "id": "sil-4",
+    "title": "Antique Silver Long Kundulu",
+    "category": "silver",
+    "price": "₹68,000",
+    "images": [
+      "assets/images/silver_kundulu.png"
+    ],
+    "description": "A majestic pair of traditional tall Samai temple lamps featuring detailed floral carvings on the stem and royal peacock crown finials.",
+    "detail": "Standing 1.5 feet tall, this pair of traditional Samai temple lamps features detailed floral carvings on the pedestal stem and a royal peacock finial. Hallmarked pure silver. Weight: 1.1 kg the pair."
+  },
+  {
+    "id": "sil-5",
+    "title": "Pure Silver Ram Mandir Replica",
+    "category": "silver",
+    "price": "₹2,50,000",
+    "images": [
+      "assets/images/silver_rammandir.png"
+    ],
+    "description": "A detailed architectural model of the historic Ram Mandir temple, handcrafted in certified pure silver on an engraved pedestal with elephant legs.",
+    "detail": "This magnificent heritage replica is handcrafted from premium certified pure silver. Every dome, pillar, carving, and flag of the historic Ram Mandir temple is meticulously detailed. Seated on a heavy, hand-engraved silver pedestal base with royal elephant support legs. An auspicious masterpiece for prestigious home showrooms and pooja rooms. Weight: 2.1 kg."
+  },
+  {
+    "id": "sil-6",
+    "title": "Pure Silver Gomukhi Abhisheka Set",
+    "category": "silver",
+    "price": "₹95,000",
+    "images": [
+      "assets/images/silver_gomukhi_slide1.jpg",
+      "assets/images/silver_gomukhi_slide2.jpg"
+    ],
+    "description": "A traditional pure silver Abhishekam set featuring a Gomukhi lota (spouted pot) on a pedestal inside a footed Nakshi urli bowl.",
+    "detail": "This sacred Abhishekam set features a spouted Gomukhi lota pot placed on a central pillar pedestal, seated inside a matching three-footed Urli bowl. Every surface is hand-embossed with intricate floral patterns. Perfect for pouring holy water/milk over deities in daily pooja or festive rituals, where the water flows continuously from the spout. Hallmarked pure silver. Weight: 950g."
+  },
+  {
+    "id": "sil-7",
+    "title": "Pure Silver Nakshi Serving Box",
+    "category": "silver",
+    "price": "₹58,000",
+    "images": [
+      "assets/images/silver_box_slide1.jpg",
+      "assets/images/silver_box_slide2.jpg"
+    ],
+    "description": "A royal serving and dry fruit box handcrafted in pure silver with fine Nakshi carvings, a scalloped rim, and matching lid.",
+    "detail": "This premium serving set features a rectangular serving box with four inner compartments. Intricate hand-carvings of peacocks and creepers, with a lid that has a peacock-shaped pull knob. Hallmarked pure silver. Weight: 680g."
+  },
+  {
+    "id": "men-1",
+    "title": "Chased Royal Silver Kada",
+    "category": "mens",
+    "price": "₹14,500",
+    "images": [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=400&auto=format&fit=crop"
+    ],
+    "description": "Thick solid pure silver kada bracelet with hand-engraved line texture. Weighs over 80g.",
+    "detail": "A classic heavy solid kada for men, crafted in certified pure silver with hand-chased concentric lines and rounded terminals. Comfortable design for regular wear. Hallmarked pure silver."
+  },
+  {
+    "id": "men-2",
+    "title": "Interlocked Silver Chain",
+    "category": "mens",
+    "price": "₹18,900",
+    "images": [
+      "assets/images/plain_silver_chain.png"
+    ],
+    "description": "Classic link-interlocking curb style silver chain with heavy lobster claw clasp.",
+    "detail": "Traditional heavy curb chain in sterling silver. Smooth flat links with diamond-cut bevels for maximum brilliance and high strength. BIS certified 92.5 hallmark."
+  },
+  {
+    "id": "men-3",
+    "title": "Classic Signet Silver Ring",
+    "category": "mens",
+    "price": "₹4,200",
+    "images": [
+      "assets/images/plain_silver_ring.png"
+    ],
+    "description": "Engraved signet-style silver ring with textured border details. Sleek and manly.",
+    "detail": "Polished rectangular flat signet face with oxidised scrollwork on the shoulders. Smooth comfort fit inner shank. Certified sterling silver."
+  },
+  {
+    "id": "men-4",
+    "title": "Heavy Curb Silver Bracelet",
+    "category": "mens",
+    "price": "₹11,500",
+    "images": [
+      "assets/images/silver_bracelet.png"
+    ],
+    "description": "Thick solid sterling silver curb-link bracelet, highly polished with secure clasp. Strong design.",
+    "detail": "A classic link statement bracelet for men. Made from solid sterling silver with custom heavy box-locking mechanism and safety latch. Hallmarked."
+  },
+  {
+    "id": "wom-1",
+    "title": "Royal Ghungroo Ankle Strap",
+    "category": "womens",
+    "price": "₹12,500",
+    "images": [
+      "assets/images/silver_ankle_strap_1.png"
+    ],
+    "description": "Heavy bridal silver ankle straps with sweet chiming ghungroos and traditional clasps. 100% pure silver, no gold coating.",
+    "detail": "Weighs approximately 180 grams. Made of pure 92.5 hallmarked sterling silver, features custom locking clasp and sturdy silver rings connection. 100% plain silver with no gold coating."
+  },
+  {
+    "id": "wom-2",
+    "title": "Heritage Carved Ankle Strap",
+    "category": "womens",
+    "price": "₹7,800",
+    "images": [
+      "assets/images/silver_ankle_strap_2.png"
+    ],
+    "description": "A sleek, semi-oxidized silver ankle strap with detailed heritage motifs. Combines retro charm with premium design. Plain silver only.",
+    "detail": "A lighter, contemporary piece weighing 95 grams. Crafted with high quality plain silver and delicate carvings that match both ethnic and fusion wear. Absolutely no gold coating."
+  },
+  {
+    "id": "wom-3",
+    "title": "Traditional Silver Bichiya Pair",
+    "category": "womens",
+    "price": "₹2,400",
+    "images": [
+      "assets/images/plain_silver_ring.png"
+    ],
+    "description": "Adjustable dual-ring toe ring (bichiya) set featuring floral motifs and a bright silver finish. An essential bride ornament.",
+    "detail": "Premium 99% pure silver toe rings designed for regular wear. Hand-engraved using timeless die patterns, nickel-free and skin friendly."
+  },
+  {
+    "id": "wom-4",
+    "title": "Royal Nakshi Gilt Purse",
+    "category": "womens",
+    "price": "₹1,85,000",
+    "images": [
+      "assets/images/silver_purse_slide1.png",
+      "assets/images/silver_purse_slide2.jpg"
+    ],
+    "description": "An ornate pure silver bridal clutch, hand-gilded in 24K gold with intricate Nakshi carvings and premium settings.",
+    "detail": "This heirloom-grade bridal bag is crafted from pure silver, heavily gilded in 24K gold. Features elaborate hand-chased Nakshi artwork showing mythological figures, framed with rubies and emeralds, and a matching gold-gilded handle. Weight: 740g."
+  },
+  {
+    "id": "wom-5",
+    "title": "Premium Floral Nakshi Round Silver Purse",
+    "category": "womens",
+    "price": "₹1,15,000",
+    "images": [
+      "assets/images/silver_round_purse.jpg"
+    ],
+    "description": "A luxurious round bridal clutch handcrafted in pure silver with fine floral Nakshi carvings and a sleek gold-tone ring handle.",
+    "detail": "This modern round bridal purse is handcrafted from premium certified pure silver. It features detailed hand-carved floral Nakshi engravings on both sides, a checkered pattern running down the middle with a central rose motif, and a polished gold-tone circular ring handle. Perfect for weddings and festive occasions. Hallmarked pure silver. Weight: 520g."
+  },
+  {
+    "id": "wom-6",
+    "title": "Antique Nakshi Silver Bridal Clutch with Gemstones",
+    "category": "womens",
+    "price": "₹1,45,000",
+    "images": [
+      "assets/images/silver_gemstone_clutch.jpg"
+    ],
+    "description": "A luxurious oval bridal clutch handcrafted in antique pure silver with leaf Nakshi engravings, top crystal clasp, and red gemstones.",
+    "detail": "This magnificent oval bridal clutch is handcrafted from premium certified pure silver with an antique oxidized finish. It features detailed leaf and floral Nakshi carvings fanning out across both sides, contrasted against a textured dotted background. Complete with a polished gold-tone arched handle, a top gold-tone clasp set with a brilliant crystal, and two small red drop-shaped gemstones set in silver frames on both sides of the leaf patterns. Perfect for weddings and festive styling. Hallmarked pure silver. Weight: 680g."
+  },
+  {
+    "id": "ant-11",
+    "title": "Antique Pure Silver Royal Teapot",
+    "category": "antique",
+    "price": "Net Wt: 480g",
+    "images": [
+      "assets/images/silver_antique_teapot.jpg"
+    ],
+    "description": "An elegant Victorian-style antique teapot crafted in certified pure silver with hand-chiseled leaf designs.",
+    "detail": "Hand-engraved floral patterns with a heat-resistant insulated silver handle. Weighs approximately 480g. hallmarked 92.5 sterling purity."
+  },
+  {
+    "id": "ant-12",
+    "title": "Antique Nakshi Silver Tumbler",
+    "category": "antique",
+    "price": "Net Wt: 180g",
+    "images": [
+      "assets/images/silver_antique_tumbler.jpg"
+    ],
+    "description": "A traditional drinking cup featuring detailed repoussé work of forest flora and birds in oxidized silver.",
+    "detail": "Double-walled design with high-relief carvings. Weighs 180g. Certified pure silver with hallmark stamp."
+  },
+  {
+    "id": "ant-13",
+    "title": "Antique Pure Silver Flower Vase",
+    "category": "antique",
+    "price": "Net Wt: 350g",
+    "images": [
+      "assets/images/silver_antique_vase.jpg"
+    ],
+    "description": "A gorgeous classic trumpet vase with fluted neck and hand-carved floral scrolls on the body.",
+    "detail": "Stands 8 inches tall. Heavy circular base for stability. Weighted base with pure silver body. Weight: 350g."
+  },
+  {
+    "id": "ant-14",
+    "title": "Premium Pure Silver Carafe Set",
+    "category": "antique",
+    "price": "Net Wt: 980g",
+    "images": [
+      "assets/images/silver_carafe_set.jpg"
+    ],
+    "description": "A luxury serving carafe with a curved gooseneck spout, paired with a matching presentation tray.",
+    "detail": "Includes a 750ml pitcher and circular silver tray. Features royal fluted engravings. Weight: 980g."
+  },
+  {
+    "id": "ant-15",
+    "title": "Antique Pure Silver Teapot with Sleever",
+    "category": "antique",
+    "price": "Net Wt: 550g",
+    "images": [
+      "assets/images/silver_teapot_sleeve.jpg"
+    ],
+    "description": "An exceptional heritage teapot featuring a removable decorative outer sleeve with pierced filigree panels.",
+    "detail": "Removable insulated jacket. Heavy lid with peacock finial. Hallmarked 92.5 silver. Weight: 550g."
+  },
+  {
+    "id": "ant-16",
+    "title": "Nakshi Pure Silver Dessert Set",
+    "category": "antique",
+    "price": "Net Wt: 720g",
+    "images": [
+      "assets/images/silver_nakshi_dessertset.jpg"
+    ],
+    "description": "A luxury set of 6 dessert bowls and matching spoons featuring detailed leaf and bird carvings.",
+    "detail": "Packed in a premium red velvet gifting box. Hallmarked pure silver. Weight: 720g."
+  },
+  {
+    "id": "ant-17",
+    "title": "Pure Silver Royal Serving Tray",
+    "category": "antique",
+    "price": "Net Wt: 1200g",
+    "images": [
+      "assets/images/silver_serving_tray.png"
+    ],
+    "description": "A massive, heavy-gauge pure silver tray featuring a broad border of embossed floral vines and side handles.",
+    "detail": "Laminated surface to prevent tarnish. Solid cast-silver handle grips. Weighs 1.2 kg."
+  },
+  {
+    "id": "sil-8",
+    "title": "Pure Silver Anjana Salaka (Kohl Stick)",
+    "category": "silver",
+    "price": "Net Wt: 25g",
+    "images": [
+      "assets/images/silver_anjana_salaka.jpg"
+    ],
+    "description": "A traditional pure silver eyeliner applicator rod with a decorative peacock finial on top.",
+    "detail": "Perfect for pooja ceremonies or bridal makeup kits. Crafted in 999 fine silver. Weight: 25g."
+  },
+  {
+    "id": "sil-9",
+    "title": "Ashtalakshmi Pure Silver Pooja Bowl",
+    "category": "silver",
+    "price": "Net Wt: 190g",
+    "images": [
+      "assets/images/silver_ashtalakshmi_bowl.jpg"
+    ],
+    "description": "A highly auspicious pooja bowl depicting the eight forms of Goddess Lakshmi in rich repoussé panels.",
+    "detail": "Used for offering prasad or holding holy water. Hallmarked 925 purity. Weight: 190g."
+  },
+  {
+    "id": "sil-10",
+    "title": "Ashtalakshmi Pure Silver Kalash",
+    "category": "silver",
+    "price": "Net Wt: 380g",
+    "images": [
+      "assets/images/silver_ashtalakshmi_kalash.jpg"
+    ],
+    "description": "A premium temple kalash pot engraved with all eight forms of Goddess Lakshmi, symbolizing ultimate prosperity.",
+    "detail": "Heavy-bottom structure suitable for pooja ceremonies and housewarmings. Weight: 380g."
+  },
+  {
+    "id": "sil-11",
+    "title": "Pure Silver Heritage Gifting Basket",
+    "category": "silver",
+    "price": "Net Wt: 640g",
+    "images": [
+      "assets/images/silver_basket_slide1.jpg",
+      "assets/images/silver_basket_slide2.jpg"
+    ],
+    "description": "A beautiful woven-look basket with a tall arched handle, ideal for luxury packing of dry fruits and gifts.",
+    "detail": "Intricate pierced openwork resembling wicker mesh. High polished finish. Weight: 640g."
+  },
+  {
+    "id": "sil-12",
+    "title": "Nakshi Pure Silver Footed Bowl",
+    "category": "silver",
+    "price": "Net Wt: 220g",
+    "images": [
+      "assets/images/silver_bowl_slide1.jpg",
+      "assets/images/silver_bowl_slide2.jpg"
+    ],
+    "description": "A elegant fluted bowl raised on three floral legs, featuring traditional scalloped rims and polished interiors.",
+    "detail": "Multi-functional decorative and pooja item. Pure silver hallmarked. Weight: 220g."
+  },
+  {
+    "id": "sil-13",
+    "title": "Temple Pure Silver Chariot (Rath)",
+    "category": "silver",
+    "price": "Net Wt: 850g",
+    "images": [
+      "assets/images/silver_chariot_slide1.jpg",
+      "assets/images/silver_chariot_slide2.jpg"
+    ],
+    "description": "A magnificent temple chariot miniature on rolling wheels, decorated with flags and a royal canopy.",
+    "detail": "Fully functional rolling wheels. Designed for deity processing in home temples. Weight: 850g."
+  },
+  {
+    "id": "sil-14",
+    "title": "Royal Peacock Pure Silver Diya Set",
+    "category": "silver",
+    "price": "Net Wt: 310g",
+    "images": [
+      "assets/images/silver_diya_slide1.jpg",
+      "assets/images/silver_diya_slide2.jpg"
+    ],
+    "description": "A pair of oil lamps featuring standing peacocks holding single-wick diya wells in their beaks.",
+    "detail": "Heavy stable base with ornate feet. Certified sterling purity. Weight: 310g."
+  },
+  {
+    "id": "sil-15",
+    "title": "Pure Silver Majestic Elephant Pair",
+    "category": "silver",
+    "price": "Net Wt: 420g",
+    "images": [
+      "assets/images/silver_elephants.png"
+    ],
+    "description": "A pair of detailed standing elephants with raised trunks, symbolizing good luck and grand welcoming energy.",
+    "detail": "Engraved royal saddle clothes. Made of solid sterling silver. Weight: 420g for the pair."
+  },
+  {
+    "id": "sil-16",
+    "title": "Gajalakshmi Pure Silver Kalash",
+    "category": "silver",
+    "price": "Net Wt: 340g",
+    "images": [
+      "assets/images/silver_gajalakshmi_kalash.png"
+    ],
+    "description": "A beautiful kalash pot featuring Goddess Lakshmi flanked by two showering elephants in detailed reliefs.",
+    "detail": "Traditional design for VaraLakshmi Pooja. Hallmarked 999 fine silver. Weight: 340g."
+  },
+  {
+    "id": "sil-17",
+    "title": "Divine Ganesha Pure Silver Jhula",
+    "category": "silver",
+    "price": "Net Wt: 580g",
+    "images": [
+      "assets/images/silver_ganesha_jhula.jpg"
+    ],
+    "description": "A stunning miniature swingset (Jhula) featuring a seated Lord Ganesha hanging from an ornate arched stand.",
+    "detail": "Fully swinging chain system. Features detailed pillar pillars and archway. Weight: 580g."
+  },
+  {
+    "id": "sil-18",
+    "title": "Pure Silver Ganesha Mandapam Temple",
+    "category": "silver",
+    "price": "Net Wt: 1100g",
+    "images": [
+      "assets/images/silver_ganesha_mandapam.jpg"
+    ],
+    "description": "A majestic domed mandapam shrine housing a seated Ganesha idol, supported by four elaborate pillars.",
+    "detail": "Removable idol for easy pooja cleaning. Traditional Nakshi dome. Weight: 1.1 kg."
+  },
+  {
+    "id": "sil-19",
+    "title": "Pure Silver Lord Hanuman Statue",
+    "category": "silver",
+    "price": "Net Wt: 290g",
+    "images": [
+      "assets/images/silver_hanuman.png"
+    ],
+    "description": "A highly detailed sculpture of Lord Hanuman standing with his signature mace (Gada), radiating strength.",
+    "detail": "Oxidized antique detailing to highlight jewelry and crown. Hallmarked 925. Weight: 290g."
+  },
+  {
+    "id": "sil-20",
+    "title": "Pure Silver Panchapatra & Udharini Set",
+    "category": "silver",
+    "price": "Net Wt: 140g",
+    "images": [
+      "assets/images/silver_panchapatra_elephant.jpg"
+    ],
+    "description": "A classic holy water cup and spoon set featuring an elephant finial handle on the spoon.",
+    "detail": "Pooja essential used for holding and distributing holy water. Weight: 140g."
+  },
+  {
+    "id": "sil-21",
+    "title": "Pure Silver Kamandalu Holy Pot",
+    "category": "silver",
+    "price": "Net Wt: 360g",
+    "images": [
+      "assets/images/silver_kamandalu.jpg"
+    ],
+    "description": "A traditional water vessel carried by ascetics, recreated in heavy pure silver with a top handle.",
+    "detail": "Curved spout and heavy wire loop handle. Polished mirror-like interior. Weight: 360g."
+  },
+  {
+    "id": "sil-22",
+    "title": "Lord Krishna in Basket Pure Silver Idol",
+    "category": "silver",
+    "price": "Net Wt: 190g",
+    "images": [
+      "assets/images/silver_krishna_basket.jpg"
+    ],
+    "description": "A beautiful depiction of infant Lord Krishna lying inside a woven silver basket protected by Sheshnag.",
+    "detail": "Detailed cobra hood and blanket patterns. High-grade hallmarked silver. Weight: 190g."
+  },
+  {
+    "id": "sil-23",
+    "title": "Traditional Kuthu Vilakku Standing Lamp",
+    "category": "silver",
+    "price": "Net Wt: 1500g",
+    "images": [
+      "assets/images/silver_kuthu_vilakku.jpg"
+    ],
+    "description": "A massive, classic 5-wick standing temple lamp topped with a highly detailed swan finial.",
+    "detail": "Stands 18 inches tall. Weighs 1.5 kg. Screw-separable parts for compact storage."
+  },
+  {
+    "id": "sil-24",
+    "title": "Goddess Lakshmi Pooja Box set",
+    "category": "silver",
+    "price": "Net Wt: 410g",
+    "images": [
+      "assets/images/silver_lakshmi_poojabox.jpg"
+    ],
+    "description": "A velvet-lined wooden presentation box displaying a gold-polished pure silver Lakshmi coin and accessories.",
+    "detail": "Includes silver cup, spoon, and kumkum holder. Perfect wedding gift. Weight: 410g."
+  },
+  {
+    "id": "sil-25",
+    "title": "Pure Silver Namam Pooja Bowl",
+    "category": "silver",
+    "price": "Net Wt: 85g",
+    "images": [
+      "assets/images/silver_namam_bowl.jpg"
+    ],
+    "description": "A specialized bowl with two side wells and a central handle, used to mix sandal and vermilion paste.",
+    "detail": "Engraved with the sacred Venkateswara Namam symbol. Weight: 85g."
+  },
+  {
+    "id": "sil-26",
+    "title": "Pure Silver Peacock Lid Jewel Box",
+    "category": "silver",
+    "price": "Net Wt: 230g",
+    "images": [
+      "assets/images/silver_peacock_box.jpg"
+    ],
+    "description": "A cylindrical treasure box featuring a highly detailed peacock model standing on the lid.",
+    "detail": "Textured body scrolls. Velvet padded interior. Perfect dresser accessory. Weight: 230g."
+  },
+  {
+    "id": "sil-27",
+    "title": "Royal Pure Silver Pooja Thali Set",
+    "category": "silver",
+    "price": "Net Wt: 680g",
+    "images": [
+      "assets/images/silver_pooja_thali_set.jpg"
+    ],
+    "description": "A complete 7-piece pooja set including a carved tray, kalash, bell, incense stand, and sweet bowls.",
+    "detail": "Diameter of plate: 10 inches. Ornate scalloped borders. Weight: 680g."
+  },
+  {
+    "id": "sil-28",
+    "title": "Pure Silver Swan Decorative Bowl",
+    "category": "silver",
+    "price": "Net Wt: 290g",
+    "images": [
+      "assets/images/silver_swan_slide1.jpg",
+      "assets/images/silver_swan_slide2.jpg"
+    ],
+    "description": "An artistic decorative dish shaped like a floating swan with open filigree wings.",
+    "detail": "Perfect center table bowl for holding flowers or cardamom. Weight: 290g."
+  },
+  {
+    "id": "wom-7",
+    "title": "Heritage Pure Silver Coin Purse",
+    "category": "womens",
+    "price": "Net Wt: 150g",
+    "images": [
+      "assets/images/silver_purse.png"
+    ],
+    "description": "A vintage-style metal chainmail coin purse crafted in pure silver with an engraved kiss-lock clasp.",
+    "detail": "Flexible silver chain loops. Includes an attached wristlet ring chain. Weight: 150g."
+  }
+];
     }
       
       const renderGrid = (gridEl, items) => {

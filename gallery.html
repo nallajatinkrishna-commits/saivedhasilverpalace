@@ -24,7 +24,24 @@
   <!-- Custom JS -->
   <script src="script.js" defer></script>
 
-  
+  <style>
+    .btn-outline-luxury {
+      border: 1px solid var(--primary-color) !important;
+      color: var(--secondary-color) !important;
+      background: transparent;
+      transition: var(--transition-smooth);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+    .btn-outline-luxury:hover, .btn-outline-luxury.active {
+      background-color: var(--primary-color) !important;
+      color: white !important;
+      border-color: var(--primary-color) !important;
+      box-shadow: 0 4px 10px rgba(169, 132, 61, 0.2);
+    }
+  </style>
 </head>
 <body>
 
@@ -134,56 +151,19 @@
         <p class="text-muted mx-auto" style="max-width: 600px;">A visual tour of our physical showroom and detailed close-ups of our certified silver collections.</p>
       </div>
 
+      <!-- Category Filter Tabs -->
+      <div class="d-flex flex-wrap justify-content-center gap-2 mt-4 mb-4" id="gallery-filter-buttons">
+        <button class="btn btn-outline-luxury active px-4 py-2" data-filter="all">All</button>
+        <button class="btn btn-outline-luxury px-4 py-2" data-filter="pooja">Pooja Collection</button>
+        <button class="btn btn-outline-luxury px-4 py-2" data-filter="womens">Women's Collection</button>
+        <button class="btn btn-outline-luxury px-4 py-2" data-filter="mens">Men's Collection</button>
+        <button class="btn btn-outline-luxury px-4 py-2" data-filter="interior">Interior Layout</button>
+        <button class="btn btn-outline-luxury px-4 py-2" data-filter="antique">Antique & Articles</button>
+      </div>
+
       <!-- Masonry Grid -->
-      <div class="gallery-grid mt-4">
-        <!-- Item 1 -->
-        <div class="gallery-item">
-          <img src="assets/images/silver_bottleset.png" alt="Pure Silver Bottle and Glasses Set">
-          <div class="gallery-overlay">
-            <h4 class="gallery-item-title">Royal Bottle & Glasses</h4>
-            <span class="gallery-item-category">Antique & Articles</span>
-          </div>
-        </div>
-        <!-- Item 2 -->
-        <div class="gallery-item">
-          <img src="assets/images/silver_sprinklers.png" alt="Antique Silver Perfume Sprinklers (Gulab Pash)">
-          <div class="gallery-overlay">
-            <h4 class="gallery-item-title">Perfume Sprinklers (Gulab Pash)</h4>
-            <span class="gallery-item-category">Antique & Articles</span>
-          </div>
-        </div>
-        <!-- Item 3 -->
-        <div class="gallery-item">
-          <img src="assets/images/showroom_about.jpg" alt="Luxury Interior Showroom">
-          <div class="gallery-overlay">
-            <h4 class="gallery-item-title">Grand Showroom</h4>
-            <span class="gallery-item-category">Interior Layout</span>
-          </div>
-        </div>
-        <!-- Item 4 -->
-        <div class="gallery-item">
-          <img src="assets/images/silver_deepams.png" alt="Pure Silver Lakshmi Deepams">
-          <div class="gallery-overlay">
-            <h4 class="gallery-item-title">Lakshmi Deepams</h4>
-            <span class="gallery-item-category">Pooja Collection</span>
-          </div>
-        </div>
-        <!-- Item 5 -->
-        <div class="gallery-item">
-          <img src="assets/images/silver_ankle_strap_1.png" alt="Bridal Silver Ankle Strap">
-          <div class="gallery-overlay">
-            <h4 class="gallery-item-title">Bridal Ankle Straps</h4>
-            <span class="gallery-item-category">Women's Collection</span>
-          </div>
-        </div>
-        <!-- Item 6 -->
-        <div class="gallery-item">
-          <img src="assets/images/silver_kalash.png" alt="Temple Silver Kalash">
-          <div class="gallery-overlay">
-            <h4 class="gallery-item-title">Sacred Silver Kalash</h4>
-            <span class="gallery-item-category">Temple Collection</span>
-          </div>
-        </div>
+      <div class="gallery-grid mt-4" id="dynamic-gallery-grid">
+        <!-- Dynamically populated -->
       </div>
     </div>
   </section>
@@ -515,6 +495,183 @@
       } catch (err) {
         console.error('Failed loading settings CMS:', err);
       }
+    });
+  </script>
+
+  <!-- Dynamic Gallery Loader -->
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const galleryGrid = document.getElementById('dynamic-gallery-grid');
+      const filterButtons = document.querySelectorAll('#gallery-filter-buttons button');
+      if (!galleryGrid) return;
+
+      const fallbackImages = [
+        "silver_deepams.png",
+        "silver_sprinklers.png",
+        "showroom_about.jpg",
+        "silver_ankle_strap_1.png",
+        "silver_kalash.png",
+        "silver_ramdarbar.png",
+        "silver_rammandir.png",
+        "antique_lamp.jpg",
+        "antique_tea_set.jpg",
+        "antique_urli.png",
+        "filigree_box.png",
+        "plain_silver_chain.png",
+        "plain_silver_ring.png",
+        "silver_anjana_salaka.jpg",
+        "silver_ankle_strap_2.png",
+        "silver_antique_teapot.jpg",
+        "silver_antique_tumbler.jpg",
+        "silver_antique_vase.jpg",
+        "silver_ashtalakshmi_bowl.jpg",
+        "silver_ashtalakshmi_kalash.jpg",
+        "silver_basket_slide1.jpg",
+        "silver_basket_slide2.jpg",
+        "silver_bottleset.png",
+        "silver_bowl.jpg",
+        "silver_bowl_slide1.jpg",
+        "silver_bowl_slide2.jpg",
+        "silver_box_slide1.jpg",
+        "silver_box_slide2.jpg",
+        "silver_bracelet.png",
+        "silver_carafe_set.jpg",
+        "silver_chariot_slide1.jpg",
+        "silver_chariot_slide2.jpg",
+        "silver_dinnerset.png",
+        "silver_diya_slide1.jpg",
+        "silver_diya_slide2.jpg",
+        "silver_electric_lamp.jpg",
+        "silver_elephants.png",
+        "silver_embossed_dinnerset.jpg",
+        "silver_gajalakshmi_kalash.png",
+        "silver_ganesha_jhula.jpg",
+        "silver_ganesha_mandapam.jpg",
+        "silver_gemstone_clutch.jpg",
+        "silver_gomukhi_slide1.jpg",
+        "silver_gomukhi_slide2.jpg",
+        "silver_hanuman.png",
+        "silver_harathi_holder.jpg",
+        "silver_ice_bucket.jpg",
+        "silver_idol.png",
+        "silver_jugset.png",
+        "silver_kamandalu.jpg",
+        "silver_krishna_basket.jpg",
+        "silver_kundulu.png",
+        "silver_kuthu_vilakku.jpg",
+        "silver_lakshmi_poojabox.jpg",
+        "silver_ludo.png",
+        "silver_nakshi_dessertset.jpg",
+        "silver_namam_bowl.jpg",
+        "silver_panchapatra_elephant.jpg",
+        "silver_peacock_box.jpg",
+        "silver_peacock_diya.jpg",
+        "silver_pooja_thali_set.jpg",
+        "silver_purse.png",
+        "silver_purse_slide1.png",
+        "silver_purse_slide2.jpg",
+        "silver_round_purse.jpg",
+        "silver_serving_tray.png",
+        "silver_swan_slide1.jpg",
+        "silver_swan_slide2.jpg",
+        "silver_teapot_sleeve.jpg"
+      ];
+
+      let allImages = [];
+
+      function formatTitle(filename) {
+        let base = filename.substring(0, filename.lastIndexOf('.'));
+        base = base.replace(/[_-]/g, ' ');
+        return base.split(' ').map(word => {
+          if (word.toLowerCase() === 'wt') return 'Weight';
+          if (word.toLowerCase() === 'bg') return 'Background';
+          return word.charAt(0).toUpperCase() + word.slice(1);
+        }).join(' ');
+      }
+
+      function getCategory(filename) {
+        const lower = filename.toLowerCase();
+        if (lower.includes('ankle') || lower.includes('purse') || lower.includes('clutch') || lower.includes('bichiya') || lower.includes('wom')) {
+          return 'womens';
+        }
+        if (lower.includes('kada') || lower.includes('chain') || lower.includes('ring') || lower.includes('bracelet') || lower.includes('men')) {
+          return 'mens';
+        }
+        if (lower.includes('deepam') || lower.includes('diya') || lower.includes('pooja') || lower.includes('ram') || lower.includes('lakshmi') || lower.includes('hanuman') || lower.includes('idol') || lower.includes('krishna') || lower.includes('ganesha') || lower.includes('mandapam') || lower.includes('jhula') || lower.includes('god') || lower.includes('kalash') || lower.includes('kundulu') || lower.includes('harathi') || lower.includes('salaka') || lower.includes('lota') || lower.includes('gomukhi')) {
+          return 'pooja';
+        }
+        if (lower.includes('showroom') || lower.includes('interior') || lower.includes('about')) {
+          return 'interior';
+        }
+        return 'antique';
+      }
+
+      function getCategoryLabel(cat) {
+        switch(cat) {
+          case 'pooja': return 'Pooja Collection';
+          case 'womens': return "Women's Collection";
+          case 'mens': return "Men's Collection";
+          case 'interior': return 'Interior Layout';
+          default: return 'Antique & Articles';
+        }
+      }
+
+      function renderGallery(imagesToRender) {
+        if (imagesToRender.length === 0) {
+          galleryGrid.innerHTML = '<div class="text-center py-5 w-100"><p class="text-muted">No images found in this category.</p></div>';
+          return;
+        }
+
+        galleryGrid.innerHTML = imagesToRender.map(img => {
+          const cat = getCategory(img);
+          const catLabel = getCategoryLabel(cat);
+          const title = formatTitle(img);
+          return `
+            <div class="gallery-item" data-category="${cat}">
+              <img src="assets/images/${img}" alt="${title}" loading="lazy">
+              <div class="gallery-overlay">
+                <h4 class="gallery-item-title">${title}</h4>
+                <span class="gallery-item-category">${catLabel}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Try fetching from the API
+      try {
+        if (window.location.protocol === 'file:') {
+          throw new Error('Local file protocol - fallback');
+        }
+        const res = await fetch('/api/gallery-images');
+        const data = await res.json();
+        if (data.success && data.images && data.images.length > 0) {
+          allImages = data.images;
+        } else {
+          allImages = fallbackImages;
+        }
+      } catch (err) {
+        allImages = fallbackImages;
+      }
+
+      // Initial Render
+      renderGallery(allImages);
+
+      // Setup filters
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          
+          const filterValue = btn.getAttribute('data-filter');
+          if (filterValue === 'all') {
+            renderGallery(allImages);
+          } else {
+            const filtered = allImages.filter(img => getCategory(img) === filterValue);
+            renderGallery(filtered);
+          }
+        });
+      });
     });
   </script>
 
