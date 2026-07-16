@@ -18,7 +18,6 @@ export default defineConfig({
         cart: './cart.html',
         admin: './admin.html',
         profile: './profile.html',
-        antique: './antique.html',
         articles: './articles.html',
         womens: './womens.html',
         mens: './mens.html',
@@ -28,7 +27,8 @@ export default defineConfig({
         adminPrice: './admin-price.html',
         adminInquiries: './admin-inquiries.html',
         adminCustomerLogins: './admin-customer-logins.html',
-        adminSessions: './admin-sessions.html'
+        adminSessions: './admin-sessions.html',
+        adminProducts: './admin-products.html'
       }
     }
   }

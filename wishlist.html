@@ -343,7 +343,7 @@
                       <button class="btn btn-sm btn-outline-danger btn-remove-wishlist flex-grow-0" data-index="${index}" title="Remove" style="padding: 8px 12px; border-radius: 4px;">
                         <i class="bi bi-trash-fill"></i>
                       </button>
-                      <a href="https://wa.me/919440635761?text=Hi%20SaiVedha%20Silver%20Palace%2C%20I%20am%20interested%20in%20inquiring%20about%20the%20${encodeURIComponent(item.title)}." 
+                      <a href="https://wa.me/919440635761?text=${encodeURIComponent(`Hi SaiVedha Silver Palace, I am interested in inquiring about the ${item.title}. Reference Image: ${item.img.startsWith('http') ? item.img : `${window.location.origin}/${item.img}`}`)}" 
                          target="_blank" class="btn btn-premium btn-premium-primary flex-grow-1 d-flex align-items-center justify-content-center gap-2" style="font-size: 0.85rem; padding: 8px;">
                         <i class="bi bi-whatsapp"></i> Inquire
                       </a>

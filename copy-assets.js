@@ -31,6 +31,14 @@ try {
   } else {
     console.warn('Warning: Source assets/images folder not found');
   }
+
+  // Copy script.js to dist/script.js
+  const srcScript = path.join(__dirname, 'script.js');
+  const destScript = path.join(__dirname, 'dist', 'script.js');
+  if (fs.existsSync(srcScript)) {
+    fs.copyFileSync(srcScript, destScript);
+    console.log('Successfully copied script.js to dist/script.js');
+  }
 } catch (err) {
   console.error('Error copying assets:', err);
 }

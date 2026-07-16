@@ -341,7 +341,10 @@
         });
         html += '</div>';
         
-        const cartSummaryMsg = cartItems.map(item => `• ${item.title}`).join('%0A');
+        const cartSummaryMsg = cartItems.map(item => {
+          const imgUrl = item.img.startsWith('http') ? item.img : `${window.location.origin}/${item.img}`;
+          return `• ${item.title} (${imgUrl})`;
+        }).join('%0A');
         
         html += `
           <div class="pt-2">
