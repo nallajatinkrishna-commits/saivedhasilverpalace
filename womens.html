@@ -118,96 +118,231 @@
       </div>
     </div>
   </nav>
-<!-- --- 1. Luxury Hero Section --- -->
-  <header class="hero-luxury" id="home">
-    <!-- Floating Silver Ornaments background -->
-    <svg class="floating-ornament ornament-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50 0 L65 35 L100 50 L65 65 L50 100 L35 65 L0 50 L35 35 Z" fill="#C0C0C0" />
-    </svg>
-    <svg class="floating-ornament ornament-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="40" stroke="#C0C0C0" stroke-width="2" fill="none" />
-      <path d="M50 10 L50 90 M10 50 L90 50" stroke="#C0C0C0" stroke-width="2" />
-    </svg>
-    <svg class="floating-ornament ornament-3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <polygon points="50,10 90,90 10,90" stroke="#C0C0C0" stroke-width="2" fill="none" />
-    </svg>
 
-    <div class="container">
-      <div class="row justify-content-center text-center">
-        <div class="col-lg-10">
-          <div class="hero-content-box">
-            <span class="hero-subtitle mb-2 d-block">Pure Silver Legacy Since 2020</span>
-            <h1 class="hero-title">Timeless Silver Heritage,<br>Crafted for Generations</h1>
-            <p class="hero-description">
-              Discover authentic handcrafted silver articles, elegant home décor, temple collections, and premium silver craftsmanship. Every piece represents pure silver certified quality.
-            </p>
-            <div class="d-flex flex-wrap justify-content-center gap-3">
-              <a href="articles.html" class="btn btn-premium btn-premium-primary">Explore Collection</a>
-              <a href="articles.html" class="btn btn-premium btn-premium-outline">Shop Now</a>
-              <a href="contact.html" class="btn btn-premium btn-premium-outline">Visit Showroom</a>
-            </div>
-          </div>
-        </div>
-      </div>
+  <section class="py-5 bg-dark text-white text-center position-relative overflow-hidden" style="border-bottom: 1px solid var(--accent-color);">
+    <div class="container py-4 position-relative z-1">
+      <span class="section-tagline" style="color: var(--primary-color);">Elegant Silver Adornments</span>
+      <h1 class="display-4 fw-bold mb-3" style="font-family: var(--font-headings); font-weight: 800; letter-spacing: 2px;">Women's Special Silver Collection</h1>
+      <p class="lead text-white-50 mx-auto mb-4" style="max-width: 600px; font-size: 1rem;">Exquisite pure silver anklets, premium ankle straps, and handcrafted toe rings.</p>
     </div>
-  </header>
-
-  <!-- --- 3. Featured Categories --- -->
-  <section class="py-5" id="categories-section" style="background-color: #FAFAFA;">
+  </section>
+<section class="py-5" id="womens-collection">
     <div class="container py-4">
       <div class="text-center">
-        <span class="section-tagline">Curated Showcase</span>
-        <h2 class="section-title-luxury">Featured Categories</h2>
+        <span class="section-tagline">Graceful Elegance</span>
+        <h2 class="section-title-luxury">Women's Silver Collection</h2>
+        <p class="text-muted mx-auto" style="max-width: 600px;">Exquisite pure silver ankle straps and toe rings (Bichiyas) crafted to symbolize heritage and beauty.</p>
       </div>
-      
-      <div class="row g-4 justify-content-center">
-        <!-- Silver & Antique Articles -->
-        <div class="col-lg-3 col-md-6">
-          <div class="category-card">
-            <div class="category-icon-wrapper">
-              <i class="fa-solid fa-crown"></i>
+
+      <div class="row g-4 mt-2 justify-content-center">
+        <!-- Anklet 1 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="antique-card">
+            <div class="antique-img-container">
+              <img src="assets/images/silver_ankle_strap_1.png" alt="Silver Ankle Strap" class="antique-img">
             </div>
-            <h3 class="category-title">Silver & Antique Articles</h3>
-            <p class="category-description">Ornate heritage artifacts, vintage animal figurines, and classic royal tableware.</p>
-            <a href="articles.html" class="category-link">Explore <i class="bi bi-arrow-right"></i></a>
+            <div class="antique-card-body">
+              <h3 class="antique-title" style="font-size: 1.15rem;">Royal Ghungroo Ankle Strap</h3>
+              <p class="antique-description text-muted" style="font-size: 0.8rem;">Heavy bridal silver ankle straps with sweet chiming ghungroos and traditional clasps. 100% pure silver, no gold coating.</p>
+              <div class="antique-price-row">
+                <span class="antique-price" style="font-size: 1.2rem;">₹12,500</span>
+                <div class="antique-actions">
+                  <button class="btn-action-round btn-add-wishlist" data-product="Royal Ghungroo Ankle Strap" title="Wishlist"><i class="bi bi-heart"></i></button>
+                  <button class="btn-action-round btn-add-cart" data-product="Royal Ghungroo Ankle Strap" title="Add"><i class="bi bi-bag"></i></button>
+                  <button class="btn-action-text btn-quick-view ms-1" 
+                          data-bs-toggle="modal" 
+                          data-bs-target="#quickViewModal"
+                          data-bs-title="Royal Ghungroo Ankle Strap"
+                          data-bs-price="₹12,500"
+                          data-bs-img="assets/images/silver_ankle_strap_1.png"
+                          data-bs-desc="Traditional hand-assembled pure silver ankle strap."
+                          data-bs-detail="Weighs approximately 180 grams. Made of pure 92.5 hallmarked sterling silver, features custom locking clasp and sturdy silver rings connection. 100% plain silver with no gold coating.">
+                    Quick View
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <!-- Pooja Collection -->
-        <div class="col-lg-3 col-md-6">
-          <div class="category-card">
-            <div class="category-icon-wrapper">
-              <i class="fa-solid fa-fire-burner"></i>
+
+        <!-- Anklet 2 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="antique-card">
+            <div class="antique-img-container">
+              <img src="assets/images/silver_ankle_strap_2.png" alt="Silver Ankle Strap Modern" class="antique-img">
             </div>
-            <h3 class="category-title">Pooja Collection</h3>
-            <p class="category-description">Pure silver lamps, diyas, pooja plates, and idols for spiritual serenity.</p>
-            <a href="articles.html" class="category-link">Explore <i class="bi bi-arrow-right"></i></a>
+            <div class="antique-card-body">
+              <h3 class="antique-title" style="font-size: 1.15rem;">Heritage Carved Ankle Strap</h3>
+              <p class="antique-description text-muted" style="font-size: 0.8rem;">A sleek, semi-oxidized silver ankle strap with detailed heritage motifs. Combines retro charm with premium design. Plain silver only.</p>
+              <div class="antique-price-row">
+                <span class="antique-price" style="font-size: 1.2rem;">₹7,800</span>
+                <div class="antique-actions">
+                  <button class="btn-action-round btn-add-wishlist" data-product="Heritage Carved Ankle Strap" title="Wishlist"><i class="bi bi-heart"></i></button>
+                  <button class="btn-action-round btn-add-cart" data-product="Heritage Carved Ankle Strap" title="Add"><i class="bi bi-bag"></i></button>
+                  <button class="btn-action-text btn-quick-view ms-1" 
+                          data-bs-toggle="modal" 
+                          data-bs-target="#quickViewModal"
+                          data-bs-title="Heritage Carved Ankle Strap"
+                          data-bs-price="₹7,800"
+                          data-bs-img="assets/images/silver_ankle_strap_2.png"
+                          data-bs-desc="Sleek tribal-influenced silver ankle strap pair."
+                          data-bs-detail="A lighter, contemporary piece weighing 95 grams. Crafted with high quality plain silver and delicate carvings that match both ethnic and fusion wear. Absolutely no gold coating.">
+                    Quick View
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <!-- Women's Collection -->
-        <div class="col-lg-3 col-md-6">
-          <div class="category-card">
-            <div class="category-icon-wrapper">
-              <i class="fa-solid fa-venus"></i>
+
+        <!-- Toe Rings -->
+        <div class="col-lg-4 col-md-6">
+          <div class="antique-card">
+            <div class="antique-img-container">
+              <img src="assets/images/plain_silver_ring.png" alt="Silver Toe Rings Bichiya" class="antique-img">
             </div>
-            <h3 class="category-title">Women's Collection</h3>
-            <p class="category-description">Pure silver ankle straps and toe rings (bichiyas) of unmatched style.</p>
-            <a href="womens.html" class="category-link">Explore <i class="bi bi-arrow-right"></i></a>
+            <div class="antique-card-body">
+              <h3 class="antique-title" style="font-size: 1.15rem;">Traditional Silver Bichiya Pair</h3>
+              <p class="antique-description text-muted" style="font-size: 0.8rem;">Adjustable dual-ring toe ring (bichiya) set featuring floral motifs and a bright silver finish. An essential bride ornament.</p>
+              <div class="antique-price-row">
+                <span class="antique-price" style="font-size: 1.2rem;">₹2,400</span>
+                <div class="antique-actions">
+                  <button class="btn-action-round btn-add-wishlist" data-product="Traditional Silver Bichiya Pair" title="Wishlist"><i class="bi bi-heart"></i></button>
+                  <button class="btn-action-round btn-add-cart" data-product="Traditional Silver Bichiya Pair" title="Add"><i class="bi bi-bag"></i></button>
+                  <button class="btn-action-text btn-quick-view ms-1" 
+                          data-bs-toggle="modal" 
+                          data-bs-target="#quickViewModal"
+                          data-bs-title="Traditional Silver Bichiya Pair"
+                          data-bs-price="₹2,400"
+                          data-bs-img="assets/images/plain_silver_ring.png"
+                          data-bs-desc="Adjustable floral patterns toe rings."
+                          data-bs-detail="Premium 99% pure silver toe rings designed for regular wear. Hand-engraved using timeless die patterns, nickel-free and skin friendly.">
+                    Quick View
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <!-- Men's Collection -->
-        <div class="col-lg-3 col-md-6">
-          <div class="category-card">
-            <div class="category-icon-wrapper">
-              <i class="fa-solid fa-mars"></i>
+
+        <!-- Purse -->
+        <div class="col-lg-4 col-md-6">
+          <div class="antique-card">
+            <div class="antique-img-container">
+              <!-- Carousel -->
+              <div id="purseCarousel" class="carousel slide position-absolute top-0 start-0 w-100 h-100" data-bs-ride="false">
+                <div class="carousel-inner h-100">
+                  <div class="carousel-item active h-100">
+                    <img src="assets/images/silver_purse_slide1.png" alt="Royal Nakshi Bridal Gilt Purse Front" class="d-block w-100 antique-img">
+                  </div>
+                  <div class="carousel-item h-100">
+                    <img src="assets/images/silver_purse_slide2.jpg" alt="Royal Nakshi Bridal Gilt Purse Side" class="d-block w-100 antique-img">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#purseCarousel" data-bs-slide="prev" style="width: 32px; height: 32px; background: rgba(255,255,255,0.85); border-radius: 50%; top: 50%; transform: translateY(-50%); left: 8px; border: none; padding: 0; display: flex; align-items: center; justify-content: center; z-index: 10;">
+                  <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(1); width: 14px; height: 14px;"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#purseCarousel" data-bs-slide="next" style="width: 32px; height: 32px; background: rgba(255,255,255,0.85); border-radius: 50%; top: 50%; transform: translateY(-50%); right: 8px; border: none; padding: 0; display: flex; align-items: center; justify-content: center; z-index: 10;">
+                  <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(1); width: 14px; height: 14px;"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
             </div>
-            <h3 class="category-title">Men's Collection</h3>
-            <p class="category-description">Sleek silver chains, bracelets, rings, and kadas representing confidence.</p>
-            <a href="mens.html" class="category-link">Explore <i class="bi bi-arrow-right"></i></a>
+            <div class="antique-card-body">
+              <h3 class="antique-title" style="font-size: 1.15rem;">Royal Nakshi Gilt Purse</h3>
+              <p class="antique-description text-muted" style="font-size: 0.8rem;">An ornate pure silver bridal clutch, hand-gilded in 24K gold with intricate Nakshi carvings and premium settings.</p>
+              <div class="antique-price-row">
+                <span class="antique-price" style="font-size: 1.2rem;">₹1,85,000</span>
+                <div class="antique-actions">
+                  <button class="btn-action-round btn-add-wishlist" data-product="Royal Nakshi Gilt Purse" title="Wishlist"><i class="bi bi-heart"></i></button>
+                  <button class="btn-action-round btn-add-cart" data-product="Royal Nakshi Gilt Purse" title="Add"><i class="bi bi-bag"></i></button>
+                  <button class="btn-action-text btn-quick-view ms-1" 
+                          data-bs-toggle="modal" 
+                          data-bs-target="#quickViewModal"
+                          data-bs-title="Royal Nakshi Gilt Purse"
+                          data-bs-price="₹1,85,000"
+                          data-bs-img="assets/images/silver_purse_slide1.png"
+                          data-bs-desc="Luxury gold-gilded silver Nakshi bridal clutch."
+                          data-bs-detail="This heirloom-grade bridal bag is crafted from pure silver, heavily gilded in 24K gold. Features elaborate hand-chased Nakshi artwork showing mythological figures, framed with rubies and emeralds, and a matching gold-gilded handle. Weight: 740g.">
+                    Quick View
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5: Premium Floral Nakshi Round Silver Purse -->
+        <div class="col-lg-4 col-md-6">
+          <div class="antique-card">
+            <div class="position-relative">
+              <div class="antique-img-container">
+                <img src="assets/images/silver_round_purse.jpg" alt="Premium Floral Nakshi Round Silver Purse" class="d-block w-100 antique-img">
+              </div>
+              <span class="heritage-badge badge-limited">Premium</span>
+            </div>
+            <div class="antique-card-body">
+              <h3 class="antique-title" style="font-size: 1.15rem;">Premium Floral Nakshi Round Silver Purse</h3>
+              <p class="antique-description text-muted">A luxurious round bridal clutch handcrafted in pure silver with fine floral Nakshi carvings and a sleek gold-tone ring handle.</p>
+              <div class="antique-price-row">
+                <span class="antique-price" style="font-size: 1.2rem;">₹1,15,000</span>
+                <div class="antique-actions">
+                  <button class="btn-action-round btn-add-wishlist" data-product="Premium Floral Nakshi Round Silver Purse" title="Wishlist"><i class="bi bi-heart"></i></button>
+                  <button class="btn-action-round btn-add-cart" data-product="Premium Floral Nakshi Round Silver Purse" title="Add"><i class="bi bi-bag"></i></button>
+                  <button class="btn-action-text btn-quick-view ms-1" 
+                          data-bs-toggle="modal" 
+                          data-bs-target="#quickViewModal"
+                          data-bs-title="Premium Floral Nakshi Round Silver Purse"
+                          data-bs-price="₹1,15,000"
+                          data-bs-img="assets/images/silver_round_purse.jpg"
+                          data-bs-desc="A premium round bridal clutch handcrafted in pure silver."
+                          data-bs-detail="This modern round bridal purse is handcrafted from premium certified pure silver. It features detailed hand-carved floral Nakshi engravings on both sides, a checkered pattern running down the middle with a central rose motif, and a polished gold-tone circular ring handle. Perfect for weddings and festive occasions. Hallmarked pure silver. Weight: 520g.">
+                    Quick View
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6: Antique Nakshi Silver Bridal Clutch with Gemstones -->
+        <div class="col-lg-4 col-md-6">
+          <div class="antique-card">
+            <div class="position-relative">
+              <div class="antique-img-container">
+                <img src="assets/images/silver_gemstone_clutch.jpg" alt="Antique Nakshi Silver Bridal Clutch with Gemstones" class="d-block w-100 antique-img">
+              </div>
+              <span class="heritage-badge badge-limited">Premium</span>
+            </div>
+            <div class="antique-card-body">
+              <h3 class="antique-title" style="font-size: 1.15rem;">Antique Nakshi Silver Bridal Clutch with Gemstones</h3>
+              <p class="antique-description text-muted">A luxurious oval bridal clutch handcrafted in antique pure silver with leaf Nakshi engravings, top crystal clasp, and red gemstones.</p>
+              <div class="antique-price-row">
+                <span class="antique-price" style="font-size: 1.2rem;">₹1,45,000</span>
+                <div class="antique-actions">
+                  <button class="btn-action-round btn-add-wishlist" data-product="Antique Nakshi Silver Bridal Clutch with Gemstones" title="Wishlist"><i class="bi bi-heart"></i></button>
+                  <button class="btn-action-round btn-add-cart" data-product="Antique Nakshi Silver Bridal Clutch with Gemstones" title="Add"><i class="bi bi-bag"></i></button>
+                  <button class="btn-action-text btn-quick-view ms-1" 
+                          data-bs-toggle="modal" 
+                          data-bs-target="#quickViewModal"
+                          data-bs-title="Antique Nakshi Silver Bridal Clutch with Gemstones"
+                          data-bs-price="₹1,45,000"
+                          data-bs-img="assets/images/silver_gemstone_clutch.jpg"
+                          data-bs-desc="An antique pure silver bridal clutch with detailed leaf carvings and red drop gemstones."
+                          data-bs-detail="This magnificent oval bridal clutch is handcrafted from premium certified pure silver with an antique oxidized finish. It features detailed leaf and floral Nakshi carvings fanning out across both sides, contrasted against a textured dotted background. Complete with a polished gold-tone arched handle, a top gold-tone clasp set with a brilliant crystal, and two small red drop-shaped gemstones set in silver frames on both sides of the leaf patterns. Perfect for weddings and festive styling. Hallmarked pure silver. Weight: 680g.">
+                    Quick View
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- --- 7. Men's Silver Collection (10% Weight) --- -->
 <!-- --- 13. Footer Section --- -->
   <footer class="footer-luxury">
     <div class="container">
@@ -395,164 +530,6 @@
 
 
   
-
-  <!-- --- Pure Silver Price & Purity Calculator Widget --- -->
-  <section class="py-5" id="purity-calculator-section" style="background: linear-gradient(135deg, #050b14 0%, #0c1836 100%); border-top: 1.5px solid rgba(229,197,131,0.25); border-bottom: 1.5px solid rgba(229,197,131,0.25);">
-    <div class="container text-center text-white">
-      <span class="section-tagline" style="color: var(--primary-color); letter-spacing: 2px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Realtime Showroom Helper</span>
-      <h2 class="display-5 fw-bold mb-3 mt-1" style="font-family: Georgia, serif;">Silver Purity & Weight Calculator</h2>
-      <p class="text-white-50 mx-auto mb-5" style="max-width: 600px;">Check estimated showroom rates for customized weight measures in pure silver, sterling ornaments, and pooja utensils.</p>
-      
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-          <div class="p-4 rounded border text-start" style="background: rgba(16, 29, 66, 0.45); border-color: rgba(229,197,131,0.18); backdrop-filter: blur(8px);">
-            <div class="mb-3">
-              <label class="form-label text-muted small fw-bold">SELECT SILVER PURITY</label>
-              <select class="form-select" id="calcPurity" style="background: #050b14; color: #fff; border: 1px solid rgba(255,255,255,0.15);">
-                <option value="0.999" selected>99.9% Fine Pure Silver (BIS 999 Coin Quality)</option>
-                <option value="0.925">92.5% Sterling Silver (BIS 925 Luxury Articles)</option>
-                <option value="0.800">80.0% Purity Pooja Ware (BIS 800 Traditional Utensils)</option>
-              </select>
-            </div>
-            
-            <div class="mb-4">
-              <label class="form-label text-muted small fw-bold">ENTER WEIGHT IN GRAMS</label>
-              <div class="input-group mb-2">
-                <input type="number" step="0.1" class="form-control" id="calcWeight" value="10" min="0.1" style="background: #050b14; color: #fff; border: 1px solid rgba(255,255,255,0.15);">
-                <span class="input-group-text bg-black text-white border-secondary">g</span>
-              </div>
-              <input type="range" class="form-range" id="calcWeightRange" min="1" max="1000" value="10" style="accent-color: var(--primary-color);">
-            </div>
-            
-            <div class="p-3 bg-black rounded border border-secondary text-center">
-              <div class="small text-muted mb-1" style="letter-spacing: 1px;">ESTIMATED NET RATE</div>
-              <div class="fs-2 fw-bold text-success" id="calcPriceLabel">₹2,350.00</div>
-              <div class="small text-white-50 mt-1" id="calcActiveRateLabel">Active Rate: ₹235.00 / gram</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- --- Digital Hallmark Purity Certificate Verifier --- -->
-  <section class="py-5 bg-light text-dark text-center" id="verify-certification-section">
-    <div class="container">
-      <span class="section-tagline" style="color: #b8972c; letter-spacing: 2px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">BIS Quality Assurance</span>
-      <h2 class="display-5 fw-bold mb-3 mt-1" style="font-family: Georgia, serif;">Verify Pure Silver Certificate</h2>
-      <p class="text-muted mx-auto mb-4" style="max-width: 650px;">Verify BIS hallmarking certifications of items purchased at our Governorpet showroom. Input the code printed on the certificate card.</p>
-      
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-          <div class="p-4 rounded border text-start bg-white" style="box-shadow: 0 6px 20px rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.08);">
-            <div class="mb-3">
-              <label class="form-label text-muted small fw-bold">CERTIFICATE ID CODE</label>
-              <div class="input-group mb-2">
-                <input type="text" class="form-control" id="certCodeVal" placeholder="e.g. SV-999-FINE" style="text-transform: uppercase;">
-                <button class="btn btn-gold text-dark fw-bold px-4" id="btnVerifyCert">Verify Certificate</button>
-              </div>
-              <div class="form-text text-muted" style="font-size: 0.75rem;">Sample testing codes: <code class="text-danger">SV-999-FINE</code> or <code class="text-danger">SV-925-STERLING</code>.</div>
-            </div>
-            
-            <div class="mt-4 p-3 bg-light rounded d-none" id="certResultBox">
-              <h6 class="fw-bold text-success mb-2"><i class="bi bi-patch-check-fill me-1"></i> VERIFIED BIS HALLMARKED</h6>
-              <table class="table table-sm table-borderless mb-0 small">
-                <tr><td class="fw-bold text-muted" style="width: 140px;">Certificate Code:</td><td id="resCertCode">--</td></tr>
-                <tr><td class="fw-bold text-muted">Silver Purity:</td><td id="resCertPurity">--</td></tr>
-                <tr><td class="fw-bold text-muted">Item Category:</td><td id="resCertCategory">--</td></tr>
-                <tr><td class="fw-bold text-muted">Hallmarking Badge:</td><td id="resCertBadge">--</td></tr>
-                <tr><td class="fw-bold text-muted">Date of Verification:</td><td id="resCertDate">--</td></tr>
-              </table>
-            </div>
-            
-            <div class="alert alert-danger mt-3 d-none" id="certErrorAlert">
-              <i class="bi bi-exclamation-triangle-fill me-2"></i> Certificate code is invalid or not registered in BIS logs.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Calculator widgets
-      const calcPurity = document.getElementById('calcPurity');
-      const calcWeight = document.getElementById('calcWeight');
-      const calcWeightRange = document.getElementById('calcWeightRange');
-      const calcPriceLabel = document.getElementById('calcPriceLabel');
-      const calcActiveRateLabel = document.getElementById('calcActiveRateLabel');
-
-      let currentGramRate = 235.00;
-
-      async function fetchRateForCalculator() {
-        try {
-          const res = await fetch('/api/rate');
-          const data = await res.json();
-          currentGramRate = data.rate;
-          updateCalculatedEstimate();
-        } catch(e) {}
-      }
-
-      function updateCalculatedEstimate() {
-        const purityFactor = parseFloat(calcPurity.value);
-        const weightGrams = parseFloat(calcWeight.value) || 0;
-        const finalPrice = currentGramRate * weightGrams * purityFactor;
-        
-        calcPriceLabel.textContent = '₹' + finalPrice.toLocaleString('en-IN', {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        });
-        calcActiveRateLabel.textContent = 'Active Rate: ₹' + currentGramRate.toFixed(2) + ' / gram';
-      }
-
-      calcWeight.addEventListener('input', (e) => {
-        calcWeightRange.value = e.target.value;
-        updateCalculatedEstimate();
-      });
-      calcWeightRange.addEventListener('input', (e) => {
-        calcWeight.value = e.target.value;
-        updateCalculatedEstimate();
-      });
-      calcPurity.addEventListener('change', updateCalculatedEstimate);
-      
-      fetchRateForCalculator();
-
-      // Certificate verification logic
-      const certInput = document.getElementById('certCodeVal');
-      const btnVerify = document.getElementById('btnVerifyCert');
-      const resultBox = document.getElementById('certResultBox');
-      const errorBox = document.getElementById('certErrorAlert');
-
-      btnVerify.addEventListener('click', async () => {
-        const code = certInput.value.trim();
-        if (!code) return;
-        
-        try {
-          const res = await fetch('/api/verify-certificate?code=' + encodeURIComponent(code));
-          const data = await res.json();
-          if (data.success) {
-            errorBox.classList.add('d-none');
-            resultBox.classList.remove('d-none');
-            
-            document.getElementById('resCertCode').textContent = data.certificate.certificateNumber;
-            document.getElementById('resCertPurity').textContent = data.certificate.purity;
-            document.getElementById('resCertCategory').textContent = data.certificate.itemCategory;
-            document.getElementById('resCertBadge').textContent = data.certificate.hallmarkBadge;
-            document.getElementById('resCertDate').textContent = data.certificate.issueDate;
-          } else {
-            resultBox.classList.add('d-none');
-            errorBox.classList.remove('d-none');
-          }
-        } catch(err) {
-          resultBox.classList.add('d-none');
-          errorBox.classList.remove('d-none');
-        }
-      });
-    });
-  </script>
-
 
   <!-- Showroom dynamic parameters CMS loader -->
   <script>
