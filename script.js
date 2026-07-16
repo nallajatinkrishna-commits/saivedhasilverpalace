@@ -1,9 +1,15 @@
+window.onerror = function (message, url, line, col, error) {
+  alert("CRITICAL SCRIPT ERROR:\n" + message + "\nLine: " + line + ", Col: " + col + "\nStack:\n" + (error ? error.stack : 'No stack'));
+  return false;
+};
+
 /* 
    SaiVedha - Luxury Silver Showroom
    Interactive Features & Animations
 */
 
 document.addEventListener('DOMContentLoaded', () => {
+  alert("SaiVedha script loaded successfully!");
   initNavbarScroll();
   initTestimonialsSlider();
   initLightbox();
@@ -755,7 +761,7 @@ function initCustomerAuth() {
   
   // Initialize Bootstrap Carousel instance
   const authCarouselEl = document.getElementById('authCarousel');
-  const authCarousel = authCarouselEl ? new bootstrap.Carousel(authCarouselEl) : null;
+  const authCarousel = (authCarouselEl && typeof bootstrap !== 'undefined') ? new bootstrap.Carousel(authCarouselEl) : null;
   
   // Toggle between login and register forms
   if (switchToSignUp && switchToSignIn && authCarousel) {
@@ -893,11 +899,13 @@ function initCustomerAuth() {
 
   // Dynamic Product Catalog Loader
   async function initDynamicCatalog() {
+    alert("initDynamicCatalog: entered!");
     const antiqueGrid = document.getElementById('antique-articles-grid');
     const silverGrid = document.getElementById('silver-articles-grid');
     const mensGrid = document.getElementById('mens-articles-grid');
     const womensGrid = document.getElementById('womens-articles-grid');
     
+    alert("initDynamicCatalog: grids found -> antique: " + !!antiqueGrid + ", silver: " + !!silverGrid);
     if (!antiqueGrid && !silverGrid && !mensGrid && !womensGrid) return;
     
     let products = [];
@@ -910,8 +918,9 @@ function initCustomerAuth() {
       if (!products || products.length === 0) {
         throw new Error('Empty product catalog from server.');
       }
+      alert("initDynamicCatalog: fetched from server successfully! Count: " + products.length);
     } catch (err) {
-      console.warn('API fetch failed, loading default fallback products catalog...', err);
+      alert("initDynamicCatalog: fallback triggered! Error: " + err.message);
       products = [
         {
           id: "ant-1",
@@ -1283,6 +1292,7 @@ function initCustomerAuth() {
         renderGrid(womensGrid, products.filter(p => p.category === 'womens'));
       }
       
+      alert("initDynamicCatalog: rendering complete! Items count: " + products.length);
   }
 
   initDynamicCatalog();

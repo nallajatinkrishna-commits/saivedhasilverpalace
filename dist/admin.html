@@ -3,168 +3,251 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard - SaiVedha Silver Palace</title>
-  <link rel="icon" type="image/x-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚙️%3C/text%3E%3C/svg%3E">
-  
-  <!-- Bootstrap 5 CSS -->
+  <title>SaiVedha - Admin Login</title>
+  <link rel="icon" type="image/x-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔒%3C/text%3E%3C/svg%3E">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Outfit:wght@300;400;500;700&display=swap');
+
     :root {
-      --bg-color: #0c0d0e;
-      --card-bg: #141517;
-      --primary-color: #d4af37; /* Gold */
-      --accent-color: #c0c0c0; /* Silver */
-      --text-light: #f8f9fa;
-      --text-muted: #a0a5aa;
+      --bg-color: #050b14;
+      --card-bg: rgba(16, 29, 66, 0.65);
+      --primary-color: #e5c583; /* Champagne Gold */
+      --accent-color: #e0e1dd; /* Soft Silver */
+      --text-light: #ffffff;
+      --text-muted: #8a99ad;
     }
-    
+
     body {
       background-color: var(--bg-color);
+      background-image: radial-gradient(circle at 50% 10%, rgba(229, 197, 131, 0.08) 0%, transparent 60%);
       color: var(--text-light);
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-family: 'Outfit', system-ui, -apple-system, sans-serif;
       min-height: 100vh;
     }
-    
+
     .navbar-admin {
-      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-      background: var(--card-bg) !important;
+      border-bottom: 1px solid rgba(229, 197, 131, 0.2);
+      background: rgba(5, 11, 20, 0.85) !important;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
-    
+
     .logo-text {
-      color: var(--text-light);
+      font-family: 'Cinzel', serif;
+      color: var(--text-light) !important;
       font-weight: 800;
       letter-spacing: 2px;
     }
-    
+
     .logo-subtext {
       color: var(--primary-color);
       font-size: 0.65rem;
       letter-spacing: 3px;
       font-weight: 700;
     }
-    
+
     .admin-card {
       background: var(--card-bg);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-      transition: border-color 0.3s;
+      border: 1px solid rgba(229, 197, 131, 0.15);
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
-    
+
     .admin-card:hover {
-      border-color: rgba(212, 175, 55, 0.3);
+      border-color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 45px rgba(229, 197, 131, 0.1);
     }
-    
+
     .btn-gold {
-      background: linear-gradient(135deg, #d4af37 0%, #b8972c 100%);
-      color: #000;
+      background: linear-gradient(135deg, #e5c583 0%, #b8972c 100%);
+      color: #050b14 !important;
       font-weight: 700;
       border: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: all 0.3s;
+      border-radius: 8px;
     }
-    
+
     .btn-gold:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-      color: #000;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(229, 197, 131, 0.45);
     }
-    
+
+    .btn-outline-gold {
+      background: transparent;
+      color: var(--primary-color) !important;
+      border: 1.5px solid var(--primary-color);
+      font-weight: 600;
+      transition: all 0.3s;
+      border-radius: 8px;
+    }
+
+    .btn-outline-gold:hover {
+      background: var(--primary-color);
+      color: #050b14 !important;
+      box-shadow: 0 6px 15px rgba(229, 197, 131, 0.25);
+    }
+
     .form-control-admin {
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       color: var(--text-light);
+      border-radius: 8px;
+      padding: 10px 14px;
+      transition: all 0.3s;
     }
-    
+
     .form-control-admin:focus {
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.6);
       border-color: var(--primary-color);
       color: var(--text-light);
-      box-shadow: none;
+      box-shadow: 0 0 0 3px rgba(229, 197, 131, 0.2);
     }
-    
+
     /* Login Page Styling */
+
     .login-container {
-      max-width: 420px;
-      margin-top: 10vh;
+      max-width: 440px;
+      margin-top: 12vh;
+      animation: fadeInUp 0.8s ease-out;
     }
-    
+
     /* Pulsing Active Indicator */
+
     .active-badge {
       font-size: 0.75rem;
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 50px;
-      background: rgba(40, 167, 69, 0.15);
-      color: #28a745;
-      border: 1px solid rgba(40, 167, 69, 0.3);
+      background: rgba(40, 167, 69, 0.12);
+      color: #2ec4b6;
+      border: 1px solid rgba(40, 167, 69, 0.25);
     }
-    
+
     /* Table Styling */
+
     .table-luxury {
       color: var(--text-light);
       border-collapse: separate;
-      border-spacing: 0 8px;
+      border-spacing: 0 10px;
     }
-    
+
     .table-luxury tr {
       background: rgba(255, 255, 255, 0.02);
-      border-radius: 8px;
+      border-radius: 10px;
+      transition: transform 0.2s, background-color 0.2s;
     }
-    
+
     .table-luxury th {
       border: none;
       color: var(--text-muted);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 12px;
+      letter-spacing: 1.5px;
+      padding: 14px 12px;
     }
-    
+
     .table-luxury td {
       border: none;
       padding: 16px 12px;
       vertical-align: middle;
     }
-    
-    .table-luxury tbody tr {
-      transition: background 0.2s;
-    }
-    
+
     .table-luxury tbody tr:hover {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.04);
+      transform: scale(1.003);
+    }
+
+    /* Tabs Styling */
+
+    .dashboard-tabs {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 25px;
+    }
+
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      text-decoration: none;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-btn:hover {
+      background: rgba(229, 197, 131, 0.1);
+      color: var(--primary-color);
+      border-color: rgba(229, 197, 131, 0.3);
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, #e5c583 0%, #b8972c 100%);
+      color: #050b14 !important;
+      border-color: var(--primary-color);
+      box-shadow: 0 4px 15px rgba(229, 197, 131, 0.3);
+    }
+
+    /* Custom Scrollbars */
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.02);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(229, 197, 131, 0.25);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(229, 197, 131, 0.45);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeInUp 0.6s ease-out;
     }
   </style>
+
 </head>
 <body>
-
-  <!-- Navigation Bar (Visible only after authentication) -->
-  <nav class="navbar navbar-expand navbar-dark navbar-admin py-3 d-none" id="adminNav">
-    <div class="container">
-      <div class="navbar-brand d-flex align-items-center">
-        <div class="d-flex flex-column">
-          <span class="logo-text">SAIVEDHA</span>
-          <span class="logo-subtext">Admin Control</span>
-        </div>
-      </div>
-      
-      <div class="ms-auto">
-        <button class="btn btn-sm btn-outline-danger" id="logoutBtn">
-          <i class="bi bi-box-arrow-right me-1"></i> Log Out
-        </button>
-      </div>
-    </div>
-  </nav>
-
   <div class="container py-5">
-    <!-- --- Admin Login Section --- -->
     <div id="loginSection" class="mx-auto login-container">
       <div class="admin-card p-5">
         <div class="text-center mb-4">
           <span class="fs-1">🔒</span>
           <h2 class="fw-bold mt-2" style="font-family: Georgia, serif;">Showroom Portal</h2>
-          <p class="text-muted" style="font-size: 0.85rem;">Authenticate to manage rates and reviews</p>
+          <p class="text-muted" style="font-size: 0.85rem;">Authenticate to manage rates and logs</p>
         </div>
         
         <form id="loginForm">
@@ -182,233 +265,38 @@
         </form>
       </div>
     </div>
-
-    <!-- --- Main Control Panel (Visible only after auth) --- -->
-    <div id="dashboardSection" class="d-none">
-      <div class="row g-4">
-        <!-- Rate Control Panel -->
-        <div class="col-lg-4">
-          <div class="admin-card p-4 h-100">
-            <h4 class="mb-3 fw-bold" style="color: var(--primary-color);">Silver Spot Price Controller</h4>
-            <p class="text-muted small">Choose between automated market pricing feeds or lock in a custom price value for the showroom.</p>
-            
-            <hr class="border-secondary opacity-25">
-            
-            <form id="rateForm">
-              <div class="mb-3">
-                <label class="form-label text-muted small fw-bold d-block">RATE MODE</label>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="rateMode" id="modeAuto" value="auto" checked>
-                  <label class="form-check-label" for="modeAuto">Auto (Live API Sync)</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="rateMode" id="modeManual" value="manual">
-                  <label class="form-check-label" for="modeManual">Manual Locked Rate</label>
-                </div>
-              </div>
-              
-              <div class="mb-4 d-none" id="customRateGroup">
-                <label class="form-label text-muted small fw-bold">CUSTOM SILVER RATE (₹ / gram)</label>
-                <div class="input-group">
-                  <span class="input-group-text bg-black border-secondary text-white">₹</span>
-                  <input type="number" step="0.01" class="form-control form-control-admin" id="customRateVal" placeholder="235.00">
-                </div>
-              </div>
-              
-              <button type="submit" class="btn btn-gold w-100 py-2">
-                <i class="bi bi-save me-1"></i> Save Rate Policy
-              </button>
-            </form>
-            
-            <div class="mt-4 p-3 bg-black rounded border border-secondary text-center">
-              <div class="small text-muted mb-1">Active Rate Displayed Online</div>
-              <div class="fs-3 fw-bold text-success" id="activeRateLabel">₹ --.-- / g</div>
-              <div class="badge mt-2" id="activeModeLabel" style="background: rgba(255,255,255,0.05);">Mode: --</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Inquiries Log & Login History Logs -->
-        <div class="col-lg-8">
-          <!-- Customer Inquiries Card -->
-          <div class="admin-card p-4 mb-4">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h4 class="fw-bold mb-0" style="color: var(--accent-color);">Customer Inquiries Log</h4>
-              <span class="badge bg-secondary" id="inquiryCount">0 Messages</span>
-            </div>
-            
-            <div class="table-responsive" style="max-height: 250px;">
-              <table class="table table-luxury align-middle" id="inquiriesTable">
-                <thead>
-                  <tr>
-                    <th>Date / Time</th>
-                    <th>Customer</th>
-                    <th>Subject</th>
-                    <th>Message Details</th>
-                  </tr>
-                </thead>
-                <tbody id="inquiriesBody">
-                  <!-- Dynamic rows -->
-                </tbody>
-              </table>
-              
-              <div class="text-center py-4 d-none" id="emptyInquiries">
-                <i class="bi bi-envelope-open text-muted fs-1 mb-2 d-block"></i>
-                <div class="text-muted">No inquiries received yet.</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Customer Login History Card -->
-          <div class="admin-card p-4 mb-4">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h4 class="fw-bold mb-0" style="color: var(--accent-color);"><i class="bi bi-people-fill me-1"></i> Customer Login History</h4>
-              <span class="badge bg-secondary" id="customerLogCount">0 Logins</span>
-            </div>
-            
-            <div class="table-responsive" style="max-height: 200px;">
-              <table class="table table-luxury align-middle" id="customerLogsTable">
-                <thead>
-                  <tr>
-                    <th>Date / Time</th>
-                    <th>Customer Name</th>
-                    <th>Email Address</th>
-                    <th>IP / Source Address</th>
-                  </tr>
-                </thead>
-                <tbody id="customerLogsBody">
-                  <!-- Dynamic rows -->
-                </tbody>
-              </table>
-              
-              <div class="text-center py-4 d-none" id="emptyCustomerLogs">
-                <i class="bi bi-person-x text-muted fs-1 mb-2 d-block"></i>
-                <div class="text-muted">No customer logins recorded yet.</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Access Audit Card -->
-          <div class="admin-card p-4">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h4 class="fw-bold mb-0" style="color: var(--primary-color);"><i class="bi bi-clock-history me-1"></i> Admin Login Audit Trail</h4>
-              <span class="badge bg-secondary" id="loginLogCount">0 Sessions</span>
-            </div>
-            
-            <div class="table-responsive" style="max-height: 200px;">
-              <table class="table table-luxury align-middle" id="loginLogsTable">
-                <thead>
-                  <tr>
-                    <th>Date / Time</th>
-                    <th>User Profile</th>
-                    <th>IP / Source Address</th>
-                  </tr>
-                </thead>
-                <tbody id="loginLogsBody">
-                  <!-- Dynamic rows -->
-                </tbody>
-              </table>
-              
-              <div class="text-center py-4 d-none" id="emptyLoginLogs">
-                <i class="bi bi-shield-exclamation text-muted fs-1 mb-2 d-block"></i>
-                <div class="text-muted">No login history recorded.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
-  <!-- Toast Notification System -->
   <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
     <div id="adminToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="d-flex">
-        <div class="toast-body" id="toastText">
-          Settings updated successfully!
-        </div>
+        <div class="toast-body" id="toastText"></div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
     </div>
   </div>
 
-  <!-- Bootstrap 5 Bundle JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Control panel script -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const loginSection = document.getElementById('loginSection');
-      const dashboardSection = document.getElementById('dashboardSection');
-      const adminNav = document.getElementById('adminNav');
-      
-      const loginForm = document.getElementById('loginForm');
-      const rateForm = document.getElementById('rateForm');
-      const logoutBtn = document.getElementById('logoutBtn');
-      
-      const modeAuto = document.getElementById('modeAuto');
-      const modeManual = document.getElementById('modeManual');
-      const customRateGroup = document.getElementById('customRateGroup');
-      const customRateVal = document.getElementById('customRateVal');
-      
-      const activeRateLabel = document.getElementById('activeRateLabel');
-      const activeModeLabel = document.getElementById('activeModeLabel');
-      
-      const inquiriesBody = document.getElementById('inquiriesBody');
-      const emptyInquiries = document.getElementById('emptyInquiries');
-      const inquiryCount = document.getElementById('inquiryCount');
-      
-      const loginLogsBody = document.getElementById('loginLogsBody');
-      const emptyLoginLogs = document.getElementById('emptyLoginLogs');
-      const loginLogCount = document.getElementById('loginLogCount');
-      
-      const customerLogsBody = document.getElementById('customerLogsBody');
-      const emptyCustomerLogs = document.getElementById('emptyCustomerLogs');
-      const customerLogCount = document.getElementById('customerLogCount');
-      
+      if (localStorage.getItem('adminToken') === 'saivedha-session-token-9440635761') {
+        window.location.href = 'admin-price.html';
+        return;
+      }
+
       const adminToast = new bootstrap.Toast(document.getElementById('adminToast'));
       const toastText = document.getElementById('toastText');
 
       function showToast(text, isError = false) {
         toastText.textContent = text;
         const toastEl = document.getElementById('adminToast');
-        if (isError) {
-          toastEl.className = 'toast align-items-center text-white bg-danger border-0';
-        } else {
-          toastEl.className = 'toast align-items-center text-white bg-success border-0';
-        }
+        toastEl.className = isError 
+          ? 'toast align-items-center text-white bg-danger border-0' 
+          : 'toast align-items-center text-white bg-success border-0';
         adminToast.show();
       }
 
-      // Check current token
-      const sessionToken = sessionStorage.getItem('adminToken');
-      if (sessionToken === 'saivedha-session-token-9440635058') {
-        showDashboard();
-      }
-
-      function showDashboard() {
-        loginSection.classList.add('d-none');
-        dashboardSection.classList.remove('d-none');
-        adminNav.classList.remove('d-none');
-        loadRateSettings();
-        loadInquiries();
-        loadLoginLogs();
-        loadCustomerLoginLogs();
-      }
-
-      function hideDashboard() {
-        sessionStorage.removeItem('adminToken');
-        loginSection.classList.remove('d-none');
-        dashboardSection.classList.add('d-none');
-        adminNav.classList.add('d-none');
-      }
-
-      // Toggle Manual Input Visibility
-      modeAuto.addEventListener('change', () => customRateGroup.classList.add('d-none'));
-      modeManual.addEventListener('change', () => customRateGroup.classList.remove('d-none'));
-
-      // 1. Admin Login Submission
-      loginForm.addEventListener('submit', async (e) => {
+      document.getElementById('loginForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const username = document.getElementById('loginUser').value.trim();
         const password = document.getElementById('loginPass').value;
@@ -421,184 +309,14 @@
           });
           const data = await res.json();
           if (data.success) {
-            sessionStorage.setItem('adminToken', data.token);
-            showDashboard();
-            showToast('Welcome back, Royal Administrator!');
+            localStorage.setItem('adminToken', data.token);
+            window.location.href = 'admin-price.html';
           } else {
             showToast(data.error || 'Incorrect Credentials', true);
           }
         } catch (err) {
           showToast('Connection to server failed', true);
         }
-      });
-
-      // 2. Load Rate Settings
-      async function loadRateSettings() {
-        try {
-          const res = await fetch('/api/rate');
-          const data = await res.json();
-          
-          if (data.mode === 'auto') {
-            modeAuto.checked = true;
-            customRateGroup.classList.add('d-none');
-            activeRateLabel.textContent = 'Auto Spot Sync';
-            activeModeLabel.textContent = 'Mode: Auto Spot Price';
-          } else {
-            modeManual.checked = true;
-            customRateGroup.classList.remove('d-none');
-            customRateVal.value = data.customRate;
-            activeRateLabel.textContent = `₹${data.customRate.toFixed(2)} / g`;
-            activeModeLabel.textContent = 'Mode: Manual Locked';
-          }
-        } catch (err) {
-          console.error('Failed to load settings', err);
-        }
-      }
-
-      // 3. Save Rate Policy
-      rateForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const mode = modeAuto.checked ? 'auto' : 'manual';
-        const customRate = parseFloat(customRateVal.value);
-        
-        const token = sessionStorage.getItem('adminToken');
-        
-        try {
-          const res = await fetch('/api/rate', {
-            method: 'POST',
-            headers: { 
-              'Content-Type': 'application/json',
-              'Authorization': token
-            },
-            body: JSON.stringify({ mode, customRate })
-          });
-          const data = await res.json();
-          if (data.success) {
-            showToast('Rate Policy Updated Successfully!');
-            loadRateSettings();
-          } else {
-            showToast(data.error || 'Failed to update rates', true);
-          }
-        } catch (err) {
-          showToast('Connection to server failed', true);
-        }
-      });
-
-      // 4. Load Customer Inquiries Log
-      async function loadInquiries() {
-        const token = sessionStorage.getItem('adminToken');
-        try {
-          const res = await fetch('/api/inquiries', {
-            headers: { 'Authorization': token }
-          });
-          const data = await res.json();
-          
-          inquiryCount.textContent = `${data.length} Messages`;
-          
-          if (data.length === 0) {
-            inquiriesBody.innerHTML = '';
-            emptyInquiries.classList.remove('d-none');
-            return;
-          }
-          
-          emptyInquiries.classList.add('d-none');
-          let html = '';
-          data.forEach(inq => {
-            html += `
-              <tr>
-                <td style="font-size: 0.75rem; color: var(--text-muted); width: 140px;">${inq.date}</td>
-                <td>
-                  <div class="fw-bold">${inq.name}</div>
-                  <div style="font-size: 0.7rem; color: var(--primary-color);">${inq.email}</div>
-                </td>
-                <td style="font-size: 0.85rem; font-weight: 600; width: 160px;">${inq.subject}</td>
-                <td style="font-size: 0.85rem; color: var(--text-muted); max-width: 300px; word-wrap: break-word;">${inq.message}</td>
-              </tr>
-            `;
-          });
-          inquiriesBody.innerHTML = html;
-        } catch (err) {
-          console.error('Failed to load inquiries', err);
-        }
-      }
-
-      // 5. Load Login Audit Trail Logs
-      async function loadLoginLogs() {
-        const token = sessionStorage.getItem('adminToken');
-        try {
-          const res = await fetch('/api/logins', {
-            headers: { 'Authorization': token }
-          });
-          const data = await res.json();
-          
-          loginLogCount.textContent = `${data.length} Sessions`;
-          
-          if (data.length === 0) {
-            loginLogsBody.innerHTML = '';
-            emptyLoginLogs.classList.remove('d-none');
-            return;
-          }
-          
-          emptyLoginLogs.classList.add('d-none');
-          let html = '';
-          data.forEach(log => {
-            html += `
-              <tr>
-                <td style="font-size: 0.75rem; color: var(--text-muted); width: 180px;">${log.date}</td>
-                <td>
-                  <span class="badge bg-black border border-warning text-warning fw-bold py-1 px-2">
-                    <i class="bi bi-person-fill text-warning me-1"></i> ${log.username}
-                  </span>
-                </td>
-                <td style="font-family: monospace; font-size: 0.85rem; color: var(--text-light);">${log.ip}</td>
-              </tr>
-            `;
-          });
-          loginLogsBody.innerHTML = html;
-        } catch (err) {
-          console.error('Failed to load login audit logs:', err);
-        }
-      }
-
-      // 6. Load Customer Login History Logs
-      async function loadCustomerLoginLogs() {
-        const token = sessionStorage.getItem('adminToken');
-        try {
-          const res = await fetch('/api/admin/customer-logins', {
-            headers: { 'Authorization': token }
-          });
-          const data = await res.json();
-          
-          customerLogCount.textContent = `${data.length} Logins`;
-          
-          if (data.length === 0) {
-            customerLogsBody.innerHTML = '';
-            emptyCustomerLogs.classList.remove('d-none');
-            return;
-          }
-          
-          emptyCustomerLogs.classList.add('d-none');
-          let html = '';
-          data.forEach(log => {
-            html += `
-              <tr>
-                <td style="font-size: 0.75rem; color: var(--text-muted); width: 185px;">${log.date}</td>
-                <td><div class="fw-bold text-white">${log.name}</div></td>
-                <td><span style="font-size: 0.85rem; color: var(--primary-color);">${log.email}</span></td>
-                <td style="font-family: monospace; font-size: 0.85rem; color: var(--text-light);">${log.ip}</td>
-              </tr>
-            `;
-          });
-          customerLogsBody.innerHTML = html;
-        } catch (err) {
-          console.error('Failed to load customer access logs:', err);
-        }
-      }
-
-      // Logout handler
-      logoutBtn.addEventListener('click', () => {
-        hideDashboard();
-        showToast('Logged out successfully.');
       });
     });
   </script>
