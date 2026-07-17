@@ -1524,6 +1524,24 @@ function initCustomerAuth() {
   }
 ];
     }
+
+    // Apply localStorage overrides (for deployed serverless persistence)
+    try {
+      const deletedIds = JSON.parse(localStorage.getItem('admin_deleted_ids') || '[]');
+      const addedProducts = JSON.parse(localStorage.getItem('admin_added_products') || '[]');
+      
+      // Filter out deleted items
+      products = products.filter(p => !deletedIds.includes(p.id));
+      
+      // Append added items (avoiding duplicates)
+      addedProducts.forEach(newP => {
+        if (!products.some(p => p.id === newP.id)) {
+          products.push(newP);
+        }
+      });
+    } catch (lsErr) {
+      console.error('Failed to load localStorage catalog overrides:', lsErr);
+    }
       
       const renderGrid = (gridEl, items) => {
         gridEl.innerHTML = items.map(p => {

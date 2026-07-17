@@ -61,18 +61,28 @@ try {
         }
 
         let endIndex = -1;
+        let matchedLen = 0;
+        const patterns = [
+          '];\r\n    }',
+          '];\n    }',
+          ']\r\n    }',
+          ']\n    }'
+        ];
+
         if (startIndex !== -1) {
-          endIndex = scriptContent.indexOf(']\r\n    }', startIndex);
-          if (endIndex === -1) {
-            endIndex = scriptContent.indexOf(']\n    }', startIndex);
+          for (let pat of patterns) {
+            const idx = scriptContent.indexOf(pat, startIndex);
+            if (idx !== -1) {
+              endIndex = idx;
+              matchedLen = pat.length;
+              break;
+            }
           }
         }
 
         if (startIndex !== -1 && endIndex !== -1) {
           const before = scriptContent.substring(0, startIndex);
-          // Calculate length of the matched end marker: ']\r\n    }' is 8 chars, ']\n    }' is 7 chars
-          const isWindowsEnding = scriptContent.substring(endIndex, endIndex + 8).includes('\r');
-          const after = scriptContent.substring(endIndex + (isWindowsEnding ? 8 : 7));
+          const after = scriptContent.substring(endIndex + matchedLen);
 
           // Format products JSON neatly with indentation
           const productsJson = `products = ${JSON.stringify(products, null, 2)};`;
