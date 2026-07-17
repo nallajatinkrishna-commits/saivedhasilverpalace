@@ -341,14 +341,20 @@
         });
         html += '</div>';
         
-        const cartSummaryMsg = cartItems.map(item => {
-          const imgUrl = item.img.startsWith('http') ? item.img : `${window.location.origin}/${item.img}`;
-          return `• ${item.title} (${imgUrl})`;
-        }).join('%0A');
+        const cartSummaryMsg = cartItems.map((item, index) => {
+          let imgUrl = item.img || 'assets/images/logo.jpg';
+          if (!imgUrl.startsWith('http')) {
+            const cleanPath = imgUrl.startsWith('/') ? imgUrl : `/${imgUrl}`;
+            imgUrl = `${window.location.origin}${cleanPath}`;
+          }
+          return `${index + 1}. ${item.title}\nImage Link: ${imgUrl}`;
+        }).join('\n\n');
+        
+        const fullText = `Hi SaiVedha Silver Palace, I would like to submit an inquiry regarding the following articles in my selection list:\n\n${cartSummaryMsg}`;
         
         html += `
           <div class="pt-2">
-            <a href="https://wa.me/919440635761?text=Hi%20SaiVedha%20Silver%20Palace%2C%20I%20would%20like%20to%20submit%20an%20inquiry%20regarding%20the%20following%20articles%20in%20my%20selection%20list%3A%0A${cartSummaryMsg}" 
+            <a href="https://wa.me/919440635761?text=${encodeURIComponent(fullText)}" 
                target="_blank" class="btn btn-premium btn-premium-primary w-100 py-3 d-flex align-items-center justify-content-center gap-2" style="font-size: 1rem; font-weight: 700;">
               <i class="bi bi-whatsapp fs-5"></i> Submit Inquiry via WhatsApp
             </a>

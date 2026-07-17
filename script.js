@@ -332,13 +332,18 @@ function initCartAndWishlist() {
     });
     
     // Add cart inquiry actions
-    const cartSummaryMsg = cartItems.map(item => {
-      const imgUrl = item.img.startsWith('http') ? item.img : `${window.location.origin}/${item.img}`;
-      return `• ${item.title} (${imgUrl})`;
-    }).join('%0A');
+    const cartSummaryMsg = cartItems.map((item, index) => {
+      let imgUrl = item.img || 'assets/images/logo.jpg';
+      if (!imgUrl.startsWith('http')) {
+        const cleanPath = imgUrl.startsWith('/') ? imgUrl : `/${imgUrl}`;
+        imgUrl = `${window.location.origin}${cleanPath}`;
+      }
+      return `${index + 1}. ${item.title}\nImage Link: ${imgUrl}`;
+    }).join('\n\n');
+    const fullText = `Hi SaiVedha Silver Palace, I would like to inquire about the following articles in my list:\n\n${cartSummaryMsg}`;
     html += `
       <div class="pt-3 border-top mt-2">
-        <a href="https://wa.me/919440635761?text=Hi%20SaiVedha%20Silver%20Palace%2C%20I%20would%20like%20to%20inquire%20about%20the%20following%20articles%20in%20my%20list%3A%0A${cartSummaryMsg}" 
+        <a href="https://wa.me/919440635761?text=${encodeURIComponent(fullText)}" 
            target="_blank" class="btn btn-premium btn-premium-primary w-100 py-2 d-flex align-items-center justify-content-center gap-2">
           <i class="bi bi-whatsapp"></i> Inquire Entire Cart
         </a>
@@ -886,7 +891,7 @@ function initCustomerAuth() {
     "id": "ant-1",
     "title": "Pure Silver Bottle & Glass Set",
     "category": "antique",
-    "price": "₹1,45,000",
+    "price": "Net Wt: 1.4 kg",
     "images": [
       "assets/images/silver_bottleset.png"
     ],
@@ -897,7 +902,7 @@ function initCustomerAuth() {
     "id": "ant-2",
     "title": "Pure Silver Lakshmi Deepams (Pair)",
     "category": "antique",
-    "price": "₹24,500",
+    "price": "Net Wt: 280g",
     "images": [
       "assets/images/silver_deepams.png"
     ],
@@ -941,7 +946,7 @@ function initCustomerAuth() {
     "id": "ant-6",
     "title": "Pure Silver Ludo Board Set",
     "category": "antique",
-    "price": "₹2,10,000",
+    "price": "Net Wt: 1.95 kg",
     "images": [
       "assets/images/silver_ludo.png"
     ],
@@ -952,7 +957,7 @@ function initCustomerAuth() {
     "id": "ant-7",
     "title": "Antique Silver Tea Set",
     "category": "antique",
-    "price": "₹2,45,000",
+    "price": "Net Wt: 2.2 kg",
     "images": [
       "assets/images/antique_tea_set.jpg"
     ],
@@ -963,7 +968,7 @@ function initCustomerAuth() {
     "id": "ant-8",
     "title": "Antique Silver Urli Bowl",
     "category": "antique",
-    "price": "₹1,85,000",
+    "price": "Net Wt: 1.5 kg",
     "images": [
       "assets/images/antique_urli.png"
     ],
@@ -974,7 +979,7 @@ function initCustomerAuth() {
     "id": "ant-9",
     "title": "Antique Silver Lamp",
     "category": "antique",
-    "price": "₹95,000",
+    "price": "Net Wt: 980g",
     "images": [
       "assets/images/antique_lamp.jpg"
     ],
@@ -985,7 +990,7 @@ function initCustomerAuth() {
     "id": "ant-10",
     "title": "Silver Filigree Box",
     "category": "antique",
-    "price": "₹65,000",
+    "price": "Net Wt: 480g",
     "images": [
       "assets/images/filigree_box.png"
     ],
@@ -996,7 +1001,7 @@ function initCustomerAuth() {
     "id": "sil-1",
     "title": "Handcrafted Nakshi Kalash",
     "category": "silver",
-    "price": "₹28,500",
+    "price": "Net Wt: 480g",
     "images": [
       "assets/images/silver_kalash.png"
     ],
@@ -1007,7 +1012,7 @@ function initCustomerAuth() {
     "id": "sil-2",
     "title": "Pure Silver Ram Sita Darbar",
     "category": "silver",
-    "price": "₹45,500",
+    "price": "Net Wt: 550g",
     "images": [
       "assets/images/silver_ramdarbar.png"
     ],
@@ -1018,7 +1023,7 @@ function initCustomerAuth() {
     "id": "sil-3",
     "title": "Royal Nakshi Dessert Set",
     "category": "silver",
-    "price": "₹1,25,000",
+    "price": "Net Wt: 1.8 kg",
     "images": [
       "assets/images/silver_dinnerset.png"
     ],
@@ -1029,7 +1034,7 @@ function initCustomerAuth() {
     "id": "sil-4",
     "title": "Antique Silver Long Kundulu",
     "category": "silver",
-    "price": "₹68,000",
+    "price": "Net Wt: 1.1 kg",
     "images": [
       "assets/images/silver_kundulu.png"
     ],
@@ -1040,7 +1045,7 @@ function initCustomerAuth() {
     "id": "sil-5",
     "title": "Pure Silver Ram Mandir Replica",
     "category": "silver",
-    "price": "₹2,50,000",
+    "price": "Net Wt: 2.1 kg",
     "images": [
       "assets/images/silver_rammandir.png"
     ],
@@ -1051,7 +1056,7 @@ function initCustomerAuth() {
     "id": "sil-6",
     "title": "Pure Silver Gomukhi Abhisheka Set",
     "category": "silver",
-    "price": "₹95,000",
+    "price": "Net Wt: 950g",
     "images": [
       "assets/images/silver_gomukhi_slide1.jpg",
       "assets/images/silver_gomukhi_slide2.jpg"
@@ -1063,7 +1068,7 @@ function initCustomerAuth() {
     "id": "sil-7",
     "title": "Pure Silver Nakshi Serving Box",
     "category": "silver",
-    "price": "₹58,000",
+    "price": "Net Wt: 680g",
     "images": [
       "assets/images/silver_box_slide1.jpg",
       "assets/images/silver_box_slide2.jpg"
@@ -1075,7 +1080,7 @@ function initCustomerAuth() {
     "id": "men-1",
     "title": "Chased Royal Silver Kada",
     "category": "mens",
-    "price": "₹14,500",
+    "price": "Net Wt: 80g",
     "images": [
       "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=400&auto=format&fit=crop"
     ],
@@ -1086,7 +1091,7 @@ function initCustomerAuth() {
     "id": "men-2",
     "title": "Interlocked Silver Chain",
     "category": "mens",
-    "price": "₹18,900",
+    "price": "Net Wt: 75g",
     "images": [
       "assets/images/plain_silver_chain.png"
     ],
@@ -1097,7 +1102,7 @@ function initCustomerAuth() {
     "id": "men-3",
     "title": "Classic Signet Silver Ring",
     "category": "mens",
-    "price": "₹4,200",
+    "price": "Net Wt: 12g",
     "images": [
       "assets/images/plain_silver_ring.png"
     ],
@@ -1108,7 +1113,7 @@ function initCustomerAuth() {
     "id": "men-4",
     "title": "Heavy Curb Silver Bracelet",
     "category": "mens",
-    "price": "₹11,500",
+    "price": "Net Wt: 55g",
     "images": [
       "assets/images/silver_bracelet.png"
     ],
@@ -1119,7 +1124,7 @@ function initCustomerAuth() {
     "id": "wom-1",
     "title": "Royal Ghungroo Ankle Strap",
     "category": "womens",
-    "price": "₹12,500",
+    "price": "Net Wt: 180g",
     "images": [
       "assets/images/silver_ankle_strap_1.png"
     ],
@@ -1130,7 +1135,7 @@ function initCustomerAuth() {
     "id": "wom-2",
     "title": "Heritage Carved Ankle Strap",
     "category": "womens",
-    "price": "₹7,800",
+    "price": "Net Wt: 95g",
     "images": [
       "assets/images/silver_ankle_strap_2.png"
     ],
@@ -1141,7 +1146,7 @@ function initCustomerAuth() {
     "id": "wom-3",
     "title": "Traditional Silver Bichiya Pair",
     "category": "womens",
-    "price": "₹2,400",
+    "price": "Net Wt: 10g",
     "images": [
       "assets/images/plain_silver_ring.png"
     ],
@@ -1152,7 +1157,7 @@ function initCustomerAuth() {
     "id": "wom-4",
     "title": "Royal Nakshi Gilt Purse",
     "category": "womens",
-    "price": "₹1,85,000",
+    "price": "Net Wt: 740g",
     "images": [
       "assets/images/silver_purse_slide1.png",
       "assets/images/silver_purse_slide2.jpg"
@@ -1164,7 +1169,7 @@ function initCustomerAuth() {
     "id": "wom-5",
     "title": "Premium Floral Nakshi Round Silver Purse",
     "category": "womens",
-    "price": "₹1,15,000",
+    "price": "Net Wt: 520g",
     "images": [
       "assets/images/silver_round_purse.jpg"
     ],
@@ -1175,7 +1180,7 @@ function initCustomerAuth() {
     "id": "wom-6",
     "title": "Antique Nakshi Silver Bridal Clutch with Gemstones",
     "category": "womens",
-    "price": "₹1,45,000",
+    "price": "Net Wt: 680g",
     "images": [
       "assets/images/silver_gemstone_clutch.jpg"
     ],
@@ -1587,6 +1592,7 @@ function initCustomerAuth() {
       if (womensGrid) {
         renderGrid(womensGrid, products.filter(p => p.category === 'womens'));
       }
+      replacePricesWithWeights();
   }
 
   initDynamicCatalog();
