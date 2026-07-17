@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaiVedha - Image Assets Diagnostic Utility</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #eaeaea;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #A9843D;
+      border-bottom: 2px solid #333;
+      padding-bottom: 0.5rem;
+    }
+    .card {
+      background-color: #2a2a2a;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .status-item {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem;
+      border-bottom: 1px solid #3a3a3a;
+      gap: 1rem;
+    }
+    .status-item:last-child {
+      border-bottom: none;
+    }
+    .badge {
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+    .badge-success {
+      background-color: #2e7d32;
+      color: white;
+    }
+    .badge-danger {
+      background-color: #c62828;
+      color: white;
+    }
+    .badge-pending {
+      background-color: #f57f17;
+      color: white;
+    }
+    .img-preview {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+      background-color: #111;
+      border: 1px solid #555;
+    }
+    .details {
+      flex-grow: 1;
+      font-family: monospace;
+      font-size: 0.85rem;
+      word-break: break-all;
+    }
+    .diagnostics {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background-color: #1b263b;
+      border-left: 4px solid #415a77;
+      border-radius: 0 4px 4px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SaiVedha Showroom - Image Loading Diagnostics</h1>
+  <p>This utility programmatically verifies image asset availability and path resolution in your current environment (browser/server/protocol).</p>
+
+  <div class="card">
+    <h3>Current Environment Info</h3>
+    <ul style="font-family: monospace;">
+      <li><strong>Protocol:</strong> <span id="env-protocol">Loading...</span></li>
+      <li><strong>Host:</strong> <span id="env-host">Loading...</span></li>
+      <li><strong>Base URL:</strong> <span id="env-base">Loading...</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Image Assets Checklist</h3>
+    <div id="checklist-container">
+      <!-- Status items will be injected here -->
+    </div>
+  </div>
+
+  <div class="card diagnostics" id="diagnostic-results">
+    <h3>Diagnostic Feedback</h3>
+    <p id="feedback-text">Scanning image assets... please wait.</p>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set environment info
+      document.getElementById('env-protocol').textContent = window.location.protocol;
+      document.getElementById('env-host').textContent = window.location.host || 'Local File (no host)';
+      document.getElementById('env-base').textContent = window.location.href;
+
+      // Images list to test
+      const imagesToTest = [
+        "assets/images/logo.jpg",
+        "assets/images/hero_bg.jpg",
+        "assets/images/silver_bottleset.png",
+        "assets/images/silver_deepams.png",
+        "assets/images/silver_sprinklers.png",
+        "assets/images/showroom_about.jpg",
+        "assets/images/silver_ankle_strap_1.png",
+        "assets/images/silver_kalash.png",
+        "assets/images/silver_ramdarbar.png",
+        "assets/images/silver_dinnerset.png"
+      ];
+
+      const container = document.getElementById('checklist-container');
+      const feedback = document.getElementById('feedback-text');
+      
+      let loadedCount = 0;
+      let failedCount = 0;
+      const totalCount = imagesToTest.length;
+
+      imagesToTest.forEach(path => {
+        // Create Status Row
+        const row = document.createElement('div');
+        row.className = 'status-item';
+        
+        const preview = document.createElement('img');
+        preview.className = 'img-preview';
+        preview.alt = "Preview";
+        
+        const badge = document.createElement('span');
+        badge.className = 'badge badge-pending';
+        badge.textContent = 'Testing';
+        
+        const details = document.createElement('div');
+        details.className = 'details';
+        details.innerHTML = `<strong>Path:</strong> ${path}<br><span style="color: #888;">Resolving URL...</span>`;
+        
+        row.appendChild(preview);
+        row.appendChild(badge);
+        row.appendChild(details);
+        container.appendChild(row);
+
+        // Try to load
+        const imgTester = new Image();
+        
+        imgTester.onload = () => {
+          loadedCount++;
+          badge.className = 'badge badge-success';
+          badge.textContent = 'Success';
+          preview.src = imgTester.src;
+          details.innerHTML = `<strong>Path:</strong> ${path}<br><span style="color: #4caf50;">URL: ${imgTester.src}</span>`;
+          checkComplete();
+        };
+
+        imgTester.onerror = () => {
+          failedCount++;
+          badge.className = 'badge badge-danger';
+          badge.textContent = 'Failed';
+          preview.style.display = 'none';
+          details.innerHTML = `<strong>Path:</strong> ${path}<br><span style="color: #f44336;">Failed to load from: ${imgTester.src}</span>`;
+          checkComplete();
+        };
+
+        // Trigger load
+        imgTester.src = path;
+      });
+
+      function checkComplete() {
+        if (loadedCount + failedCount === totalCount) {
+          updateFeedback();
+        }
+      }
+
+      function updateFeedback() {
+        if (failedCount === 0) {
+          feedback.innerHTML = `<strong>✔ All images loaded successfully!</strong> Everything is configured correctly in this directory. If images are still not visible on the main page, verify if you are running the built static project (/dist) or the source folder.`;
+        } else {
+          let advice = `<strong>✖ ${failedCount} image(s) failed to load.</strong><br><br>`;
+          if (window.location.protocol === 'file:') {
+            advice += `<strong>Reason: file:// protocol restriction.</strong> Some web browsers block loading assets programmatically under local File Explorer mode due to security settings. <br><em>Solution: Run a local server (like double clicking server.js or running npm run dev) instead of double clicking files.</em>`;
+          } else if (window.location.pathname.includes('/dist/')) {
+            advice += `<strong>Reason: Folder routing mismatch.</strong> You are running from the '/dist/' folder but asset paths are relative. <br><em>Solution: Make sure the static directory serves the root of the 'dist/' folder directly (e.g. your web server should point to the dist folder itself).</em>`;
+          } else {
+            advice += `<strong>Reason: Broken relative pathing.</strong> Check if the 'assets/images/' directory is uploaded to your hosting provider in the correct folder relative to index.html.`;
+          }
+          feedback.innerHTML = advice;
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

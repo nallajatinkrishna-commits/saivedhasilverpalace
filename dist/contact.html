@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaiVedha - Luxury Pure Silver Showroom | Silver & Antique Articles</title>
+  <meta name="description" content="Discover exquisite Pure Silver & Antique Articles, Antique Silver Masterpieces, Traditional Pooja Ornaments, and Premium Silver Gifts. Crafted with trust and legacy.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✨%3C/text%3E%3C/svg%3E">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Custom CSS -->
+  
+  <!-- Custom JS -->
+  <script src="script.js" defer></script>
+
+  
+  <link rel="stylesheet" crossorigin href="./assets/style-DVhlfHz6.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-dark text-white py-2 px-3 d-flex flex-wrap justify-content-between align-items-center" style="font-size: 0.8rem; letter-spacing: 2px; border-bottom: 1px solid var(--accent-color); gap: 10px;">
+    <div class="mx-auto mx-lg-0 text-center text-lg-start">
+      <span>PURE SILVER GUARANTEE • 100% HALLMARKED CERTIFICATE WITH EVERY PURCHASE</span>
+    </div>
+    <div class="mx-auto mx-lg-0 d-flex align-items-center gap-2 bg-black px-3 py-1 rounded-pill border border-secondary" style="font-size: 0.75rem;">
+      <span class="pulsing-live-dot"></span>
+      <span class="text-white-50" style="letter-spacing: 1px;">LIVE SILVER RATE (999 Pure):</span>
+      <span class="fw-bold text-success" id="liveSilverRate" style="letter-spacing: 1px;">₹235.00 / g</span>
+      <span class="text-success" style="font-size: 0.65rem; letter-spacing: 1px;" id="liveSilverTrend"><i class="bi bi-arrow-up-right"></i> +0.21%</span>
+    </div>
+  </div>
+
+  <!-- --- Header & Navigation Bar --- -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-luxury sticky-top bg-dark">
+    <div class="container-fluid">
+      <!-- Showroom Logo -->
+      <a class="navbar-brand d-flex align-items-center" href="index.html" id="brandLogo">
+        <img src="./assets/logo-COzdZO0l.jpg" alt="SaiVedha Logo" class="me-2" style="height: 55px; width: 55px; border-radius: 50%; object-fit: cover; aspect-ratio: 1/1; border: 2px solid var(--primary-color);">
+        <div class="d-flex flex-column">
+          <span class="logo-text" style="line-height: 1.2;">SAIVEDHA</span>
+          <span class="logo-subtext" style="font-size: 0.65rem; color: var(--accent-color); letter-spacing: 2px; font-weight: 600; text-transform: uppercase;">Silver Palace</span>
+        </div>
+      </a>
+      
+      <!-- Mobile Toggle -->
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menu Items -->
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="index.html">Home</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="articles.html">Silver & Antique Articles</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="womens.html">Women's Collection</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="mens.html">Men's Collection</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="contact.html">Contact</a>
+          </li>
+        </ul>
+        
+        <!-- Utility Icons (Search, Wishlist, Cart, Login) -->
+        <div class="d-flex align-items-center position-relative">
+          <!-- Search Toggle -->
+          <button class="navbar-icon-btn" id="searchBtn" title="Search Articles" aria-label="Search">
+            <i class="bi bi-search"></i>
+          </button>
+          
+          <!-- Dropdown search input panel container -->
+          <div class="position-absolute bg-dark p-2 border border-secondary rounded shadow-lg" id="searchBarDropdown" style="display: none; top: 50px; right: 120px; width: 280px; z-index: 1000;">
+            <div class="input-group mb-1">
+              <input type="text" class="form-control form-control-sm" id="searchInput" placeholder="Search silver articles..." aria-label="Search input">
+              <button class="btn btn-sm btn-outline-light" id="searchSubmitBtn" type="button"><i class="bi bi-search"></i></button>
+            </div>
+            <div id="searchResultsList" class="overflow-y-auto mt-1" style="max-height: 250px; display: none;"></div>
+          </div>
+
+          <!-- Wishlist -->
+          <a class="navbar-icon-btn position-relative" id="wishlistBtn" href="wishlist.html" title="Wishlist" aria-label="Wishlist">
+            <i class="bi bi-heart"></i>
+            <span class="badge-counter d-none" id="wishlistBadgeCount">0</span>
+          </a>
+
+          <!-- Shopping Cart -->
+          <a class="navbar-icon-btn position-relative" id="cartBtn" href="cart.html" title="Shopping Cart" aria-label="Shopping Cart">
+            <i class="bi bi-bag"></i>
+            <span class="badge-counter d-none" id="cartBadgeCount">0</span>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="py-5 bg-dark text-white text-center position-relative overflow-hidden" style="border-bottom: 1px solid var(--accent-color);">
+    <div class="container py-4 position-relative z-1">
+      <span class="section-tagline" style="color: var(--primary-color);">Get In Touch</span>
+      <h1 class="display-4 fw-bold mb-3" style="font-family: var(--font-headings); font-weight: 800; letter-spacing: 2px;">Contact & Location Details</h1>
+      <p class="lead text-white-50 mx-auto mb-4" style="max-width: 600px; font-size: 1rem;">Visit our showroom, call us directly, or send us an inquiry online.</p>
+    </div>
+  </section>
+
+  <!-- --- 12. Contact Section --- -->
+  <section class="py-5" id="contact" style="background-color: #FAFAFA;">
+    <div class="container py-4">
+      <div class="text-center">
+        <span class="section-tagline">Visit Us</span>
+        <h2 class="section-title-luxury">Contact The Showroom</h2>
+        <p class="text-muted mx-auto" style="max-width: 600px;">Connect with our silver specialists for bespoke designs, temple commissions, or showroom appointments.</p>
+      </div>
+
+      <div class="row g-4 mt-2">
+        <!-- Info Column -->
+        <div class="col-lg-5">
+          <div class="contact-info-card text-white bg-dark">
+            <h3 class="contact-info-title text-white">Showroom Details</h3>
+            
+            <div class="contact-method-item">
+              <div class="contact-icon-box"><i class="bi bi-geo-alt"></i></div>
+              <div class="contact-text-box">
+                <h5 class="text-white">Location Address</h5>
+                <p class="text-light-50" style="color: rgba(255, 255, 255, 0.75);">Beside Vedha Silver House, Governorpet,<br>Vijayawada, Andhra Pradesh - 520002</p>
+              </div>
+            </div>
+
+            <div class="contact-method-item">
+              <div class="contact-icon-box"><i class="bi bi-telephone"></i></div>
+              <div class="contact-text-box">
+                <h5 class="text-white">Call Showroom</h5>
+                <p style="color: rgba(255, 255, 255, 0.75);">+91 94406 35761<br>+91 70133 23196</p>
+              </div>
+            </div>
+
+            <div class="contact-method-item">
+              <div class="contact-icon-box"><i class="bi bi-envelope"></i></div>
+              <div class="contact-text-box">
+                <h5 class="text-white">Email Address</h5>
+                <p style="color: rgba(255, 255, 255, 0.75);">concierge@saivedha.com<br>customercare@saivedha.com</p>
+              </div>
+            </div>
+
+            <hr style="border-color: rgba(255, 255, 255, 0.1); margin: 2rem 0;">
+
+            <div class="text-center pt-2">
+              <p class="mb-3" style="color: var(--accent-color); font-weight: 500; font-size: 0.9rem; letter-spacing: 1px;">INSTANT SUPPORT VIA WHATSAPP</p>
+              <a href="https://wa.me/919440635761" target="_blank" class="whatsapp-btn-luxury">
+                <i class="bi bi-whatsapp"></i> Chat with Silver Expert
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Column -->
+        <div class="col-lg-7">
+          <div class="contact-form-card">
+            <h3 class="contact-info-title">Send An Inquiry</h3>
+            <form id="showroomContactForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="contactName" class="form-label text-muted" style="font-size: 0.85rem; font-weight: 600;">FULL NAME</label>
+                  <input type="text" class="form-control form-control-luxury" id="contactName" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="contactEmail" class="form-label text-muted" style="font-size: 0.85rem; font-weight: 600;">EMAIL ADDRESS</label>
+                  <input type="email" class="form-control form-control-luxury" id="contactEmail" placeholder="name@domain.com" required>
+                </div>
+                <div class="col-12">
+                  <label for="contactSubject" class="form-label text-muted" style="font-size: 0.85rem; font-weight: 600;">INQUIRY SUBJECT</label>
+                  <select class="form-select form-control-luxury" id="contactSubject">
+                    <option value="Bespoke Silver Article design">Bespoke Silver Article design</option>
+                    <option value="Temple Ornamentation Inquiry">Temple Ornamentation Inquiry</option>
+                    <option value="Antique Tea Set details">Antique Tea Set details</option>
+                    <option value="Gift Order Customization">Gift Order Customization</option>
+                    <option value="Showroom Appointment booking">Showroom Appointment booking</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label for="contactMessage" class="form-label text-muted" style="font-size: 0.85rem; font-weight: 600;">MESSAGE DETAILS</label>
+                  <textarea class="form-control form-control-luxury" id="contactMessage" rows="4" placeholder="Detail your antique or custom silver requirements..." required></textarea>
+                </div>
+                <div class="col-12 mt-4 text-end">
+                  <button type="submit" class="btn btn-premium btn-premium-primary w-100">Submit Royal Inquiry</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Google Maps Embed Wrapper -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <div class="map-wrapper">
+            <!-- Simulated Google Map using clean iframe -->
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3825.2678668748366!2d80.62061031486445!3d16.51268998860822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35effdaaaaaaaa%3A0x6e9f1a0eef7f8bf!2sGovernorpet%2C%20Vijayawada%2C%20Andhra%20Pradesh%20520002!5e0!3m2!1sen!2sin!4v1657800000000!5m2!1sen!2sin" 
+              width="100%" 
+              height="350" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="SaiVedha Showroom Location Map">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- --- 13. Footer Section --- -->
+  <footer class="footer-luxury">
+    <div class="container">
+      <div class="row g-5">
+        <!-- Logo and About -->
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center mb-3">
+            <img src="./assets/logo-COzdZO0l.jpg" alt="SaiVedha Logo" class="me-2" style="height: 65px; width: 65px; border-radius: 50%; object-fit: cover; aspect-ratio: 1/1; border: 2px solid var(--primary-color);">
+            <div class="d-flex flex-column">
+              <span class="footer-logo" style="line-height: 1.2; margin-bottom: 0;">SAIVEDHA</span>
+              <span class="footer-subtext" style="font-size: 0.75rem; color: var(--accent-color); letter-spacing: 2px; font-weight: 600; text-transform: uppercase;">Silver Palace</span>
+            </div>
+          </div>
+          <p class="footer-about">
+            Vijayawada's premier showroom specializing in 92.5 Sterling Silver Antique Articles and 99.0%+ Pure Silver Pooja & Dinnerware. Bringing legacy, purity, and craftsmanship to your home.
+          </p>
+          <p class="text-white-50 mt-1" style="font-size: 0.8rem;"><i class="bi bi-clock-fill me-2"></i> Showroom Hours: 10:30 AM - 8:30 PM (Closed on Mondays)</p>
+          
+          <div class="social-links-row">
+            <a href="#" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-btn" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+            <a href="#" class="social-btn" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6 col-6">
+          <h4 class="footer-section-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Legacy</a></li>
+            <li><a href="gallery.html">Showroom Gallery</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+
+          </ul>
+        </div>
+
+        <!-- Categories -->
+        <div class="col-lg-3 col-md-6 col-6">
+          <h4 class="footer-section-title">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="articles.html">Antique Ornaments</a></li>
+            <li><a href="articles.html">Pooja Silverware</a></li>
+            <li><a href="articles.html">Dinner Sets & Utensils</a></li>
+            <li><a href="womens.html">Women's Ankle Straps & Bichiya</a></li>
+            <li><a href="mens.html">Men's Kada & Chains</a></li>
+            <li><a href="articles.html">Custom Corporate Gifts</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter Subscription -->
+        <div class="col-lg-3 col-md-6">
+          <h4 class="footer-section-title">Newsletter</h4>
+          <p class="text-white-50" style="font-size: 0.8rem; line-height: 1.6;">Subscribe to receive catalog launches, private exhibition invites, and heritage care advice.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!'); this.reset();">
+            <input type="email" class="newsletter-input" placeholder="Your Email Address" aria-label="Newsletter email address" required>
+            <button class="newsletter-btn" type="submit" aria-label="Subscribe newsletter"><i class="bi bi-send"></i></button>
+          </form>
+          <div class="mt-4" style="font-size: 0.75rem; color: var(--accent-color);">
+            <i class="bi bi-shield-check-fill me-2"></i> we respect your privacy. No spam.
+          </div>
+        </div>
+      </div>
+
+      <hr class="footer-divider">
+
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="copyright-text mb-0">&copy; 2026 SaiVedha Pure Silver Showroom. All Rights Reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+          <ul class="list-inline mb-0" style="font-size: 0.75rem;">
+            <li class="list-inline-item"><a href="#" class="text-white-50 me-3">Privacy Policy</a></li>
+            <li class="list-inline-item"><a href="#" class="text-white-50 me-3">Terms of Service</a></li>
+            <li class="list-inline-item"><a href="#" class="text-white-50">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- --- Dynamic Quick View Modal --- -->
+  <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content" style="border: 1px solid var(--accent-color); border-radius: 12px; background: var(--bg-light);">
+        <div class="modal-header border-0 bg-dark text-white py-3 px-4" style="border-radius: 11px 11px 0 0;">
+          <h4 class="modal-title modal-title-custom" id="quickViewModalLabel" style="font-family: var(--font-headings); font-weight: 700; color: var(--text-light);">Product Title</h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="row g-4 align-items-center">
+            <div class="col-md-6">
+              <div class="border rounded p-2 text-center" style="background: #FDFDFD;">
+                <img src="" alt="" class="img-fluid modal-product-img" style="max-height: 350px; object-fit: contain;">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <span class="text-uppercase text-muted d-block mb-1" style="font-size: 0.75rem; letter-spacing: 2px; font-weight: 600;">PURE SILVER ARTICLE</span>
+              <h3 class="modal-title-custom text-dark mb-2" style="font-family: var(--font-headings); font-weight: 800;">Product Title</h3>
+              
+              <div class="stars-rating mb-3">
+                <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i>
+                <span class="text-muted ms-2" style="font-size: 0.8rem;">(5.0 Certified Rating)</span>
+              </div>
+              
+              <div class="modal-product-price fs-3 fw-bold text-success mb-3">Price</div>
+              
+              <p class="modal-product-desc text-muted mb-3" style="font-size: 0.9rem; line-height: 1.6;">Short Description</p>
+              
+              <div class="border-top pt-3 mb-4">
+                <h5 class="text-dark mb-2" style="font-size: 0.95rem; font-weight: 700;">Craftsmanship Notes:</h5>
+                <p class="modal-product-detail text-muted mb-0" style="font-size: 0.85rem; line-height: 1.7;">Detail specifications...</p>
+              </div>
+              
+              <div class="d-flex gap-2">
+                <button class="btn btn-premium btn-premium-primary w-100 modal-add-cart-btn btn-add-cart" data-product="" data-bs-dismiss="modal">
+                  <i class="bi bi-bag-plus me-2"></i> Add To Cart
+                </button>
+                <button class="btn btn-outline-secondary px-3 modal-add-wishlist-btn btn-add-wishlist" data-product="" data-bs-dismiss="modal" title="Add to Wishlist" style="border-radius: 4px;">
+                  <i class="bi bi-heart"></i>
+                </button>
+              </div>
+              
+              <div class="mt-3 text-muted d-flex align-items-center gap-2" style="font-size: 0.75rem;">
+                <i class="bi bi-shield-fill-check text-success fs-6"></i>
+                <span>Certified Pure Silver hallmarking certification card included.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- --- Wishlist Modal --- -->
+  <div class="modal fade" id="wishlistModal" tabindex="-1" aria-labelledby="wishlistModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+      <div class="modal-content" style="border: 1px solid var(--accent-color); border-radius: 12px; background-color: var(--card-bg);">
+        <div class="modal-header border-0 bg-dark text-white p-4" style="border-radius: 11px 11px 0 0;">
+          <h4 class="modal-title" id="wishlistModalLabel" style="font-family: var(--font-headings); font-weight: 700;">My Wishlist</h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4" id="wishlistModalBody">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- Cart Modal --- -->
+  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+      <div class="modal-content" style="border: 1px solid var(--accent-color); border-radius: 12px; background-color: var(--card-bg);">
+        <div class="modal-header border-0 bg-dark text-white p-4" style="border-radius: 11px 11px 0 0;">
+          <h4 class="modal-title" id="cartModalLabel" style="font-family: var(--font-headings); font-weight: 700;">My Cart</h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4" id="cartModalBody">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- Simple Lightbox Overlay Modal --- -->
+  <div id="luxuryLightbox" class="lightbox-modal">
+    <span class="lightbox-close" aria-label="Close lightbox">&times;</span>
+    <div class="lightbox-content-wrapper">
+      <img class="lightbox-img" id="lightboxImg" src="" alt="Zoomed view">
+      <div id="lightboxCaption" class="lightbox-caption">Caption text</div>
+    </div>
+  </div>
+
+  <!-- --- Toast Notification System --- -->
+  <div class="luxury-toast" id="luxuryToast">
+    <i class="bi bi-check-circle-fill"></i>
+    <span id="toastMessage">Product added successfully!</span>
+  </div>
+
+  <!-- Bootstrap 5 Bundle JS with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  
+
+  <!-- --- VIP Showroom Visit Concierge Appointment Booking --- -->
+  <section class="py-5 text-white" id="vip-showroom-appointment-section" style="background: linear-gradient(135deg, #050b14 0%, #101d42 100%); border-top: 1.5px solid rgba(229,197,131,0.2);">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="section-tagline" style="color: var(--primary-color); letter-spacing: 2px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Premium Customer Concierge</span>
+        <h2 class="display-5 fw-bold mb-3 mt-1" style="font-family: Georgia, serif;">Schedule a VIP Showroom Visit</h2>
+        <p class="text-white-50 mx-auto" style="max-width: 600px;">Secure a private showroom consult session. Our master silversmiths and stylists will organize a custom viewing display just for you.</p>
+      </div>
+      
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="admin-card p-4">
+            <form id="appointmentForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label text-muted small fw-bold">CUSTOMER FULL NAME</label>
+                  <input type="text" class="form-control form-control-admin" id="aptName" placeholder="e.g. Krishna Jatin" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted small fw-bold">EMAIL ADDRESS</label>
+                  <input type="email" class="form-control form-control-admin" id="aptEmail" placeholder="e.g. client@domain.com" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted small fw-bold">MOBILE PHONE NUMBER</label>
+                  <input type="tel" class="form-control form-control-admin" id="aptPhone" placeholder="e.g. +91 94406 35761" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted small fw-bold">PREFERRED COLLECTION DISPLAY</label>
+                  <select class="form-select form-control-admin" id="aptCollection" style="background: #050b14; color: #fff; border: 1px solid rgba(255,255,255,0.15);">
+                    <option value="Traditional Pooja Articles">Pure Silver Pooja Articles & Diya</option>
+                    <option value="Heritage Antique Collectibles">Heritage Antique Collectibles & Vase</option>
+                    <option value="Premium Wedding Silver Gifting">Premium Wedding Gifting Hampers</option>
+                    <option value="Men's and Women's Luxury Jewelry">Men's and Women's Silver Ornaments</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted small fw-bold">VISITING DATE</label>
+                  <input type="date" class="form-control form-control-admin" id="aptDate" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted small fw-bold">PREFERRED TIME SLOT</label>
+                  <select class="form-select form-control-admin" id="aptTime" style="background: #050b14; color: #fff; border: 1px solid rgba(255,255,255,0.15);">
+                    <option value="11:00 AM - 01:00 PM">Morning hours (11:00 AM - 01:00 PM)</option>
+                    <option value="02:00 PM - 04:00 PM">Afternoon hours (02:00 PM - 04:00 PM)</option>
+                    <option value="05:00 PM - 07:00 PM">Evening hours (05:00 PM - 07:00 PM)</option>
+                  </select>
+                </div>
+              </div>
+              
+              <button type="submit" class="btn btn-gold w-100 py-2 mt-4 text-dark font-weight-bold">
+                Confirm VIP Viewing Schedule <i class="bi bi-calendar2-check ms-1"></i>
+              </button>
+            </form>
+            
+            <div class="alert alert-success mt-4 d-none" id="aptSuccessAlert">
+              <i class="bi bi-check-circle-fill me-2"></i> VIP Appointment slot successfully requested! Showroom manager will call you shortly to confirm timings.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const aptForm = document.getElementById('appointmentForm');
+      const successAlert = document.getElementById('aptSuccessAlert');
+
+      aptForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('aptName').value.trim();
+        const email = document.getElementById('aptEmail').value.trim();
+        const phone = document.getElementById('aptPhone').value.trim();
+        const collection = document.getElementById('aptCollection').value;
+        const date = document.getElementById('aptDate').value;
+        const timeSlot = document.getElementById('aptTime').value;
+
+        try {
+          const res = await fetch('/api/appointment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, phone, collection, date, timeSlot })
+          });
+          const data = await res.json();
+          if (data.success) {
+            const wsText = `Hello SaiVedha, I have scheduled a VIP Showroom Visit appointment:
+
+*Name:* ${name}
+*Phone:* ${phone}
+*Collection:* ${collection}
+*Date:* ${date}
+*Time Slot:* ${timeSlot}`;
+
+            const wsUrl = `https://wa.me/919440635761?text=${encodeURIComponent(wsText)}`;
+
+            const cardBody = aptForm.parentElement;
+            cardBody.innerHTML = `
+              <div class="text-center py-4 animate-fade-in text-white">
+                <div class="rounded-circle bg-success border border-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                  <i class="bi bi-calendar2-check-fill text-white fs-3"></i>
+                </div>
+                <h4 class="fw-bold mb-2">VIP Slot Requested Successfully</h4>
+                <p class="text-white-50 small mb-4">Your appointment has been registered on our servers. Click below to share this booking on WhatsApp for quick showroom confirmation.</p>
+                <a href="${wsUrl}" target="_blank" class="btn btn-gold px-4 py-2 text-dark fw-bold d-inline-flex align-items-center gap-2">
+                  <i class="bi bi-whatsapp"></i> Send Booking on WhatsApp
+                </a>
+              </div>
+            `;
+          } else {
+            alert('Failed booking appointment: ' + (data.error || 'Server error'));
+          }
+        } catch(err) {
+          alert('Connection error');
+        }
+      });
+    });
+  </script>
+
+
+  <!-- Showroom dynamic parameters CMS loader -->
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const res = await fetch('/api/settings');
+        const data = await res.json();
+        
+        // Update top announcement bar text
+        const annContainer = document.querySelector('.bg-dark.text-white.py-2.px-3 div');
+        if (annContainer) {
+          const annSpan = annContainer.querySelector('span');
+          if (annSpan) annSpan.textContent = data.announcement;
+        }
+
+        // Update footer store details if present
+        const hoursEl = document.getElementById('footerHours');
+        if (hoursEl) hoursEl.textContent = data.storeHours;
+        
+        const phoneEl = document.getElementById('footerPhone');
+        if (phoneEl) phoneEl.textContent = data.telephone;
+      } catch (err) {
+        console.error('Failed loading settings CMS:', err);
+      }
+    });
+  </script>
+
+</body>
+</html>

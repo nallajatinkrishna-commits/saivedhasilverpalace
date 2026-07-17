@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Royal Wishlist - SaiVedha Silver Palace</title>
+  <meta name="description" content="Manage your saved premium pure silver articles and inquire directly for purchase at SaiVedha Silver Palace.">
+  
+  <!-- Favicon -->
+  <link class="favicon" rel="icon" type="image/x-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✨%3C/text%3E%3C/svg%3E">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Custom CSS -->
+  
+  <style>
+    /* Custom Wishlist Page Overrides */
+    .wishlist-empty-card {
+      background: rgba(26, 26, 26, 0.95);
+      border: 1px solid var(--accent-color);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+    }
+  </style>
+  <link rel="stylesheet" crossorigin href="./assets/style-DVhlfHz6.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-dark text-white py-2 px-3 d-flex flex-wrap justify-content-between align-items-center" style="font-size: 0.8rem; letter-spacing: 2px; border-bottom: 1px solid var(--accent-color); gap: 10px;">
+    <div class="mx-auto mx-lg-0 text-center text-lg-start">
+      <span>PURE SILVER GUARANTEE • 100% HALLMARKED CERTIFICATE WITH EVERY PURCHASE</span>
+    </div>
+    <div class="mx-auto mx-lg-0 d-flex align-items-center gap-2 bg-black px-3 py-1 rounded-pill border border-secondary" style="font-size: 0.75rem;">
+      <span class="pulsing-live-dot"></span>
+      <span class="text-white-50" style="letter-spacing: 1px;">LIVE SILVER RATE (999 Pure):</span>
+      <span class="fw-bold text-success" id="liveSilverRate" style="letter-spacing: 1px;">₹235.00 / g</span>
+      <span class="text-success" style="font-size: 0.65rem; letter-spacing: 1px;" id="liveSilverTrend"><i class="bi bi-arrow-up-right"></i> +0.21%</span>
+    </div>
+  </div>
+
+  <!-- --- Header & Navigation Bar --- -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-luxury sticky-top bg-dark">
+    <div class="container-fluid">
+      <!-- Showroom Logo -->
+      <a class="navbar-brand d-flex align-items-center" href="index.html" id="brandLogo">
+        <img src="./assets/logo-COzdZO0l.jpg" alt="SaiVedha Logo" class="me-2" style="height: 55px; width: 55px; border-radius: 50%; object-fit: cover; aspect-ratio: 1/1; border: 2px solid var(--primary-color);">
+        <div class="d-flex flex-column">
+          <span class="logo-text" style="line-height: 1.2;">SAIVEDHA</span>
+          <span class="logo-subtext" style="font-size: 0.65rem; color: var(--accent-color); letter-spacing: 2px; font-weight: 600; text-transform: uppercase;">Silver Palace</span>
+        </div>
+      </a>
+      
+      <!-- Mobile Toggle -->
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menu Items -->
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="articles.html#antique-collection">Antique Articles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="articles.html#silver-articles">Silver Articles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="womens.html">Women's Collection</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="mens.html">Men's Collection</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-luxury" href="contact.html">Contact</a>
+          </li>
+        </ul>
+        
+        <!-- Utility Icons (Search, Wishlist, Cart, Login) -->
+        <div class="d-flex align-items-center position-relative">
+          <!-- Wishlist -->
+          <a class="navbar-icon-btn position-relative active" href="wishlist.html" title="Wishlist" aria-label="Wishlist" style="color: var(--accent-color);">
+            <i class="bi bi-heart-fill"></i>
+            <span class="badge-counter d-none" id="wishlistBadgeCount">0</span>
+          </a>
+
+          <!-- Shopping Cart -->
+          <a class="navbar-icon-btn position-relative" href="cart.html" title="Shopping Cart" aria-label="Shopping Cart">
+            <i class="bi bi-bag"></i>
+            <span class="badge-counter d-none" id="cartBadgeCount">0</span>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- --- Wishlist Header Section --- -->
+  <section class="py-5 bg-dark text-white text-center position-relative overflow-hidden" style="border-bottom: 1px solid var(--accent-color);">
+    <!-- Decorative background elements -->
+    <div class="position-absolute top-50 start-50 translate-middle w-100 h-100 opacity-10" style="background-image: radial-gradient(var(--primary-color) 1px, transparent 1px); background-size: 20px 20px;"></div>
+    <div class="container py-4 position-relative z-1">
+      <span class="section-tagline" style="color: var(--accent-color);">My Curated Treasures</span>
+      <h1 class="display-4 fw-bold mb-3" style="font-family: var(--font-headings); font-weight: 800; letter-spacing: 2px;">My Royal Wishlist</h1>
+      <p class="lead text-white-50 mx-auto mb-4" style="max-width: 600px; font-size: 1rem;">Browse and manage your selected certified pure silver articles. Contact our showroom specialists directly for orders and private inquiries.</p>
+      <a href="articles.html" class="btn btn-premium btn-premium-primary px-4 py-2">
+        <i class="bi bi-arrow-left me-2"></i> Return to Collection
+      </a>
+    </div>
+  </section>
+
+  <!-- --- Wishlist Items Grid --- -->
+  <section class="py-5" style="background-color: var(--bg-color); min-height: 55vh;">
+    <div class="container py-3">
+      <div id="wishlistPageGrid" class="row g-4 justify-content-center">
+        <!-- Dynamically filled with javascript -->
+        <div class="col-12 text-center py-5">
+          <div class="spinner-border text-success" role="status">
+            <span class="visually-hidden">Loading your wishlist...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- 13. Footer Section --- -->
+  <footer class="footer-luxury">
+    <div class="container">
+      <div class="row g-5">
+        <!-- Logo and About -->
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center mb-3">
+            <img src="./assets/logo-COzdZO0l.jpg" alt="SaiVedha Logo" class="me-2" style="height: 65px; width: 65px; border-radius: 50%; object-fit: cover; aspect-ratio: 1/1; border: 2px solid var(--primary-color);">
+            <div class="d-flex flex-column">
+              <span class="footer-logo" style="line-height: 1.2; margin-bottom: 0;">SAIVEDHA</span>
+              <span class="footer-subtext" style="font-size: 0.75rem; color: var(--accent-color); letter-spacing: 2px; font-weight: 600; text-transform: uppercase;">Silver Palace</span>
+            </div>
+          </div>
+          <p class="footer-about">
+            Vijayawada's premier showroom specializing in 92.5 Sterling Silver Antique Articles and 99.0%+ Pure Silver Pooja & Dinnerware. Bringing legacy, purity, and craftsmanship to your home.
+          </p>
+          <p class="text-white-50 mt-1" style="font-size: 0.8rem;"><i class="bi bi-clock-fill me-2"></i> Showroom Hours: 10:30 AM - 8:30 PM (Closed on Mondays)</p>
+          
+          <div class="social-links-row">
+            <a href="#" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-btn" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+            <a href="#" class="social-btn" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6 col-6">
+          <h4 class="footer-section-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Legacy</a></li>
+            <li><a href="gallery.html">Showroom Gallery</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Categories -->
+        <div class="col-lg-3 col-md-6 col-6">
+          <h4 class="footer-section-title">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="articles.html#antique-collection">Antique Ornaments</a></li>
+            <li><a href="articles.html#silver-articles">Pooja Silverware</a></li>
+            <li><a href="articles.html#silver-articles">Dinner Sets & Utensils</a></li>
+            <li><a href="womens.html">Women's Ankle Straps & Bichiya</a></li>
+            <li><a href="mens.html">Men's Kada & Chains</a></li>
+          </ul>
+        </div>
+
+        <!-- Store Location Info -->
+        <div class="col-lg-3 col-md-6">
+          <h4 class="footer-section-title">Visit Our Palace</h4>
+          <p class="footer-contact-info">
+            <i class="bi bi-geo-alt-fill me-2 text-success"></i>
+            <strong>SaiVedha Silver Palace</strong><br>
+            Governorpet, Vijayawada,<br>
+            Andhra Pradesh, India
+          </p>
+          <p class="footer-contact-info mt-3">
+            <i class="bi bi-telephone-fill me-2 text-success"></i>
+            +91 94406 35761
+          </p>
+          <p class="footer-contact-info">
+            <i class="bi bi-envelope-fill me-2 text-success"></i>
+            info@saivedhasilver.com
+          </p>
+        </div>
+      </div>
+
+      <hr class="footer-divider">
+
+      <div class="footer-bottom-row">
+        <p class="mb-0">&copy; 2026 SaiVedha Silver Palace. All Rights Reserved. Crafted with Trust &amp; Purity.</p>
+        <p class="mb-0 text-white-50" style="font-size: 0.8rem;">Certified Bureau of Indian Standards (BIS) 92.5 Hallmarked Jewelry.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle JS with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Wishlist rendering script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Navbar scroll behavior
+      const navbar = document.querySelector('.navbar-luxury');
+      if (navbar) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+          } else {
+            navbar.classList.remove('scrolled');
+          }
+        });
+      }
+
+      async function initLiveSilverRate() {
+        const rateEl = document.getElementById('liveSilverRate');
+        const trendEl = document.getElementById('liveSilverTrend');
+        if (!rateEl || !trendEl) return;
+        
+        async function fetchAccurateRate() {
+          try {
+            const res = await fetch('/api/rate');
+            const data = await res.json();
+            
+            rateEl.classList.add('flash-update');
+            setTimeout(() => rateEl.classList.remove('flash-update'), 500);
+            
+            const rateVal = data.mode === 'manual' ? data.customRate : data.rate;
+            rateEl.textContent = `₹${rateVal.toFixed(2)} / g`;
+            
+            if (data.mode === 'manual') {
+              trendEl.className = 'text-success ms-1';
+              trendEl.innerHTML = `<i class="bi bi-shield-fill-check"></i> Locked`;
+            } else {
+              const percentage = ((rateVal - 234.50) / 234.50 * 100).toFixed(2);
+              if (percentage >= 0) {
+                trendEl.className = 'text-success ms-1';
+                trendEl.innerHTML = `<i class="bi bi-arrow-up-right"></i> +${percentage}%`;
+              } else {
+                trendEl.className = 'text-danger ms-1';
+                trendEl.innerHTML = `<i class="bi bi-arrow-down-left"></i> ${percentage}%`;
+              }
+            }
+          } catch (error) {
+            console.warn('Could not fetch live rate dynamically:', error);
+            rateEl.textContent = `₹235.00 / g`;
+          }
+        }
+        
+        await fetchAccurateRate();
+        setInterval(fetchAccurateRate, 30000);
+      }
+      
+      initLiveSilverRate();
+
+      const grid = document.getElementById('wishlistPageGrid');
+      const badge = document.getElementById('wishlistBadgeCount');
+      const cartBadge = document.getElementById('cartBadgeCount');
+      
+      let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
+      let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      
+      function updateBadges() {
+        if (badge) {
+          badge.textContent = wishlistItems.length;
+          if (wishlistItems.length > 0) badge.classList.remove('d-none');
+          else badge.classList.add('d-none');
+        }
+        if (cartBadge) {
+          cartBadge.textContent = cartItems.length;
+          if (cartItems.length > 0) cartBadge.classList.remove('d-none');
+          else cartBadge.classList.add('d-none');
+        }
+      }
+      
+      function renderWishlistGrid() {
+        if (!grid) return;
+        
+        if (wishlistItems.length === 0) {
+          grid.innerHTML = `
+            <div class="col-12 text-center py-5">
+              <div class="p-5 rounded-4 shadow-sm border border-secondary bg-dark text-white wishlist-empty-card" style="max-width: 500px; margin: 0 auto;">
+                <i class="bi bi-heart text-muted mb-3" style="font-size: 4rem; display: block;"></i>
+                <h3 style="font-family: var(--font-headings); font-weight: 700; color: var(--primary-color);">Your Wishlist is Empty</h3>
+                <p class="text-muted mb-4">Discover Vijayawada's finest pure silver collection and save your favorite designs here.</p>
+                <a href="articles.html" class="btn btn-premium btn-premium-primary px-4 py-2">
+                  <i class="bi bi-shop me-2"></i> Explore Showroom
+                </a>
+              </div>
+            </div>
+          `;
+          return;
+        }
+        
+        let html = '';
+        wishlistItems.forEach((item, index) => {
+          let displayPrice = item.price || '';
+          if (item.title === "Antique Nakshi Pure Silver Electric Bedside Lamp") displayPrice = "Net Wt: 620g";
+          if (item.title === "Antique Nakshi Pure Silver Peacock Standing Lamps (Pair)") displayPrice = "Net Wt: 1450g";
+          if (item.title === "Antique Pure Silver Geometric Cutout Ice Bucket & Tongs Set") displayPrice = "Net Wt: 310g";
+          
+          html += `
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <div class="antique-card">
+                <div class="position-relative">
+                  <div class="antique-img-container">
+                    <img src="${item.img}" alt="${item.title}" class="antique-img d-block w-100">
+                  </div>
+                  <span class="heritage-badge badge-premium">Certified Pure</span>
+                </div>
+                <div class="antique-card-body">
+                  <h3 class="antique-title" style="font-size: 1.15rem; min-height: 48px;">${item.title}</h3>
+                  <p class="antique-description text-muted" style="font-size: 0.8rem; min-height: 50px;">Handcrafted luxury pure silver art piece, hallmarked and certified for purity.</p>
+                  <div class="antique-price-row flex-column gap-3 mt-3 align-items-stretch">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="badge bg-secondary-subtle text-secondary py-2 px-3 rounded-pill border" style="font-size: 0.75rem;">Grade 92.5 / 99.0+</span>
+                      <span class="antique-price text-success fw-bold" style="font-size: 1.15rem; font-family: var(--font-headings);">${displayPrice}</span>
+                    </div>
+                    <div class="d-flex gap-2">
+                      <button class="btn btn-sm btn-outline-danger btn-remove-wishlist flex-grow-0" data-index="${index}" title="Remove" style="padding: 8px 12px; border-radius: 4px;">
+                        <i class="bi bi-trash-fill"></i>
+                      </button>
+                      <a href="https://wa.me/919440635761?text=${encodeURIComponent(`Hi SaiVedha Silver Palace, I am interested in inquiring about the ${item.title}. Reference Image: ${item.img.startsWith('http') ? item.img : `${window.location.origin}/${item.img}`}`)}" 
+                         target="_blank" class="btn btn-premium btn-premium-primary flex-grow-1 d-flex align-items-center justify-content-center gap-2" style="font-size: 0.85rem; padding: 8px;">
+                        <i class="bi bi-whatsapp"></i> Inquire
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+        grid.innerHTML = html;
+        
+        // Bind remove actions
+        grid.querySelectorAll('.btn-remove-wishlist').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const idx = parseInt(btn.getAttribute('data-index'));
+            wishlistItems.splice(idx, 1);
+            localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
+            updateBadges();
+            renderWishlistGrid();
+          });
+        });
+      }
+      
+      updateBadges();
+      renderWishlistGrid();
+    });
+  </script>
+
+  <!-- Showroom dynamic parameters CMS loader -->
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const res = await fetch('/api/settings');
+        const data = await res.json();
+        
+        // Update top announcement bar text
+        const annContainer = document.querySelector('.bg-dark.text-white.py-2.px-3 div');
+        if (annContainer) {
+          const annSpan = annContainer.querySelector('span');
+          if (annSpan) annSpan.textContent = data.announcement;
+        }
+
+        // Update footer store details if present
+        const hoursEl = document.getElementById('footerHours');
+        if (hoursEl) hoursEl.textContent = data.storeHours;
+        
+        const phoneEl = document.getElementById('footerPhone');
+        if (phoneEl) phoneEl.textContent = data.telephone;
+      } catch (err) {
+        console.error('Failed loading settings CMS:', err);
+      }
+    });
+  </script>
+
+</body>
+</html>
