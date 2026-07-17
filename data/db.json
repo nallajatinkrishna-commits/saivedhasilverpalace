@@ -49,7 +49,7 @@
       "id": "ant-1",
       "title": "Pure Silver Bottle & Glass Set",
       "category": "antique",
-      "price": "₹1,45,000",
+      "price": "Net Wt: 1.4 kg",
       "images": [
         "assets/images/silver_bottleset.png"
       ],
@@ -60,7 +60,7 @@
       "id": "ant-2",
       "title": "Pure Silver Lakshmi Deepams (Pair)",
       "category": "antique",
-      "price": "₹24,500",
+      "price": "Net Wt: 280g",
       "images": [
         "assets/images/silver_deepams.png"
       ],
@@ -104,7 +104,7 @@
       "id": "ant-6",
       "title": "Pure Silver Ludo Board Set",
       "category": "antique",
-      "price": "₹2,10,000",
+      "price": "Net Wt: 1.95 kg",
       "images": [
         "assets/images/silver_ludo.png"
       ],
@@ -115,7 +115,7 @@
       "id": "ant-7",
       "title": "Antique Silver Tea Set",
       "category": "antique",
-      "price": "₹2,45,000",
+      "price": "Net Wt: 2.2 kg",
       "images": [
         "assets/images/antique_tea_set.jpg"
       ],
@@ -126,7 +126,7 @@
       "id": "ant-8",
       "title": "Antique Silver Urli Bowl",
       "category": "antique",
-      "price": "₹1,85,000",
+      "price": "Net Wt: 1.5 kg",
       "images": [
         "assets/images/antique_urli.png"
       ],
@@ -137,7 +137,7 @@
       "id": "ant-9",
       "title": "Antique Silver Lamp",
       "category": "antique",
-      "price": "₹95,000",
+      "price": "Net Wt: 980g",
       "images": [
         "assets/images/antique_lamp.jpg"
       ],
@@ -148,7 +148,7 @@
       "id": "ant-10",
       "title": "Silver Filigree Box",
       "category": "antique",
-      "price": "₹65,000",
+      "price": "Net Wt: 480g",
       "images": [
         "assets/images/filigree_box.png"
       ],
@@ -159,7 +159,7 @@
       "id": "sil-1",
       "title": "Handcrafted Nakshi Kalash",
       "category": "silver",
-      "price": "₹28,500",
+      "price": "Net Wt: 480g",
       "images": [
         "assets/images/silver_kalash.png"
       ],
@@ -170,7 +170,7 @@
       "id": "sil-2",
       "title": "Pure Silver Ram Sita Darbar",
       "category": "silver",
-      "price": "₹45,500",
+      "price": "Net Wt: 550g",
       "images": [
         "assets/images/silver_ramdarbar.png"
       ],
@@ -181,7 +181,7 @@
       "id": "sil-3",
       "title": "Royal Nakshi Dessert Set",
       "category": "silver",
-      "price": "₹1,25,000",
+      "price": "Net Wt: 1.8 kg",
       "images": [
         "assets/images/silver_dinnerset.png"
       ],
@@ -192,7 +192,7 @@
       "id": "sil-4",
       "title": "Antique Silver Long Kundulu",
       "category": "silver",
-      "price": "₹68,000",
+      "price": "Net Wt: 1.1 kg",
       "images": [
         "assets/images/silver_kundulu.png"
       ],
@@ -203,7 +203,7 @@
       "id": "sil-5",
       "title": "Pure Silver Ram Mandir Replica",
       "category": "silver",
-      "price": "₹2,50,000",
+      "price": "Net Wt: 2.1 kg",
       "images": [
         "assets/images/silver_rammandir.png"
       ],
@@ -214,7 +214,7 @@
       "id": "sil-6",
       "title": "Pure Silver Gomukhi Abhisheka Set",
       "category": "silver",
-      "price": "₹95,000",
+      "price": "Net Wt: 950g",
       "images": [
         "assets/images/silver_gomukhi_slide1.jpg",
         "assets/images/silver_gomukhi_slide2.jpg"
@@ -226,7 +226,7 @@
       "id": "sil-7",
       "title": "Pure Silver Nakshi Serving Box",
       "category": "silver",
-      "price": "₹58,000",
+      "price": "Net Wt: 680g",
       "images": [
         "assets/images/silver_box_slide1.jpg",
         "assets/images/silver_box_slide2.jpg"
@@ -238,7 +238,7 @@
       "id": "men-1",
       "title": "Chased Royal Silver Kada",
       "category": "mens",
-      "price": "₹14,500",
+      "price": "Net Wt: 80g",
       "images": [
         "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=400&auto=format&fit=crop"
       ],
@@ -249,7 +249,7 @@
       "id": "men-2",
       "title": "Interlocked Silver Chain",
       "category": "mens",
-      "price": "₹18,900",
+      "price": "Net Wt: 75g",
       "images": [
         "assets/images/plain_silver_chain.png"
       ],
@@ -260,7 +260,7 @@
       "id": "men-3",
       "title": "Classic Signet Silver Ring",
       "category": "mens",
-      "price": "₹4,200",
+      "price": "Net Wt: 12g",
       "images": [
         "assets/images/plain_silver_ring.png"
       ],
@@ -271,7 +271,7 @@
       "id": "men-4",
       "title": "Heavy Curb Silver Bracelet",
       "category": "mens",
-      "price": "₹11,500",
+      "price": "Net Wt: 55g",
       "images": [
         "assets/images/silver_bracelet.png"
       ],
@@ -282,7 +282,7 @@
       "id": "wom-1",
       "title": "Royal Ghungroo Ankle Strap",
       "category": "womens",
-      "price": "₹12,500",
+      "price": "Net Wt: 180g",
       "images": [
         "assets/images/silver_ankle_strap_1.png"
       ],
@@ -293,7 +293,7 @@
       "id": "wom-2",
       "title": "Heritage Carved Ankle Strap",
       "category": "womens",
-      "price": "₹7,800",
+      "price": "Net Wt: 95g",
       "images": [
         "assets/images/silver_ankle_strap_2.png"
       ],
@@ -304,7 +304,7 @@
       "id": "wom-3",
       "title": "Traditional Silver Bichiya Pair",
       "category": "womens",
-      "price": "₹2,400",
+      "price": "Net Wt: 10g",
       "images": [
         "assets/images/plain_silver_ring.png"
       ],
@@ -315,7 +315,7 @@
       "id": "wom-4",
       "title": "Royal Nakshi Gilt Purse",
       "category": "womens",
-      "price": "₹1,85,000",
+      "price": "Net Wt: 740g",
       "images": [
         "assets/images/silver_purse_slide1.png",
         "assets/images/silver_purse_slide2.jpg"
@@ -327,7 +327,7 @@
       "id": "wom-5",
       "title": "Premium Floral Nakshi Round Silver Purse",
       "category": "womens",
-      "price": "₹1,15,000",
+      "price": "Net Wt: 520g",
       "images": [
         "assets/images/silver_round_purse.jpg"
       ],
@@ -338,7 +338,7 @@
       "id": "wom-6",
       "title": "Antique Nakshi Silver Bridal Clutch with Gemstones",
       "category": "womens",
-      "price": "₹1,45,000",
+      "price": "Net Wt: 680g",
       "images": [
         "assets/images/silver_gemstone_clutch.jpg"
       ],

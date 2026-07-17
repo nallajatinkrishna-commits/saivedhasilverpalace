@@ -260,9 +260,15 @@
             </div>
             
             <div class="mb-3">
+              <label class="form-label text-muted small fw-bold">UPLOAD IMAGE FILE (RECOMMENDED)</label>
+              <input type="file" class="form-control form-control-admin" id="prodImageFile" accept="image/*">
+              <span class="text-muted" style="font-size: 0.7rem;"><i class="bi bi-cloud-arrow-up"></i> Select a local image file to upload directly to the server.</span>
+            </div>
+
+            <div class="mb-3">
               <label class="form-label text-muted small fw-bold">IMAGE SOURCE URL</label>
               <input type="text" class="form-control form-control-admin" id="prodImage" placeholder="e.g. assets/images/antique_tea_set.jpg or a web link" required>
-              <span class="text-muted" style="font-size: 0.7rem;"><i class="bi bi-info-circle"></i> You can use local paths (e.g. `assets/images/filigree_box.png`) or external URLs.</span>
+              <span class="text-muted" style="font-size: 0.7rem;"><i class="bi bi-info-circle"></i> Automatically set on upload, or paste a link/path manually.</span>
             </div>
             
             <div class="mb-3">
@@ -429,13 +435,78 @@
         });
       });
 
+      // Handle file upload
+      document.getElementById('prodImageFile').addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        showToast('Uploading image... please wait.');
+
+        const reader = new FileReader();
+        reader.onload = async () => {
+          try {
+            const res = await fetch('/api/products/upload-image', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                fileName: file.name,
+                fileData: reader.result
+              })
+            });
+            const data = await res.json();
+            if (data.success) {
+              document.getElementById('prodImage').value = data.imagePath;
+              showToast('Image uploaded successfully and path populated!');
+            } else {
+              showToast(data.error || 'Failed to upload image', true);
+            }
+          } catch (err) {
+            showToast('Failed to connect to upload API', true);
+          }
+        };
+        reader.onerror = () => {
+          showToast('Failed to read selected image file', true);
+        };
+        reader.readAsDataURL(file);
+      });
+
+      // Clean image URLs for external sharing sites
+      function cleanImageUrl(url) {
+        let cleaned = url.trim();
+
+        // Convert Google Drive share link to direct link
+        const driveRegex = /(?:drive\.google\.com\/(?:file\/d\/|open\?id=))([a-zA-Z0-9_-]+)/;
+        const driveMatch = cleaned.match(driveRegex);
+        if (driveMatch && driveMatch[1]) {
+          return `https://drive.google.com/uc?export=view&id=${driveMatch[1]}`;
+        }
+
+        // Convert Dropbox share link to direct link
+        if (cleaned.includes('dropbox.com/s/')) {
+          return cleaned.replace('?dl=0', '?raw=1').replace('&dl=0', '&raw=1');
+        }
+
+        return cleaned;
+      }
+
       // Handle add product form submission
       document.getElementById('addProductForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const title = document.getElementById('prodTitle').value.trim();
         const category = document.getElementById('prodCategory').value;
         const price = document.getElementById('prodPrice').value.trim();
-        const images = [document.getElementById('prodImage').value.trim()];
+        let imageVal = document.getElementById('prodImage').value.trim();
+
+        // Check for local file paths
+        if (/^(?:[a-zA-Z]:\\|\\\\|file:\/\/)/i.test(imageVal)) {
+          alert('Error: You pasted a local computer file path (e.g. C:\\...). Web browsers block loading these files for security reasons. Please use the "UPLOAD IMAGE FILE" field above to upload the file, or copy the image to the "assets/images/" folder and use a relative path (e.g., "assets/images/my_image.png").');
+          return;
+        }
+
+        // Clean external links
+        imageVal = cleanImageUrl(imageVal);
+
+        const images = [imageVal];
         const description = document.getElementById('prodDescription').value.trim();
         const detail = document.getElementById('prodDetail').value.trim();
 
