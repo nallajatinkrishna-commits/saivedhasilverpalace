@@ -453,14 +453,30 @@
                 fileData: reader.result
               })
             });
-            const data = await res.json();
+            
+            if (res.status === 413) {
+              alert('Upload failed: The image file is too large. Please select a smaller image or resize it first.');
+              showToast('File too large', true);
+              return;
+            }
+
+            let data;
+            try {
+              data = await res.json();
+            } catch (jsonErr) {
+              throw new Error(`Failed to parse server response as JSON (status: ${res.status})`);
+            }
+
             if (data.success) {
               document.getElementById('prodImage').value = data.imagePath;
               showToast('Image uploaded successfully and path populated!');
             } else {
+              alert('Upload failed: ' + (data.error || 'Unknown server error'));
               showToast(data.error || 'Failed to upload image', true);
             }
           } catch (err) {
+            console.error('Upload error:', err);
+            alert('Upload failed: ' + err.message + '\nMake sure the backend server (server.js) is running.');
             showToast('Failed to connect to upload API', true);
           }
         };
