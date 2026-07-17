@@ -12,7 +12,8 @@ const PORT = process.env.PORT || 80;
 
 // Enable CORS and JSON body parsing
 app.use(cors());
-app.use(express.json({ limit: '10mb' }));
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 app.use((req, res, next) => {
   console.log(`[REQUEST] ${req.method} ${req.url}`);
@@ -356,11 +357,14 @@ app.post('/api/login', (req, res) => {
 app.post('/api/products/upload-image', (req, res) => {
   const { fileName, fileData } = req.body;
   if (!fileName || !fileData) {
+    console.error('[UPLOAD ERROR] Missing fileName or fileData in request body.');
     return res.status(400).json({ success: false, error: 'Missing file name or data' });
   }
 
+  console.log(`[UPLOAD START] Uploading image: "${fileName}" (${Math.round(fileData.length / 1024)} KB base64 payload)`);
+
   try {
-    const base64Data = fileData.replace(/^data:image\/\w+;base64,/, "");
+    const base64Data = fileData.split(';base64,').pop();
     const buffer = Buffer.from(base64Data, 'base64');
 
     const ext = path.extname(fileName) || '.jpg';
@@ -372,17 +376,19 @@ app.post('/api/products/upload-image', (req, res) => {
     // Save to source folder
     fs.mkdirSync(path.dirname(srcPath), { recursive: true });
     fs.writeFileSync(srcPath, buffer);
+    console.log(`[UPLOAD SUCCESS] Saved to source: ${srcPath}`);
 
     // Save to dist folder if dist exists
     const distImgDir = path.dirname(distPath);
     if (fs.existsSync(distImgDir) || fs.existsSync(path.join(__dirname, 'dist'))) {
       fs.mkdirSync(distImgDir, { recursive: true });
       fs.writeFileSync(distPath, buffer);
+      console.log(`[UPLOAD SUCCESS] Saved to dist: ${distPath}`);
     }
 
     res.json({ success: true, imagePath: `assets/images/${uniqueName}` });
   } catch (err) {
-    console.error('Image upload failed:', err);
+    console.error('[UPLOAD ERROR] Failed to save image:', err);
     res.status(500).json({ success: false, error: 'Failed to save image on server.' });
   }
 });
