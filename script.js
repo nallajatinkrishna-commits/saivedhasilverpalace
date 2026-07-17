@@ -1510,6 +1510,17 @@ function initCustomerAuth() {
     ],
     "description": "A vintage-style metal chainmail coin purse crafted in pure silver with an engraved kiss-lock clasp.",
     "detail": "Flexible silver chain loops. Includes an attached wristlet ring chain. Weight: 150g."
+  },
+  {
+    "id": "1784306591466",
+    "title": "hanuman idol",
+    "category": "antique",
+    "price": "net weight-100gms",
+    "images": [
+      "assets/images/uploaded_1784306560095.JPG"
+    ],
+    "description": "The idol depicts Lord Hanuman, the embodiment of unwavering devotion, courage, strength, and selfless service. Beautifully handcrafted in polished silver with an oxidized antique finish, the sculpture combines traditional craftsmanship with intricate detailing, making it an ideal centerpiece for worship, home décor, or gifting.",
+    "detail": "The idol depicts Lord Hanuman, the embodiment of unwavering devotion, courage, strength, and selfless service. Beautifully handcrafted in polished silver with an oxidized antique finish, the sculpture combines traditional craftsmanship with intricate detailing, making it an ideal centerpiece for worship, home décor, or gifting."
   }
 ];
     }

@@ -32,12 +32,67 @@ try {
     console.warn('Warning: Source assets/images folder not found');
   }
 
-  // Copy script.js to dist/script.js
+  // Bake data/db.json products into script.js fallback and write to both locations
   const srcScript = path.join(__dirname, 'script.js');
   const destScript = path.join(__dirname, 'dist', 'script.js');
+  const dbPath = path.join(__dirname, 'data', 'db.json');
+
   if (fs.existsSync(srcScript)) {
-    fs.copyFileSync(srcScript, destScript);
-    console.log('Successfully copied script.js to dist/script.js');
+    let scriptContent = fs.readFileSync(srcScript, 'utf8');
+
+    if (fs.existsSync(dbPath)) {
+      try {
+        const db = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+        const products = db.products || [];
+
+        const startPattern = 'products = [';
+
+        // Find the index of products = [ that is the fallback array (not let products = [];)
+        let startIndex = -1;
+        let searchIndex = 0;
+        while (true) {
+          const idx = scriptContent.indexOf(startPattern, searchIndex);
+          if (idx === -1) break;
+          if (scriptContent[idx + startPattern.length] !== ']') {
+            startIndex = idx;
+            break;
+          }
+          searchIndex = idx + 1;
+        }
+
+        let endIndex = -1;
+        if (startIndex !== -1) {
+          endIndex = scriptContent.indexOf(']\r\n    }', startIndex);
+          if (endIndex === -1) {
+            endIndex = scriptContent.indexOf(']\n    }', startIndex);
+          }
+        }
+
+        if (startIndex !== -1 && endIndex !== -1) {
+          const before = scriptContent.substring(0, startIndex);
+          // Calculate length of the matched end marker: ']\r\n    }' is 8 chars, ']\n    }' is 7 chars
+          const isWindowsEnding = scriptContent.substring(endIndex, endIndex + 8).includes('\r');
+          const after = scriptContent.substring(endIndex + (isWindowsEnding ? 8 : 7));
+
+          // Format products JSON neatly with indentation
+          const productsJson = `products = ${JSON.stringify(products, null, 2)};`;
+          
+          scriptContent = before + productsJson + '\n    }' + after;
+          
+          // Save back to source script.js so they remain in sync
+          fs.writeFileSync(srcScript, scriptContent, 'utf8');
+          console.log('Successfully baked data/db.json products into source script.js fallback');
+        } else {
+          console.warn('Warning: Could not find products fallback array patterns in script.js');
+        }
+      } catch (dbErr) {
+        console.error('Failed to parse db.json or bake script.js:', dbErr);
+      }
+    }
+
+    // Write the baked script to dist/script.js
+    fs.writeFileSync(destScript, scriptContent, 'utf8');
+    console.log('Successfully copied (and baked) script.js to dist/script.js');
   }
 
   // Copy debug-images.html to dist/debug-images.html
